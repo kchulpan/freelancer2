@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+  <mapper namespace="User">
+  	<!-- 결과담을 Map 작성 -->
+  	
+  <!-- 	<select id="Login" parameterType="hashMap" 
+  		resultType="">
+  		SELECT USERID, USERPASS, USERNAME
+  		FROM   USERS_TBL
+  		WHERE  USERID = #{userid}
+  		AND    USERPASS = #{userpass}
+  	</select> -->
+  </mapper>

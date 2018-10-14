@@ -1,0 +1,106 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700,900');
+html, body {margin:0px; padding:0px; height:100%; overflow:hidden;}
+body > * {font-family: 'Open Sans', Arial, sans-serif;}
+#wrapper  {display:flex; flex-direction:column; width:100%;  height:100%;  border:1px solid black; 
+			 box-sizing:border-box;  background-color:#f5f5fa;}
+a {text-decoration: none;}
+	
+	/* header */
+	header {/* border:1px solid black; */ width:100%; flex-basis:110px; flex-shrink:0; box-sizing:border-box;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 1px 20px 0 rgba(0, 0, 0, 0.19);
+			background-color:#ffffff; position:fixed; height:100px; z-index:3; top:0px; 
+			display:flex; align-items:center;}
+		#title    {margin-left: 10px;}
+		.title_logo {text-decoration: none; text-transform: uppercase; font-size: 40px; font-weight: 900; line-height: 1em;
+    				 letter-spacing: -1px; margin-top: 30px; padding: 0 0 0 15px; color: #777;}
+		.title_logo > span {color: #68A4C4;}
+		
+		#myPage   {/* border:1px solid black; */ position:absolute; right:3%; box-sizing:border-box;
+					display: flex; flex-direction: row;}
+		#profile_photo {width:30px; height:30px; float:left; border-radius:50px;}
+		.down_arrow  {margin-top: 4px; margin-left: 5px;}
+		#myPage span {position:relative; top:5px; padding-left: 4px;}
+		
+		.hidden_myPage {position:fixed; right:0%; top:67px; box-sizing:border-box;
+						visibility:hidden; border:0.5px solid #9f9f9f;
+						border-top:2px solid #9f9f9f; width:125px; text-align:left; font-size:14px;
+						background-color:white;}
+		.hidden_myPage div {padding-bottom:8px; height:20px; padding-top:7px; padding-left: 7px;}
+		.hidden_myPage div:hover {background-color:#68A4C4; color:white;}
+		.profile_active {visibility: visible;}
+		
+	/* main_templet */
+	#main_templet {display:flex; flex-grow:1; height:100%; background-color:#f5f5fa;
+					margin-top:100px;}
+	
+	
+	
+	/* nav */
+	.nav {float:left; /* border:1px solid black; */ width:230px; height:100%; box-sizing:border-box;
+		  background-color:#2B333E; z-index:2; box-shadow: 3px 0px 5px 0px #888888;
+		  position:absolute; position:fixed; left:15px; transition:all 0.1s ease; overflow:scroll;}
+	.nav::-webkit-scrollbar {visibility:hidden;}
+	.nav_active {left:-220px;} 
+	
+	/* @media (max-width: 800px) {
+	  .nav {
+	    left:-190px;
+	  }
+	} */
+	
+		#slide_btn {width:15px; height:100%; background-color:#4B586B; position:absolute; 
+					left:0px; z-index:100;}
+	
+		/* menus */
+		#top_menu_box 	 {width:100%; box-sizing:border-box; padding-bottom:100px;
+						  display:flex; flex-direction:column; padding-left:20px; margin-top:15px;}	
+		.top_menu 	   	 {font-weight:450; margin-top:20px; font-size:17px;
+				   	      flex-basis:30px; color:white;}	
+		.top_menu:hover  {color:#68A4C4; cursor:pointer; background-color:#252C35;
+						  border-bottom:2px solid #68A4C4;}
+		.top_menu_active {border-bottom:2px solid #68A4C4;}
+		#top_menu_box  a {color:white;}
+								 			  
+		.menu_icon 		  {margin-right:5px;}
+		.menu_icon_active {color:#68A4C4;}				 
+	
+		
+	/* article */
+	article {float:right; flex-grow:1; height:100%; box-sizing:border-box; background-color:#f5f5fa;
+			 position:relative; margin-left:250px; transition:all 0.25s ease;
+			 width:80%; z-index:1; display:flex; flex-direction:column;}
+	.article_active {margin-left:30px;}
+	/* @media (max-width: 800px) {
+	  article {
+	    margin-left:30px;
+	  }
+	} */
+	
+		.tab {display:none;}
+		
+		.tabs {width:100%; height:25px; padding-top:10px; background-color:#f5f5fa; 
+				z-index:2; display:flex; flex-wrap:wrap; overflow:hidden; margin-bottom: 5px;}
+		.tabs > input {display:none;}	
+		@media (max-width: 800px) {
+		  .tabs {
+		    display:none;
+		  }
+		}
+		label {display:inline-block; font-weight:600; text-align:center; box-sizing:border-box;
+				 padding-left:3px; 
+				/* flex-shrink:5; */}
+		label > a {color:#bbb;}
+		label > a:hover {color:#68A4C4; cursor:pointer;}
+		input:checked + label { border:1px solid #ddd;
+								border-top:2px solid #68A4C4; border-bottom:1px solid #ffffff;}
+		input:checked + label > a {color:#555;}
+								
+		.icon {width:15px; height:15px; margin-left:5px; margin-right:3px; opacity: 0.5;
+				position: relative; top: 2px;}	
+		.icon:hover {opacity: 1;}	
+				
+		.sections {position:relative; z-index:1; max-width:100%;
+				   /* height:100%; */ background-color: white; overflow-y:scroll; padding:10px;}	
+		.sections > section {width:100%; height:100%;}
+								

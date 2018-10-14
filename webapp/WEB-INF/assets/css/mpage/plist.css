@@ -1,0 +1,40 @@
+@charset "UTF-8";
+ td {
+ 	 border: 1px solid black; 
+ 	 height: 30px;
+ 	
+ 	  }
+.img {
+	width: 150px;
+	height: 150px;
+	position: absolute;
+	right: 115px;
+	top: 30px;
+} 	
+.Unum{
+		width:200px;
+		height:30px;
+		text-align: center;
+}
+.Unum_input{
+		width:750px;
+		height:30px;
+}
+.div1{
+	width:100px;
+	font-size:13px;
+	margin: 0 auto;
+	text-align: center;
+}
+.blank{
+ width:163px;
+ text-align:center;
+}
+.sp{
+	width:140px;
+	text-align:center;
+}
+.address{
+	width:1000px;
+	
+}
