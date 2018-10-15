@@ -27,6 +27,14 @@ public class ProjectListDaoImpl implements ProjectListDao
 	}
 
 
+	@Override
+	public List<ProjectListVo> projectDetail(HashMap<String, Object> map) {
+		sqlSession.selectList("Project.ProjectDetail", map);
+		List<ProjectListVo>  projectDetail = (List<ProjectListVo>)map.get("result");
+		return projectDetail;
+	}
+
+
 
 
 

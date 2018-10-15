@@ -79,14 +79,22 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 /* Add styles to the form container */
 .form-container {
-  max-width: 600px;
+  max-width: 1000px;
+  height:500px;
   padding: 10px;
   background-color: white;
 }
 
 /* Full-width input fields */
-.form-container input[type=text], .form-container input[type=password] {
-  width: 100%;
+.form-container .input[type=text] {
+  width: 80%;
+  padding: 5px 5px;
+  margin: 5px 0 15px 0;
+  border: none;
+  background: #f1f1f1;
+}
+.form-container .onput {
+  width: 35%;
   padding: 5px 5px;
   margin: 5px 0 15px 0;
   border: none;
@@ -107,7 +115,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
   border: none;
   cursor: pointer;
   width: 50%;
-  height:50px;
+  height:40px;
   float: left;
   margin-bottom:10px;
   opacity: 0.8;
@@ -116,7 +124,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 /* Add a red background color to the cancel button */
 .form-container .cancel {
   background-color: red;
-   height:50px;
+   height:40px;
   
 }
 

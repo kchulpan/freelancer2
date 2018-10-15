@@ -26,7 +26,13 @@ public class ChargeListServiceImpl implements ChargeListService
 	@Override
 	public List<ChargeListVo> chargeDetail(HashMap<String, Object> map) {
 		List<ChargeListVo> chargeDetail = chargeListdDao.chargeDetail(map);
-		return null;
+		return chargeDetail;
+	}
+
+	@Override
+	public void chargeUpdate(HashMap<String, Object> map) {
+		chargeListdDao.chargeUpdate(map);
+		
 	}
 
 }

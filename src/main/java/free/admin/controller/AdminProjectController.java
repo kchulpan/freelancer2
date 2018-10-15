@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import free.admin.service.ProjectListService;
+import free.admin.vo.ChargeListVo;
 import free.admin.vo.ProjectListVo;
 
 @Controller
@@ -33,10 +34,13 @@ public class AdminProjectController {
 	}
 	/* 프로젝트 상세 페이지 */
 	@RequestMapping("/Project_p1")
-	public String projectDetail()
+	public ModelAndView projectDetail(@RequestParam HashMap<String,Object> map)
 	{
-		return "ADMIN/02_PROJECT/project_p1";
-	}
+		ModelAndView mav = new ModelAndView();
+		List<ProjectListVo> projectDetail = projectListService.projectDetail(map);
+		mav.addObject("projectDetail",projectDetail);
+		mav.setViewName("ADMIN/02_PROJECT/project_p1");
+		return mav;
 	
-
+	}
 }
