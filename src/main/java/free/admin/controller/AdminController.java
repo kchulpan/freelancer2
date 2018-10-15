@@ -17,8 +17,7 @@ import free.admin.vo.ProjectListVo;
 public class AdminController {
 	
 	/*include*/
-	@Autowired
-	ProjectListService projectListService;
+
 	
 	@RequestMapping("/Freelancer")
 	public String Freelancer()
@@ -39,16 +38,10 @@ public class AdminController {
 		return "ADMIN/01_FLEENL/freeln";
 	}
 	
-	@RequestMapping("/Project")
-	public ModelAndView projectList(@RequestParam HashMap<String,Object> map) 
-	{
-		ModelAndView mav = new ModelAndView();
-		List<ProjectListVo> projectList = projectListService.projectList(map);
-		
-		mav.addObject("projectList", projectList);
-		mav.setViewName("ADMIN/02_PROJECT/project");
-		return mav;
-	}
+/*	@RequestMapping("/Project")
+	public String project() {
+		return "ADMIN/02_PROJECT/project";
+	}*/
 	
 /*	페이지 새로 뺏음 -> AdminChargeController.java
     @RequestMapping("/Charge")
