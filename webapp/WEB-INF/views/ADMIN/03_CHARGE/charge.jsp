@@ -76,11 +76,17 @@ function sortTable(n) {
   while (switching) {
     switching = false;
     rows = table.rows;
-    for (i = 1; i < (rows.length - 1); i++) {
+    console.log(rows);
+    for (i = 1; i < (rows.length - 2); i++) {
 
       shouldSwitch = false;
-      x = rows[i].getElementsByTagName("TD")[n];
-      y = rows[i + 1].getElementsByTagName("TD")[n];
+      x = rows[i].getElementsByTagName("A")[n];
+      y = rows[i + 1].getElementsByTagName("A")[n];
+      //if(x.classList.contains("asc")) dir = "desc";
+      
+	  //x.classList.toggle("asc");
+      console.log(x);
+      console.log(y);
       if (dir == "asc") {
         if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
           shouldSwitch= true;
@@ -175,9 +181,16 @@ function sortTable(n) {
 					                    <th onclick="sortTable(7)" rowspan="1" colspan="1">메일주소</th>
                     				</tr>
                   				</tfoot>
-				                  <tbody>
-					                  <c:forEach var="chr" items="${chargeList}">
-						                  	<tr role="row" class="odd" style="text-align: center">
+				                <tbody>
+					                  <c:forEach var="chr" items="${chargeList}" varStatus="status">
+					                  	<c:choose>
+					                  		<c:when test="${(status.index)%2 eq 1}">
+					                  			<tr role="row" class="odd" style="text-align:center">
+					                  		</c:when>
+					                  		<c:when test="${(status.index)%2 eq 0}">
+					                  			<tr role="row" class="even" style="text-align:center">
+					                  		</c:when>
+					                  	</c:choose>
 							                      <td><a href="/Charge_p1?charge_id=${chr.charge_id}&company_id=${chr.company_id}">${chr.rownum}</a></td>
 							                      <td><a href="/Charge_p1?charge_id=${chr.charge_id}&company_id=${chr.company_id}">${chr.charge_id}</a></td>
 							                      <td><a href="/Charge_p1?charge_id=${chr.charge_id}&company_id=${chr.company_id}">${chr.charge_nm}</a></td>
@@ -186,9 +199,10 @@ function sortTable(n) {
 							                      <td><a href="/Charge_p1?charge_id=${chr.charge_id}&company_id=${chr.company_id}">${chr.position_nm}</a></td>
 							                      <td><a href="/Charge_p1?charge_id=${chr.charge_id}&company_id=${chr.company_id}">${chr.charge_phone}</a></td>
 							                      <td><a href="/Charge_p1?charge_id=${chr.charge_id}&company_id=${chr.company_id}">${chr.charge_mail_1}</a></td>
+							           
 						                    </tr>
 									  </c:forEach>
-				                  </tbody>
+				                </tbody>
                 			</table>
               			</div>
            			</div>
