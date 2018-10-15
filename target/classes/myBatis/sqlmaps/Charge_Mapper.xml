@@ -39,6 +39,16 @@
 		#{result,  mode=OUT, jdbcType=CURSOR, javaType=RESULTSET, resultMap=ChargeListMap}
 		)}
   	</select>
+ 
+   	<select id="ChargeDetail"
+  			statementType="CALLABLE"
+  			parameterType= "hashmap"
+  			resultType="free.admin.vo.ChargeListVo">
+		{CALL PKG_CHARGE.PROC_CHARGE_DETAIL(
+		#{charge_id, mode=IN, jdbcType=VARCHAR},
+		#{result,  mode=OUT, jdbcType=CURSOR, javaType=RESULTSET, resultMap=ChargeListMap}
+		)}
+  	</select>
   	<!--
   	<select id="BoardContent"
   			statementType="CALLABLE"

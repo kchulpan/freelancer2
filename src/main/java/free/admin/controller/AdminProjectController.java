@@ -20,7 +20,7 @@ public class AdminProjectController {
 	@Autowired
 	ProjectListService projectListService;
 	
-	
+	/* 프로젝트조회 */
 	@RequestMapping("/Project")
 	public ModelAndView projectList(@RequestParam HashMap<String,Object> map) 
 	{
@@ -30,6 +30,12 @@ public class AdminProjectController {
 		mav.addObject("projectList", projectList);
 		mav.setViewName("ADMIN/02_PROJECT/project");
 		return mav;
+	}
+	/* 프로젝트 상세 페이지 */
+	@RequestMapping("/Project_p1")
+	public String projectDetail()
+	{
+		return "ADMIN/02_PROJECT/project_p1";
 	}
 	
 
