@@ -5,14 +5,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>DDJY University</title>
-<link rel="stylesheet" type="text/css" href="/css/project/project.css"/>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 	<!-- css -->
 	<link rel="stylesheet" href="/css/include/subpage.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	
+	<link rel="stylesheet" type="text/css" href="/css/project/project.css"/>
 	<!-- js -->
 	<script src="js/include/subpage.js"></script>
 	<script>
@@ -56,40 +57,101 @@
     			<input type="text" size=10>
     					프로젝트명:
     			<input type="text" size=10>
-    			<button>조회</button>
-    			<button>등록</button>
+	  <td class="btn1"><input type="button" onclick="" value="조회"></td>
+	  <td class="btn1"><input type="button" onclick="openForm()" value="등록"></td>
     		</div>
     		<div class="search" cell-padding="0" cell-spacing="0">
-	    		<span class=column>순번</span>
-	    		<span class=column>프로젝트명</span>
-	    		<span class=column>프로젝트시작일</span>
-	    		<span class=column>프로젝트종료일</span>
-	    		<span class=column>고객사</span>
-	    		<span class=column>필요기술</span>
-	    		<span class=column>해당분야</span>
-	    		<span class=column>투여인원</span>
-	    		<span class=column>담당자</span>
-	    		<span class=column>상세내용</span>
+	    		<span class=column1>순번</span>
+	    		<span class=column1>프로젝트명</span>
+	    		<span class=column1>프로젝트시작일</span>
+	    		<span class=column1>프로젝트종료일</span>
+	    		<span class=column1>고객사</span>
+	    		<span class=column1>필요기술</span>
+	    		<span class=column1>해당분야</span>
+	    		<span class=column1>투여인원</span>
+	    		<span class=column1>담당자</span>
+	    		<span class=column1>상세내용</span>
     		</div>
     		 <c:forEach var="proj" items="${projectList}"> 
     		<div style="clear:both;">
-    		 <a href="/Project_p1?proj_id=${chr.proj_id}">
-	    		<span class=column>${proj.rownum}</span>
-	    		<span class=column>${proj.proj_nm}</span>
-	    		<span class=column>${proj.proj_str_date}</span>
-	    		<span class=column>${proj.proj_end_date}</span>
-	    		<span class=column>${proj.client_id}</span>
-	    		<span class=column>${proj.need_tech}</span>
-	    		<span class=column>${proj.field_1}</span>
-	    		<span class=column>${proj.involve_num}</span>
-	    		<span class=column>${proj.charge_nm}</span>
-	    		<span class=column>${proj.remark}</span>
+    		 <a href="/Project_p1?proj_id=${proj.proj_id}">
+	    		<span class=column2>${proj.rownum}</span>
+	    		<span class=column2>${proj.proj_nm}</span>
+	    		<span class=column2>${proj.proj_str_date}</span>
+	    		<span class=column2>${proj.proj_end_date}</span>
+	    		<span class=column2>${proj.client_id}</span>
+	    		<span class=column2>${proj.need_tech}</span>
+	    		<span class=column2>${proj.field_1}</span>
+	    		<span class=column2>${proj.involve_num}</span>
+	    		<span class=column2>${proj.charge_nm}</span>
+	    		<span class=column2>${proj.remark}</span>
 	    	 </a>
     		</div>
     		</c:forEach> 
     	</div>
+<!--     <div class="form-popup" id="myForm">
+  <form action="/action_page.php" class="form-container">
+ <h1>프로젝트 등록 및 수정</h1>
+	 	<label for="use_yn"><b>사용유무:</b></label>
+	    <input type="checkbox"  name="use_yn" checked/>
+		<br>
+		<br>
+	    <label for="proj_code"><b>프로젝트 코드:</b></label>
+	    <input type="text" class="input" name="proj_code" required>
+	
+	    <label for="proj_nm"><b>프로젝트명:</b></label>
+	    <input type="text" class="input" name="proj_nm" required>
+	    
+	    <label for="proj_date"><b>프로젝트 기간:</b></label>
+	    <input type="text" class="onput" name="proj_str_date" required>
+	   &nbsp; ~&nbsp;&nbsp;
+	    <input type="text" class="onput" name="proj_end_date" required>
+	    
+	    <label for="client_id"><b>고객사:</b></label>
+	    <input type="text" class="input"  name="client_id" required>
+	    
+	    <label for="involve_num"><b>투여인원:</b></label>
+	    <input type="text" class="input" name="involve_num" required>
+	    
+	    <label for="field"><b>해당분야:</b></label>
+	    <select class="onput" name="field_1" required>
+	    	<option>1</option>
+	    </select>
+	    <select class="onput" name="field_2" required>
+	    	<option>2</option>
+	    </select>
+	    
+	    <label for="note"><b>비고:</b></label>
+	    <input type="text" class="input" name="note" required>
+	    
+	    <label for="contents"><b>상세내용:</b></label>
+	    <textarea class="input" name="contents" required></textarea>
+	
+		<label for="need_tech"><b>필요기술:</b></label>
+	    <textarea class="input" name="need_tech" required></textarea>
+	    
+		<label for="charge_nm"><b>담당자:</b></label>
+	    <select class="input" name="charge_nm" required>
+	    	<option></option>
+	    </select>
+    
+
+    
+    <button type="submit" class="btn">확인</button>
+     <button type="button" class="btn cancel" onclick="closeForm()">닫기</button>
+  </form>
+</div> -->
     
     </div>
+    <script>
+	function openForm() {
+    document.getElementById("myForm").style.display = "block";
+	}
+
+	function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+	}
+</script>
       
   </article>
   

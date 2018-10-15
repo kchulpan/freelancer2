@@ -11,6 +11,8 @@ public interface ProjectListDao
 
 	public List<ProjectListVo> projectList(HashMap<String, Object> map);
 
+	public List<ProjectListVo> projectDetail(HashMap<String, Object> map);
+
 
 
 

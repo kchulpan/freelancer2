@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>DDJY University</title>
-<link rel="stylesheet" type="text/css" href="/css/project/project_p1.css"/>
+<link rel="stylesheet" type="text/css" href="/css/project/project_p2.css"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 	<!-- css -->
@@ -64,7 +64,7 @@
 	    <input type="text" class="input" name="proj_code" required>
 	
 	    <label for="proj_nm"><b>프로젝트명:</b></label>
-	    <input type="text" class="input" name="proj_nm"  value=required>
+	    <input type="text" class="input" name="proj_nm" required>
 	    
 	    <label for="proj_date"><b>프로젝트 기간:</b></label>
 	    <input type="text" class="input" name="proj_str_date" required>
