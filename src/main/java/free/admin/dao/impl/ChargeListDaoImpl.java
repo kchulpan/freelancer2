@@ -25,4 +25,12 @@ public class ChargeListDaoImpl implements ChargeListDao
 		return chargeList;
 	}
 
+	@Override
+	public List<ChargeListVo> chargeDetail(HashMap<String, Object> map) 
+	{
+		sqlSession.selectList("Charge.ChargeDetail", map);
+		List<ChargeListVo>  chargeDetail = (List<ChargeListVo>)map.get("result");
+		return chargeDetail;
+	}
+
 }

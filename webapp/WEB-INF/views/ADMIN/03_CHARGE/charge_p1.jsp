@@ -6,6 +6,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>DDJY University</title>
+<style>
+	.column{
+		float:left;
+		font-size:16px;
+	}
+
+</style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 	<!-- css -->
@@ -50,35 +57,27 @@
     <div class="sections">
      <h2>담당자 상세페이지</h2>
     	<div>
-    		<div class="search">담당자:
+    		<div>담당자아이디:
     			<input type="text" size=10>
-    			<button>조회</button>
-    			<button>등록</button>
+    			<button>중복체크</button>
     		</div>
-    		<div cell-padding="0" cell-spacing="0">
-	    		<div class=column>순번</div>
-	    		<div class=column>담당자아이디</div>
-	    		<div class=column>담당자명</div>
-	    		<div class=column>소속회사</div>
-	    		<div class=column>부서</div>
-	    		<div class=column>직위</div>
-	    		<div class=column>연락처</div>
-	    		<div class=column>메일주소</div>
+    		<div>담당자 이름:
+   				<input type="text" size=10>
     		</div>
-    		<c:forEach var="chr" items="${chargeList}">
+<%--     		<c:forEach var="chrDtl" items="${chargeDetail}">
 	    		<div style="clear:both;">
-		    		<a href="/Charge_p1?charge_id=${chr.charge_id}">
-		 	    		<div class=column>${chr.rownum}</div>
-			    		<div class=column>${chr.charge_id}</div>
-			    		<div class=column>${chr.charge_nm}</div>
-			    		<div class=column>${chr.company_name}</div>
-			    		<div class=column>${chr.org_id}</div>
+		    		<a href="/Charge_p1?charge_id=${chrDtl.charge_id}">
+		 	    		<div class=column>${chrDtl.rownum}</div>
+			    		<div class=column>${chrDtl.charge_id}</div>
+			    		<div class=column>${chrDtl.charge_nm}</div>
+			    		<div class=column>${chrDtl.company_name}</div>
+			    		<div class=column>${chrDtl.org_id}</div>
 			    		<div class=column>${chr.position_nm}</div>
 			    		<div class=column>${chr.charge_phone}</div>
 			    		<div class=column>${chr.charge_mail_1}</div>
 		    		</a>
 	    		</div>
-    		</c:forEach>
+    		</c:forEach> --%>
     </div>
       
   </article>
