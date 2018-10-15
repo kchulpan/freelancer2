@@ -48,9 +48,37 @@
     </div>
     	
     <div class="sections">
-    <div border=1 width=600 height=400>
-     dasdfsafasdf
-    </div>
+     <h2>담당자 상세페이지</h2>
+    	<div>
+    		<div class="search">담당자:
+    			<input type="text" size=10>
+    			<button>조회</button>
+    			<button>등록</button>
+    		</div>
+    		<div cell-padding="0" cell-spacing="0">
+	    		<div class=column>순번</div>
+	    		<div class=column>담당자아이디</div>
+	    		<div class=column>담당자명</div>
+	    		<div class=column>소속회사</div>
+	    		<div class=column>부서</div>
+	    		<div class=column>직위</div>
+	    		<div class=column>연락처</div>
+	    		<div class=column>메일주소</div>
+    		</div>
+    		<c:forEach var="chr" items="${chargeList}">
+	    		<div style="clear:both;">
+		    		<a href="/Charge_p1?charge_id=${chr.charge_id}">
+		 	    		<div class=column>${chr.rownum}</div>
+			    		<div class=column>${chr.charge_id}</div>
+			    		<div class=column>${chr.charge_nm}</div>
+			    		<div class=column>${chr.company_name}</div>
+			    		<div class=column>${chr.org_id}</div>
+			    		<div class=column>${chr.position_nm}</div>
+			    		<div class=column>${chr.charge_phone}</div>
+			    		<div class=column>${chr.charge_mail_1}</div>
+		    		</a>
+	    		</div>
+    		</c:forEach>
     </div>
       
   </article>

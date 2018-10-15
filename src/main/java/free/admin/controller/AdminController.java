@@ -1,6 +1,7 @@
 package free.admin.controller;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,11 +10,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import free.admin.service.ChargeListService;
+import free.admin.service.ProjectListService;
+import free.admin.vo.ProjectListVo;
 
 @Controller
 public class AdminController {
 	
 	/*include*/
+
+	
 	@RequestMapping("/Freelancer")
 	public String Freelancer()
 	{
@@ -33,10 +38,10 @@ public class AdminController {
 		return "ADMIN/01_FLEENL/freeln";
 	}
 	
-	@RequestMapping("/Project")
+/*	@RequestMapping("/Project")
 	public String project() {
 		return "ADMIN/02_PROJECT/project";
-	}
+	}*/
 	
 /*	페이지 새로 뺏음 -> AdminChargeController.java
     @RequestMapping("/Charge")
