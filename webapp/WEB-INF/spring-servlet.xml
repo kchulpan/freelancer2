@@ -21,6 +21,8 @@
    <mvc:resources location="/WEB-INF/assets/js/" mapping="/js/**" />
    <mvc:resources location="/WEB-INF/assets/icon/" mapping="/icon/**" />
    <mvc:resources location="/WEB-INF/assets/skins/" mapping="/skins/**" />
+   <mvc:resources location="/WEB-INF/assets/vendor/" mapping="/vendor/**" />
+   <mvc:resources location="/WEB-INF/assets/scss/" mapping="/scss/**" />
 
    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
        <property name="prefix"  value="/WEB-INF/views/" />
