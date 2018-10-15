@@ -43,6 +43,15 @@
 		#{result,  mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=ProjectListMap}
 		)}
   	</select>
+  	   	<select id="ProjectDetail"
+  			statementType="CALLABLE"
+  			parameterType= "hashmap"
+  			resultType="free.admin.vo.ProjectListVo">
+		{CALL PKG_PROJECT.PROC_PROJECT_DETAIL(
+		#{charge_id, mode=IN, jdbcType=VARCHAR},
+		#{result,  mode=OUT, jdbcType=CURSOR, javaType=RESULTSET, resultMap=ProjectListMap}
+		)}
+  	</select>
   	<!--
   	<select id="BoardContent"
   			statementType="CALLABLE"

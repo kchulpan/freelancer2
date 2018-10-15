@@ -64,7 +64,7 @@
 	    <input type="text" class="input" name="proj_code" required>
 	
 	    <label for="proj_nm"><b>프로젝트명:</b></label>
-	    <input type="text" class="input" name="proj_nm" required>
+	    <input type="text" class="input" name="proj_nm"  value=required>
 	    
 	    <label for="proj_date"><b>프로젝트 기간:</b></label>
 	    <input type="text" class="input" name="proj_str_date" required>

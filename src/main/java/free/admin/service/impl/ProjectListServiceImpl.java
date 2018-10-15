@@ -26,4 +26,10 @@ public class ProjectListServiceImpl implements ProjectListService
 		return projectList;
 	}
 
+	@Override
+	public List<ProjectListVo> projectDetail(HashMap<String, Object> map) {
+		List<ProjectListVo> projectDetail = projectListDao.projectDetail(map);
+		return projectDetail;
+	}
+
 }

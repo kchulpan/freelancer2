@@ -57,7 +57,7 @@
     			<input type="text" size=10>
     					프로젝트명:
     			<input type="text" size=10>
-	  <td class="btn1"><input type="button" onclick="openForm()" value="조회"></td>
+	  <td class="btn1"><input type="button" onclick="" value="조회"></td>
 	  <td class="btn1"><input type="button" onclick="openForm()" value="등록"></td>
     		</div>
     		<div class="search" cell-padding="0" cell-spacing="0">
@@ -89,46 +89,58 @@
     		</div>
     		</c:forEach> 
     	</div>
-    <div class="form-popup" id="myForm">
+<!--     <div class="form-popup" id="myForm">
   <form action="/action_page.php" class="form-container">
-    <h1>공통코드 관리 등록</h1>
- 	<label for="used"><b>사용유무:</b></label>
-    <input type="checkbox"  name="used" checked/>
-	<br>
-	<br>
-    <label for="groupcode"><b>그룹코드:</b></label>
-    <input type="text" class="input" name="groupcode" required>
-
-    <label for="groupname"><b>그룹명:</b></label>
-    <input type="text" class="input" name="groupname" required>
-    
-    <label for="code"><b>코드:</b></label>
-    <input type="text" class="input" name="code" required>
-    
-    <label for="codename"><b>코드명:</b></label>
-    <input type="text" class="input"  name="codename" required>
-    
-    <label for="pricode"><b>상위코드:</b></label>
-    <input type="text" class="input" name="pricode" required>
-    
-    <label for="excode1"><b>예외코드1:</b></label>
-    <input type="text" class="input" name="excode1" required>
-    
-    <label for="excode2"><b>예외코드2:</b></label>
-    <input type="text" class="input" name="excode2" required>
-    
-    <label for="excode3"><b>예외코드3:</b></label>
-    <input type="text" class="input" name="excode3" required>
-
-	<label for="seq"><b>순번:</b></label>
-    <input type="text" class="input" name="seq" required>
+ <h1>프로젝트 등록 및 수정</h1>
+	 	<label for="use_yn"><b>사용유무:</b></label>
+	    <input type="checkbox"  name="use_yn" checked/>
+		<br>
+		<br>
+	    <label for="proj_code"><b>프로젝트 코드:</b></label>
+	    <input type="text" class="input" name="proj_code" required>
+	
+	    <label for="proj_nm"><b>프로젝트명:</b></label>
+	    <input type="text" class="input" name="proj_nm" required>
+	    
+	    <label for="proj_date"><b>프로젝트 기간:</b></label>
+	    <input type="text" class="onput" name="proj_str_date" required>
+	   &nbsp; ~&nbsp;&nbsp;
+	    <input type="text" class="onput" name="proj_end_date" required>
+	    
+	    <label for="client_id"><b>고객사:</b></label>
+	    <input type="text" class="input"  name="client_id" required>
+	    
+	    <label for="involve_num"><b>투여인원:</b></label>
+	    <input type="text" class="input" name="involve_num" required>
+	    
+	    <label for="field"><b>해당분야:</b></label>
+	    <select class="onput" name="field_1" required>
+	    	<option>1</option>
+	    </select>
+	    <select class="onput" name="field_2" required>
+	    	<option>2</option>
+	    </select>
+	    
+	    <label for="note"><b>비고:</b></label>
+	    <input type="text" class="input" name="note" required>
+	    
+	    <label for="contents"><b>상세내용:</b></label>
+	    <textarea class="input" name="contents" required></textarea>
+	
+		<label for="need_tech"><b>필요기술:</b></label>
+	    <textarea class="input" name="need_tech" required></textarea>
+	    
+		<label for="charge_nm"><b>담당자:</b></label>
+	    <select class="input" name="charge_nm" required>
+	    	<option></option>
+	    </select>
     
 
     
     <button type="submit" class="btn">확인</button>
-<!--     <button type="button" class="btn cancel" onclick="closeForm()">Close</button> -->
+     <button type="button" class="btn cancel" onclick="closeForm()">닫기</button>
   </form>
-</div>
+</div> -->
     
     </div>
     <script>
