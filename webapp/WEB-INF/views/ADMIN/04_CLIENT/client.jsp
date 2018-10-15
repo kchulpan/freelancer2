@@ -50,6 +50,66 @@
 		$('#client').find('i').addClass('menu_icon_active');
 	});
 	</script>
+<!-- 테이블 내용에서 고객사로 검색 -->
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("dataTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[2];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+</script>
+<!-- 테이블 내용에서 컬럼클릭시 정렬 -->
+<script>
+function sortTable(n) {
+  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+  table = document.getElementById("dataTable");
+  switching = true;
+  dir = "asc"; 
+  while (switching) {
+    switching = false;
+    rows = table.rows;
+    for (i = 1; i < (rows.length - 1); i++) {
+
+      shouldSwitch = false;
+      x = rows[i].getElementsByTagName("TD")[n];
+      y = rows[i + 1].getElementsByTagName("TD")[n];
+      if (dir == "asc") {
+        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+          shouldSwitch= true;
+          break;
+        }
+      } else if (dir == "desc") {
+        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+          shouldSwitch = true;
+          break;
+        }
+      }
+    }
+    if (shouldSwitch) {
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+      switchcount ++;      
+    } else {
+      if (switchcount == 0 && dir == "asc") {
+        dir = "desc";
+        switching = true;
+      }
+    }
+  }
+}
+</script>
 </head>
 <!-------------------------------- body ---------------------------------------->
 <body>
@@ -60,7 +120,7 @@
   </header>
   
   <div id="main_templet">
-  <div id="slide_btn"></div>
+  	<div id="slide_btn"></div>
   
 <!-- side_menu -->
   <nav class="nav">
@@ -72,7 +132,7 @@
    	<div class="tabs">
     </div>
     	
-     <div class="sections">
+     <div id="content-wrapper">
     <!-- 테이블내용 시작 -->
     	<div class="card mb-3">
     		<div class="card-header">
@@ -83,112 +143,79 @@
     			<div class="table-responsive">
     				<div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
     					<div class="row">
-    						<div class="col-sm-12 col-md-6">
-    							<div class="dataTables_length" id="dataTable_length">
-    								<label>
-    									show
-    									<select name="dataTable_length" aria-controls="dataTable" class="custom-select custom-select-sm form-control form-control-sm">
-    										<option value="10">10</option>
-    										<option value="25">25</option>
-    										<option value="50">50</option>
-    										<option value="100">100</option>
-    									</select>
-    									entries
-    								</label>
-    							</div>
-    						</div>
-    						<div class="col-sm-12 col-md-6">
-    							<div id="dataTable_filter" class="dataTables_filter">
-    								<label>Search:
-    									<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="dataTable">
-    								</label>
-    							</div>
+    						
+    						<div class="col-sm-12 col-md-12">
+	    						<div id="dataTable_filter" class="dataTables_filter">
+	    							<label>Search:
+	    								<input type="text" class="form-control form-control-sm" placeholder="고객사를 입력하세요" aria-controls="dataTable" id="myInput" onkeyup="myFunction()">
+	    							</label>
+	    						</div>
     						</div>
     					</div>
-    					<div class="row"><div class="col-sm-12"><table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
-                  <thead>
-                    <tr role="row">
-                    	<th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 45px;">순번</th>
-                    	<th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 64px;">고객사 아이디</th>
-                    	<th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 48px;">고객사명</th>
-                    	<th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 30px;">위치</th>
-                    	<th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 64px;">이력서 양식명</th>
-                    	<th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 46px;">이력서파일 이름</th>
-                    </tr>
-                  </thead>
-                  <tfoot>
-                    <tr>
-	                    <th rowspan="1" colspan="1">순번</th>
-	                    <th rowspan="1" colspan="1">고객사 아이디</th>
-	                    <th rowspan="1" colspan="1">고객사명</th>
-	                    <th rowspan="1" colspan="1">위치</th>
-	                    <th rowspan="1" colspan="1">이력서 양식명</th>
-	                    <th rowspan="1" colspan="1">이력서파일 이름</th>
-                    </tr>
-                  </tfoot>
-                  <tbody>
-                  	<tr role="row" class="odd">
-                      <td class="sorting_1">Airi Satou</td>
-                      <td>Accountant</td>
-                      <td>Tokyo</td>
-                      <td>33</td>
-                      <td>2008/11/28</td>
-                      <td>$162,700</td>
-                    </tr>
-                    <tr role="row" class="even">
-                      <td class="sorting_1">biri Satou</td>
-                      <td>Accountant</td>
-                      <td>Tokyo</td>
-                      <td>20</td>
-                      <td>2008/11/28</td>
-                      <td>$162,700</td>
-                    </tr>    
-                  </tbody>
-                </table>
-              </div>
-           </div>
-           <div class="row">
-	           	<div class="col-sm-12 col-md-5">
-	           		<div class="dataTables_info" id="dataTable_info" role="status" aria-live="polite">Showing 1 to 5 of 5 entries</div>
-	           	</div>
-	           	<div class="col-sm-12 col-md-7">
-	           		<div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
-	           			<ul class="pagination">
-	           				<li class="paginate_button page-item previous disabled" id="dataTable_previous">
-	           					<a href="#" aria-controls="dataTable" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
-	           				</li>
-	           				<li class="paginate_button page-item active">
-	           					<a href="#" aria-controls="dataTable" data-dt-idx="1" tabindex="0" class="page-link">1</a>
-	           				</li>
-	           				<li class="paginate_button page-item next disabled" id="dataTable_next">
-	           					<a href="#" aria-controls="dataTable" data-dt-idx="2" tabindex="0" class="page-link">Next</a>
-	           				</li>
-	           			</ul>
-	           		</div>
-	           	</div>
+    					<div class="row">
+    						<div class="col-sm-12">
+    						<table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                  				<thead>
+                    				<tr role="row" style="text-align: center">
+                    					<th onclick="sortTable(0)">순번</th>
+                    					<th onclick="sortTable(1)">고객사 아이디</th>
+                    					<th onclick="sortTable(2)">고객사명</th>
+                    					<th onclick="sortTable(3)">위치</th>
+                    					<th onclick="sortTable(4)">이력서 양식명</th>
+                    					<th onclick="sortTable(5)">이력서파일 이름</th>
+                   				 	</tr>
+                  				</thead>
+                  				<tfoot>
+                    				<tr role="row" style="text-align: center">
+					                    <th onclick="sortTable(0)" rowspan="1" colspan="1">순번</th>
+					                    <th onclick="sortTable(1)" rowspan="1" colspan="1">고객사 아이디</th>
+					                    <th onclick="sortTable(2)" rowspan="1" colspan="1">고객사명</th>
+					                    <th onclick="sortTable(3)" rowspan="1" colspan="1">위치</th>
+					                    <th onclick="sortTable(4)" rowspan="1" colspan="1">이력서 양식명</th>
+					                    <th onclick="sortTable(5)" rowspan="1" colspan="1">이력서파일 이름</th>
+                    				</tr>
+                  				</tfoot>
+                  				<tbody>
+				                  	<tr role="row" class="odd" style="text-align: center">
+				                      <td>1</td>
+				                      <td>CLNT0001</td>
+				                      <td>AMC</td>
+				                      <td>울산</td>
+				                      <td>현대오토에버</td>
+				                      <td>이력서</td>
+				                    </tr>
+				                    <tr role="row" class="even" style="text-align: center">
+				                      <td>2</td>
+				                      <td>CLNT0002</td>
+				                      <td>BMC</td>
+				                      <td>LG</td>
+				                      <td>현대오토에버</td>
+				                      <td>이력서</td>
+				                    </tr>
+				                    <tr role="row" class="odd" style="text-align: center">
+				                      <td>3</td>
+				                      <td>CLNT0003</td>
+				                      <td>HMC</td>
+				                      <td>대구</td>
+				                      <td>삼성오토에버</td>
+				                      <td>이력서</td>
+				                    </tr>
+		                  		</tbody>
+                			</table>
+              			</div>
+           			</div>
          	  </div>
     		</div>			
    		 </div> 			
- 	 </div>		
-   </div>	  
- </div>
-<!-- 테이블내용 끝 -->
- <footer class="sticky-footer">
-	  <div class="container my-auto">
-		   <div class="copyright text-center my-auto">
-		      <span>Copyright © FREELANCER 2018</span>
-		   </div>
-	  </div>
-	</footer>
-   	<a class="scroll-to-top rounded" href="#page-top" style="display: inline;">
-      <i class="fas fa-angle-up"></i>
-    </a> 
-       
-  </article>
-  
-  </div>
-  
+ 	 </div> 	
+   </div>
+   <!-- 테이블내용 끝 -->
+  </article>	  
 </div>
+</div>
+  
+
+
 <script>
 	/*  $(function(){
 		$('nav').on('click','a',function(e){
