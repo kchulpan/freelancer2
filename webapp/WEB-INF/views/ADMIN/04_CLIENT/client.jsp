@@ -42,14 +42,38 @@
 	
 	<!-- js -->
 	<script src="js/include/subpage.js"></script>
-	
-	
-	<script>
-	$(document).ready(function(){
-		$('#client').addClass('top_menu_active');
-		$('#client').find('i').addClass('menu_icon_active');
+
+
+	<script type="text/javascript">
+	$(".modal-dialog").draggable({
+	    handle: ".modal-header"
 	});
 	</script>
+	<style>
+	
+	
+	.modal-backdrop {
+		display: none;
+
+	}
+ 
+	#inputModal {
+  		top: 15%;
+  		margin-top: -50px;
+  		
+  		
+  		
+	}
+
+	#updateModal {
+  		top: 15%;
+  		margin-top: -50px;
+	}
+
+	</style>
+	
+	
+	
 <!-- 테이블 내용에서 고객사로 검색 -->
 <script>
 function myFunction() {
@@ -142,14 +166,70 @@ function sortTable(n) {
     		<div class="card-body">
     			<div class="table-responsive">
     				<div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
-    					<div class="row">
-    						
-    						<div class="col-sm-12 col-md-12">
+    					<div class="row">		
+    						<div class="col-sm-12 col-md-11">
 	    						<div id="dataTable_filter" class="dataTables_filter">
 	    							<label>Search:
 	    								<input type="text" class="form-control form-control-sm" placeholder="고객사를 입력하세요" aria-controls="dataTable" id="myInput" onkeyup="myFunction()">
 	    							</label>
 	    						</div>
+    						</div>
+    						<div class="col-sm-12 col-md-1">	
+    							<button type="button" class="btn btn-primary btn-sm" id="myBtn" data-toggle="modal" data-target="#inputModal">등록</button>
+    							
+    							<!-- The Modal -->
+								  <!-- Modal -->
+							  <div class="modal fade" id="inputModal" role="dialog">
+							    <div class="modal-dialog" role="document">
+							    
+							      <!-- Modal content-->
+							      <div class="modal-content modal-lg">
+							        <div class="modal-header">
+							          <button type="button" class="close" data-dismiss="modal"></button>
+							          <h5><i class="fa fa-user icon"></i>등록</h5>
+							        </div>
+							        <div class="modal-body">
+							        	
+							          <form role="form" action="/ClientInsert" method="POST">
+							            <div class="form-group">
+							              <label for="client_id">고객사 아이디</label>
+							              <input type="text" class="form-control" id="client_id" placeholder="아이디를 입력하세요">
+							            </div>
+							            <div class="form-group">
+							              <label for="client_nm">고객사 이름</label>
+							              <input type="text" class="form-control" id="client_nm" placeholder="이름을 입력하세요">
+							            </div>
+							            <div class="form-group">
+							              <label for="client_addr1">고객사 주소</label>
+							              <input type="text" class="form-control" id="client_addr1" placeholder="주소를 입력하세요">
+							            </div>
+							            <div class="form-group">
+							              <label for="client_addr2">고객사 상세주소</label>
+							              <input type="text" class="form-control" id="client_addr2" placeholder="상세주소를 입력하세요">
+							            </div>
+							            <div class="form-group">
+							              <label for="client_file_nm">이력서 양식명</label>
+							              <input type="text" class="form-control" id="client_file_nm" placeholder="이력서 양식명을 입력하세요">
+							            </div>
+							            <div class="form-group">
+							              <label for="client_file"> 이력서 파일명</label>
+							              <input type="text" class="form-control" id="client_file" placeholder="이력서 파일명을 입력하세요"><br/>
+							              <button type="submit" class="btn btn-success">파일찾기</button>
+							            </div>
+							            <div class="modal-footer">
+							          		<button type="submit" class="btn btn-primary btn-default pull-left" data-dismiss="modal">확인</button>
+							          		<button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">취소</button>
+							        	</div>   
+							          </form>
+							        </div>
+							        
+							      </div>
+							      
+							    </div>
+							  </div>
+							 
+							  
+							  	
     						</div>
     					</div>
     					<div class="row">
@@ -176,54 +256,38 @@ function sortTable(n) {
                     				</tr>
                   				</tfoot>
                   				<tbody>
+                  				<c:forEach var="client" items="${clientList}">
 				                  	<tr role="row" class="odd" style="text-align: center">
-				                      <td>1</td>
-				                      <td>CLNT0001</td>
-				                      <td>AMC</td>
-				                      <td>울산</td>
-				                      <td>현대오토에버</td>
-				                      <td>이력서</td>
+				                      <td>${client.rownum}</td>
+				                      <td>${client.client_id}</td>
+				                      <td>${client.client_nm}</td>
+				                      <td style="overflow:hidden ;">${client.client_addr_1}</td>
+				                      <td>${client.client_file_nm}</td>
+				                      <td>${client.client_file}</td>
 				                    </tr>
-				                    <tr role="row" class="even" style="text-align: center">
-				                      <td>2</td>
-				                      <td>CLNT0002</td>
-				                      <td>BMC</td>
-				                      <td>LG</td>
-				                      <td>현대오토에버</td>
-				                      <td>이력서</td>
-				                    </tr>
-				                    <tr role="row" class="odd" style="text-align: center">
-				                      <td>3</td>
-				                      <td>CLNT0003</td>
-				                      <td>HMC</td>
-				                      <td>대구</td>
-				                      <td>삼성오토에버</td>
-				                      <td>이력서</td>
-				                    </tr>
+				                </c:forEach>    
 		                  		</tbody>
                 			</table>
               			</div>
            			</div>
+           			
          	  </div>
     		</div>			
-   		 </div> 			
+   		 </div>
+   		 
+  	
  	 </div> 	
    </div>
    <!-- 테이블내용 끝 -->
-  </article>	  
+     		 
+  </article>
+ 	  
 </div>
 </div>
   
 
 
-<script>
-	/*  $(function(){
-		$('nav').on('click','a',function(e){
-			//alert('plus clicked');
-			 e.preventDefault(); + e.stopPropagation();
-		});
-	}); */ 
-</script>
+
 </body>
 
 </html>

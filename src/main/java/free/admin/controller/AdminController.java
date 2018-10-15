@@ -43,15 +43,15 @@ public class AdminController {
 		return "ADMIN/02_PROJECT/project";
 	}*/
 	
-/*	페이지 새로 뺏음 -> AdminChargeController.java
+/*	�럹�씠吏� �깉濡� 類륁쓬 -> AdminChargeController.java
     @RequestMapping("/Charge")
 	public String charge() {
 		return "ADMIN/03_CHARGE/charge";
 	}*/
 	
-	@RequestMapping("/Client")
+	/*@RequestMapping("/Client")
 	public String client() {
 		return "ADMIN/04_CLIENT/client";
-	}
+	}*/
 	
 }
