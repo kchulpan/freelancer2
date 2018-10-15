@@ -6,6 +6,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>DDJY University</title>
+<style>
+	.column{
+		float:left;
+		font-size:16px;
+	}
+
+</style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 	<!-- css -->
@@ -48,9 +55,29 @@
     </div>
     	
     <div class="sections">
-    <div border=1 width=600 height=400>
-     dasdfsafasdf
-    </div>
+     <h2>담당자 상세페이지</h2>
+    	<div>
+    		<div>담당자아이디:
+    			<input type="text" size=10>
+    			<button>중복체크</button>
+    		</div>
+    		<div>담당자 이름:
+   				<input type="text" size=10>
+    		</div>
+<%--     		<c:forEach var="chrDtl" items="${chargeDetail}">
+	    		<div style="clear:both;">
+		    		<a href="/Charge_p1?charge_id=${chrDtl.charge_id}">
+		 	    		<div class=column>${chrDtl.rownum}</div>
+			    		<div class=column>${chrDtl.charge_id}</div>
+			    		<div class=column>${chrDtl.charge_nm}</div>
+			    		<div class=column>${chrDtl.company_name}</div>
+			    		<div class=column>${chrDtl.org_id}</div>
+			    		<div class=column>${chr.position_nm}</div>
+			    		<div class=column>${chr.charge_phone}</div>
+			    		<div class=column>${chr.charge_mail_1}</div>
+		    		</a>
+	    		</div>
+    		</c:forEach> --%>
     </div>
       
   </article>

@@ -33,8 +33,12 @@ public class AdminChargeController {
 	}
 	/*담당자 상세 페이지*/
 	@RequestMapping("/Charge_p1")
-	public String chargeDetail()
+	public ModelAndView chargeDetail(@RequestParam HashMap<String,Object> map)
 	{
-		return "ADMIN/03_CHARGE/charge_p1";
+		ModelAndView mav = new ModelAndView();
+		List<ChargeListVo> chargeDetail = chargeListService.chargeDetail(map);
+		mav.addObject("chargeDetail", chargeDetail);
+		mav.setViewName("ADMIN/03_CHARGE/charge_p1");
+		return mav;
 	}
 }
