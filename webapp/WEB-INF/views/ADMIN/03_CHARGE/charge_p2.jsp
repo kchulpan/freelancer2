@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>DDJY University</title>
+<title>새로운 담당자 등록</title>
 <!-- 테이블관련 CSS/JS 시작 -->
 	
 	<!-- Bootstrap core CSS-->
@@ -80,45 +80,31 @@
        	<div class="card mb-3">
    		<div class="card-header">
    			<i class="fas fa-fw fa-users"></i>
-    			담당자 상세보기
+    			새 담당자 등록
     		</div>
     	<div>
-    	<form action="/ChargeUpdate" method="GET">
-    		<c:forEach var="chrDtl" items="${chargeDetail}">
-	    			<input type="hidden" name="company_id" value="${chrDtl.company_id}">
-	    		<div>담당자아이디:
-	    			<input type="text" size=30 name="charge_id" value="${chrDtl.charge_id}">
-	    		
-	    			<!-- <button>중복체크</button> -->
-	    		</div>
+    	<form action="/ChargeNewInsert" method="GET">
 	    		<div>담당자 이름:
-	   				<input type="text" size=30 name="charge_nm" value="${chrDtl.charge_nm}">
+	   				<input type="text" size=30 name="charge_nm" placeholder="이름을입력하세요">
 	    		</div>
 	    		<div>소속회사:
-	   				<input type="text" size=30 name="company_name" value="${chrDtl.company_name}">
+	   				<input type="text" size=30 name="company_name" placeholder="회사명을입력하세요">
 	    		</div>
 	    		<div>소속부서:
-	   				<input type="text" size=30 name="org_id" value="${chrDtl.org_id}">
+	   				<input type="text" size=30 name="org_id" placeholder="부서를입력하세요">
 	    		</div>
 	    		<div>직위:
-	   				<input type="text" size=30 name="position_nm" value="${chrDtl.position_nm}">
+	   				<input type="text" size=30 name="position_nm" placeholder="예:과장, 팀장, 부장">
 	    		</div>
 	    		<div>연락처:
-	   				<input type="text" size=30 name="charge_phone" value="${chrDtl.charge_phone}">
+	   				<input type="text" size=30 name="charge_phone" placeholder="예:010-1111-2222">
 	    		</div>
 	    		<div>이메일:
-	   				<input type="text" size=30 name="charge_mail_1" value="${chrDtl.charge_mail_1}">
+	   				<input type="text" size=30 name="charge_mail_1" placeholder="이메일을 입력하세요">
 	    		</div>
 	    		<div>사용유무:
-<%-- 	    			<c:if test="N">
-		    			<script>
-		    				$('use_yn').attr('checked');
-		    			</script>
-	    			
-	    			</c:if> --%>
 	   				<input id="use_yn" type="checkbox" name="use_yn" value="Y">
 	    		</div>
-    		</c:forEach>
     		<div align="middle">
 	    		<button>확인</button>
     		</div>

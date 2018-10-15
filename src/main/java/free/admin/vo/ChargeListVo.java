@@ -11,7 +11,18 @@ public class ChargeListVo
 	private String position_nm;
 	private String charge_phone;
 	private String charge_mail_1;
+	private String use_yn;
 	
+	public String getUse_yn() {
+		return use_yn;
+	}
+
+
+	public void setUse_yn(String use_yn) {
+		this.use_yn = use_yn;
+	}
+
+
 	public String getCompany_id() {
 		return company_id;
 	}

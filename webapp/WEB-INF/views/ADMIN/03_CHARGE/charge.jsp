@@ -5,8 +5,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>DDJY Free-Lancer Management</title>
-<!-- 테이블관련 CSS/JS 시작 -->
+<title>담당자관리/조회</title>
+	<!-- 테이블관련 CSS/JS 시작 -->
 	
 	<!-- Bootstrap core CSS-->
 	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -28,32 +28,83 @@
   	<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 	
 	<!-- 테이블관련 CSS/JS 끝 -->
-<style>
-	.column{
-		float:left;
-		font-size:16px;
-	}
 
-</style>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	
+	
 	<!-- css -->
 	<link rel="stylesheet" href="/css/include/subpage.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	
 	<!-- js -->
 	<script src="js/include/subpage.js"></script>
+	
 	<script>
 	$(document).ready(function(){
 		$('#charge').addClass('top_menu_active');
 		$('#charge').find('i').addClass('menu_icon_active');
 	});
 	</script>
+<!-- 테이블 내용에서 담당자명으로 검색 -->
 <script>
+function myFunction() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("dataTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[2];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+</script>
+<!-- 테이블 내용에서 컬럼클릭시 정렬 -->
+<script>
+function sortTable(n) {
+  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+  table = document.getElementById("dataTable");
+  switching = true;
+  dir = "asc"; 
+  while (switching) {
+    switching = false;
+    rows = table.rows;
+    for (i = 1; i < (rows.length - 1); i++) {
 
-
-
+      shouldSwitch = false;
+      x = rows[i].getElementsByTagName("TD")[n];
+      y = rows[i + 1].getElementsByTagName("TD")[n];
+      if (dir == "asc") {
+        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+          shouldSwitch= true;
+          break;
+        }
+      } else if (dir == "desc") {
+        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+          shouldSwitch = true;
+          break;
+        }
+      }
+    }
+    if (shouldSwitch) {
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+      switchcount ++;      
+    } else {
+      if (switchcount == 0 && dir == "asc") {
+        dir = "desc";
+        switching = true;
+      }
+    }
+  }
+}
 </script>
 </head>
 <!-------------------------------- body ---------------------------------------->
@@ -77,7 +128,7 @@
    	<div class="tabs">
     </div>
     	
-    <div class="sections">
+    <div class=content-wrapper> 
     <!-- 테이블내용 시작 -->
     	<div class="card mb-3">
     		<div class="card-header">
@@ -87,107 +138,70 @@
     		<div class="card-body">
     			<div class="table-responsive">
     				<div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
-    					<div class="row">
-    						<div class="col-sm-12 col-md-6">
-    							<div class="dataTables_length" id="dataTable_length">
-    								<label>
-    									데이터
-    									<select name="dataTable_length" aria-controls="dataTable" class="custom-select custom-select-sm form-control form-control-sm">
-    										<option value="5">5</option>
-    										<option value="10">10</option>
-    										<option value="15">15</option>
-    										<option value="20">20</option>
-    									</select>
-    									개씩보기
-    								</label>
-    							</div>
-    						</div>
-    						<div class="col-sm-12 col-md-6">
-    							<div id="dataTable_filter" class="dataTables_filter">
+    					<div class="row">	
+    						<div class="col-sm-12 col-md-12">
+	    						<div id="dataTable_filter" class="dataTables_filter">
     								<label>담당자명:
-    									<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="dataTable">
-										<button>조회</button>
-    									<button>등록</button>
+    									<input type="text" class="form-control form-control-sm" placeholder="담당자명을 입력하세요" aria-controls="dataTable" id="myInput" onkeyup="myFunction()">
+    									<a href="/ChargeNewReg"><input type="button" value="등록"></a>
     								</label>
-    							</div>
+	    						</div>
     						</div>
     					</div>
-    					<div class="row"><div class="col-sm-12"><table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
-                  <thead>
-                    <tr role="row">
-                    	<th rowspan="1" colspan="1" style="width: 10px;">순번</th>
-                    	<th rowspan="1" colspan="1" style="width: 60px;">담당자 아이디</th>
-                    	<th rowspan="1" colspan="1" style="width: 48px;">담당자명</th>
-                    	<th rowspan="1" colspan="1" style="width: 40px;">소속회사</th>
-                    	<th rowspan="1" colspan="1" style="width: 64px;">부서</th>
-                    	<th rowspan="1" colspan="1" style="width: 46px;">직위</th>
-                    	<th rowspan="1" colspan="1" style="width: 46px;">연락처</th>
-                    	<th rowspan="1" colspan="1" style="width: 46px;">메일주소</th>
-                    </tr>
-                  </thead>
-                  <tfoot>
-                    <tr>
-	                    <th rowspan="1" colspan="1">순번</th>
-	                    <th rowspan="1" colspan="1">담당자 아이디</th>
-	                    <th rowspan="1" colspan="1">담당자명</th>
-	                    <th rowspan="1" colspan="1">소속회사</th>
-	                    <th rowspan="1" colspan="1">부서</th>
-	                    <th rowspan="1" colspan="1">직위</th>
-	                    <th rowspan="1" colspan="1">연락처</th>
-	                    <th rowspan="1" colspan="1">메일주소</th>
-                    </tr>
-                  </tfoot>
-                  <tbody>
-	                  <c:forEach var="chr" items="${chargeList}">
-		                  	<tr role="row" class="odd">
-			                      <td><a href="/Charge_p1?charge_id=${chr.charge_id}&company_id=${chr.company_id}">${chr.rownum}</a></td>
-			                      <td><a href="/Charge_p1?charge_id=${chr.charge_id}&company_id=${chr.company_id}">${chr.charge_id}</a></td>
-			                      <td><a href="/Charge_p1?charge_id=${chr.charge_id}&company_id=${chr.company_id}">${chr.charge_nm}</a></td>
-			                      <td><a href="/Charge_p1?charge_id=${chr.charge_id}&company_id=${chr.company_id}">${chr.company_name}</a></td>
-			                      <td><a href="/Charge_p1?charge_id=${chr.charge_id}&company_id=${chr.company_id}">${chr.org_id}</a></td>
-			                      <td><a href="/Charge_p1?charge_id=${chr.charge_id}&company_id=${chr.company_id}">${chr.position_nm}</a></td>
-			                      <td><a href="/Charge_p1?charge_id=${chr.charge_id}&company_id=${chr.company_id}">${chr.charge_phone}</a></td>
-			                      <td><a href="/Charge_p1?charge_id=${chr.charge_id}&company_id=${chr.company_id}">${chr.charge_mail_1}</a></td>
-		                    </tr>
-					  </c:forEach>
-                  </tbody>
-                </table>
-              </div>
-           </div>
-           <div class="row">
-	           	<div class="col-sm-12 col-md-5">
-	           		<div class="dataTables_info" id="dataTable_info" role="status" aria-live="polite">Showing 1 to 5 of 5 entries</div>
-	           	</div>
-	           	<div class="col-sm-12 col-md-7">
-	           		<div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
-	           			<ul class="pagination">
-	           				<li class="paginate_button page-item previous disabled" id="dataTable_previous">
-	           					<a href="#" aria-controls="dataTable" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
-	           				</li>
-	           				<li class="paginate_button page-item active">
-	           					<a href="#" aria-controls="dataTable" data-dt-idx="1" tabindex="0" class="page-link">1</a>
-	           				</li>
-	           				<li class="paginate_button page-item next disabled" id="dataTable_next">
-	           					<a href="#" aria-controls="dataTable" data-dt-idx="2" tabindex="0" class="page-link">Next</a>
-	           				</li>
-	           			</ul>
-	           		</div>
-	           	</div>
+    					<div class="row">
+    						<div class="col-sm-12">
+    						<table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                  				<thead>
+                    				<tr role="row" style="text-align: center">
+                    					<th onclick="sortTable(0)">순번</th>
+                    					<th onclick="sortTable(1)">담당자ID</th>
+                    					<th onclick="sortTable(2)">담당자명</th>
+                    					<th onclick="sortTable(3)">소속사</th>
+                    					<th onclick="sortTable(4)">부서</th>
+                    					<th onclick="sortTable(5)">직위</th>
+                    					<th onclick="sortTable(6)">연락처</th>
+                    					<th onclick="sortTable(7)">메일주소</th>
+                   				 	</tr>
+                  				</thead>
+                  				<tfoot>
+                    				<tr role="row" style="text-align: center">
+					                    <th onclick="sortTable(0)" rowspan="1" colspan="1">순번</th>
+					                    <th onclick="sortTable(1)" rowspan="1" colspan="1">담당자ID</th>
+					                    <th onclick="sortTable(2)" rowspan="1" colspan="1">담당자명</th>
+					                    <th onclick="sortTable(3)" rowspan="1" colspan="1">소속사</th>
+					                    <th onclick="sortTable(4)" rowspan="1" colspan="1">부서</th>
+					                    <th onclick="sortTable(5)" rowspan="1" colspan="1">직위</th>
+					                    <th onclick="sortTable(6)" rowspan="1" colspan="1">연락처</th>
+					                    <th onclick="sortTable(7)" rowspan="1" colspan="1">메일주소</th>
+                    				</tr>
+                  				</tfoot>
+				                  <tbody>
+					                  <c:forEach var="chr" items="${chargeList}">
+						                  	<tr role="row" class="odd" style="text-align: center">
+							                      <td><a href="/Charge_p1?charge_id=${chr.charge_id}&company_id=${chr.company_id}">${chr.rownum}</a></td>
+							                      <td><a href="/Charge_p1?charge_id=${chr.charge_id}&company_id=${chr.company_id}">${chr.charge_id}</a></td>
+							                      <td><a href="/Charge_p1?charge_id=${chr.charge_id}&company_id=${chr.company_id}">${chr.charge_nm}</a></td>
+							                      <td><a href="/Charge_p1?charge_id=${chr.charge_id}&company_id=${chr.company_id}">${chr.company_name}</a></td>
+							                      <td><a href="/Charge_p1?charge_id=${chr.charge_id}&company_id=${chr.company_id}">${chr.org_id}</a></td>
+							                      <td><a href="/Charge_p1?charge_id=${chr.charge_id}&company_id=${chr.company_id}">${chr.position_nm}</a></td>
+							                      <td><a href="/Charge_p1?charge_id=${chr.charge_id}&company_id=${chr.company_id}">${chr.charge_phone}</a></td>
+							                      <td><a href="/Charge_p1?charge_id=${chr.charge_id}&company_id=${chr.company_id}">${chr.charge_mail_1}</a></td>
+						                    </tr>
+									  </c:forEach>
+				                  </tbody>
+                			</table>
+              			</div>
+           			</div>
          	  </div>
     		</div>			
    		 </div> 			
- 	 </div>		
-   </div>	  
- </div>
-<!-- 테이블내용 끝 -->
-    	
-    </div>
-      
+ 	 </div> 	
+   </div>
+   <!-- 테이블내용 끝 -->   	
   </article>
-  
-  </div>
-  
+</div> 
 </div>
+
 <script>
 	/*  $(function(){
 		$('nav').on('click','a',function(e){

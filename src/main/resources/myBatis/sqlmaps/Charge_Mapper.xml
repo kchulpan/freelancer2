@@ -15,6 +15,7 @@
   		<result property="position_nm"	 column="position_nm"   javaType="string"/>
   		<result property="charge_phone"  column="charge_phone" 	javaType="string"/>
   		<result property="charge_mail_1" column="charge_mail_1"	javaType="string"/>
+  		<result property="use_yn" 		 column="USE_YN"		javaType="string"/>
   	</resultMap>
   
 <!--    	<insert id="BoardInsert"
@@ -53,13 +54,15 @@
   	
   	<update id="ChargeUpdate" statementType="CALLABLE">
   		{CALL PKG_CHARGE.PROC_CHARGE_UPDATE(
-		#{charge_id, mode=IN,  jdbcType=VARCHAR},
-		#{charge_nm, mode=IN,  jdbcType=VARCHAR},
-		#{company_name, mode=IN,  jdbcType=VARCHAR},
-		#{org_id, mode=IN,  jdbcType=VARCHAR},
-		#{position_nm, mode=IN,  jdbcType=VARCHAR},
-		#{charge_phone, mode=IN,  jdbcType=VARCHAR},
-		#{charge_mail_1, mode=IN,  jdbcType=VARCHAR}
+		#{company_id, mode=IN, jdbcType=VARCHAR},
+		#{charge_id, mode=IN, jdbcType=VARCHAR},
+		#{charge_nm, mode=IN, jdbcType=VARCHAR},
+		#{company_name, mode=IN, jdbcType=VARCHAR},
+		#{org_id, mode=IN, jdbcType=VARCHAR},
+		#{position_nm, mode=IN, jdbcType=VARCHAR},
+		#{charge_phone, mode=IN, jdbcType=VARCHAR},
+		#{charge_mail_1, mode=IN, jdbcType=VARCHAR},
+		#{use_yn, mode=IN, jdbcType=VARCHAR}
 		)}
   	</update>
   	<!--

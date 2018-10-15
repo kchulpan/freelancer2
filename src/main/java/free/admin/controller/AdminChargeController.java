@@ -46,7 +46,18 @@ public class AdminChargeController {
 	public String chargeUpdate(@RequestParam HashMap<String,Object> map)
 	{
 		chargeListService.chargeUpdate(map);
-		
 		return "redirect:/Charge";
+	}
+	/*새 담당자 등록 페이지로 이동*/
+	@RequestMapping("/ChargeNewReg")
+	public String ChargeNewReg()
+	{
+		return "ADMIN/03_CHARGE/charge_p2";
+	}
+	/*새 담당자 등록*/
+	@RequestMapping("/ChargeNewInsert")
+	public String ChargeNewInsert()
+	{
+		return null;
 	}
 }
