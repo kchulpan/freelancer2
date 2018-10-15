@@ -35,14 +35,14 @@
   	</insert>
   	-->
   	
-<!--   	<select id="ChargeList"
+   	<select id="ProjectList"
   			statementType="CALLABLE"
-  			parameterType="">
-		{CALL PKG_BOARD.PROC_BOARD_LIST(
-		#{menu_id, mode=IN,  jdbcType=VARCHAR},
-		#{result,  mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=BoardListMap}
+  			parameterType= "hashmap"
+  			resultType="free.admin.vo.ProjectListVo">
+		{CALL PKG_PROJECT.PROC_PROJECT_LIST(
+		#{result,  mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=ProjectListMap}
 		)}
-  	</select> -->
+  	</select>
   	<!--
   	<select id="BoardContent"
   			statementType="CALLABLE"
