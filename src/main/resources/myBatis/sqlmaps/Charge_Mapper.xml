@@ -9,6 +9,7 @@
   		<result property="rownum"		 column="ROWNUM" 		javaType="int"/>
   		<result property="charge_id"	 column="CHARGE_ID" 	javaType="string"/>
   		<result property="charge_nm"	 column="CHARGE_NM" 	javaType="string"/>
+  		<result property="company_id"	 column="COMPANY_ID" 	javaType="string"/>
   		<result property="company_name"	 column="company_name" 	javaType="string"/>
   		<result property="org_id"	 	 column="org_id" 		javaType="string"/>
   		<result property="position_nm"	 column="position_nm"   javaType="string"/>
@@ -49,6 +50,18 @@
 		#{result,  mode=OUT, jdbcType=CURSOR, javaType=RESULTSET, resultMap=ChargeListMap}
 		)}
   	</select>
+  	
+  	<update id="ChargeUpdate" statementType="CALLABLE">
+  		{CALL PKG_CHARGE.PROC_CHARGE_UPDATE(
+		#{charge_id, mode=IN,  jdbcType=VARCHAR},
+		#{charge_nm, mode=IN,  jdbcType=VARCHAR},
+		#{company_name, mode=IN,  jdbcType=VARCHAR},
+		#{org_id, mode=IN,  jdbcType=VARCHAR},
+		#{position_nm, mode=IN,  jdbcType=VARCHAR},
+		#{charge_phone, mode=IN,  jdbcType=VARCHAR},
+		#{charge_mail_1, mode=IN,  jdbcType=VARCHAR}
+		)}
+  	</update>
   	<!--
   	<select id="BoardContent"
   			statementType="CALLABLE"
@@ -68,12 +81,5 @@
 		#{idx, mode=IN,  jdbcType=INTEGER}
 		)}
   	</delete>
-  	
-  	<update id="BoardUpdate" statementType="CALLABLE">
-  		{CALL PKG_BOARD.PROC_BOARD_UPDATE(
-		#{idx, mode=IN,  jdbcType=INTEGER},
-		#{title, mode=IN,  jdbcType=VARCHAR},
-		#{cont, mode=IN,  jdbcType=VARCHAR}
-		)}
-  	</update> -->
+  	-->
   </mapper>

@@ -41,4 +41,12 @@ public class AdminChargeController {
 		mav.setViewName("ADMIN/03_CHARGE/charge_p1");
 		return mav;
 	}
+	/*담당자 상세 수정후 리스트로 redirect*/
+	@RequestMapping("/ChargeUpdate")
+	public String chargeUpdate(@RequestParam HashMap<String,Object> map)
+	{
+		chargeListService.chargeUpdate(map);
+		
+		return "redirect:/Charge";
+	}
 }
