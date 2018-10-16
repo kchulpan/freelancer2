@@ -32,4 +32,10 @@ public class ProjectListServiceImpl implements ProjectListService
 		return projectDetail;
 	}
 
+	@Override
+	public void projectUpdate(HashMap<String, Object> map) {
+		projectListDao.projectUpdate(map);
+		
+	}
+
 }
