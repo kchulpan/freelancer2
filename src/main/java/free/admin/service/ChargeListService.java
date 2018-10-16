@@ -14,4 +14,6 @@ public interface ChargeListService
 
 	public void chargeUpdate(HashMap<String, Object> map);
 
+	public void ChargeNewInsert(HashMap<String, Object> map);
+
 }
