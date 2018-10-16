@@ -23,38 +23,7 @@
 			#{result, mode=OUT, jdbcType=CURSOR, javaType=RESULTSET, resultMap=ClientListMap}
 		)}
 	</select>
-	<insert id="ClientInsert" statementType="CALLABLE" 
-        parameterType="com.spring.board.vo.BoardVo">
-		<!-- INSERT INTO CLIENT_TBL VALUES
-    		(
-    			
-    			
-    			
-    			#{client_id},
-    			#{client_nm},
-    			#{client_addr_1},
-    			#{client_addr_2},
-    			#{client_file},
-    			#{client_file_nm},
-    			#{insert_id},
-    			SYSDATE,
-    			#{update_id},
-    			SYSDATE
-    			
-    			
-    		) -->
-    	
-    		{CALL PKG_BOARD.PROC_BOARD_INSERT(
-		    	#{menu_id, mode=IN,  jdbcType=VARCHAR},
-		    	#{title,   mode=IN,  jdbcType=VARCHAR},
-		    	#{cont,    mode=IN,  jdbcType=VARCHAR},
-		    	#{writer,  mode=IN,  jdbcType=VARCHAR},
-		    	#{bnum,    mode=IN,  jdbcType=INTEGER},
-		    	#{lvl,     mode=IN,  jdbcType=INTEGER},
-		    	#{step,    mode=IN,  jdbcType=INTEGER},
-		    	#{nref,    mode=IN,  jdbcType=INTEGER}
-    )}   
-    </insert>
+	
 
 	
 </mapper>
