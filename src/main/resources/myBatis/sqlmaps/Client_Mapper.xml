@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Client">
+<!--결과 출력 map -->	
+	<resultMap id="ClientListMap" type="free.admin.vo.ClientListVo" >
+		<result property="rownum" column="ROWNUM" javaType="int"/>
+		<result property="client_id" column="client_id" javaType="string"/>
+		<result property="client_nm" column="client_nm" javaType="string"/>
+		<result property="client_addr_1" column="client_addr_1" javaType="string"/>
+		<result property="client_addr_2" column="client_addr_2" javaType="string"/>
+		<result property="client_file" column="client_file" javaType="string"/>
+		<result property="client_file_nm" column="client_file_nm" javaType="string"/>
+		<result property="insert_id" column="insert_id" javaType="string"/>
+		<result property="insert_date" column="insert_date" javaType="string"/>
+		<result property="update_id" column="update_id" javaType="string"/>
+		<result property="update_date" column="update_date" javaType="string"/>
+	</resultMap>
+	<select id="ClientList" statementType="CALLABLE" parameterType="hashmap" resultType="free.admin.vo.ClientListVo">
+		{CALL PKG_CLIENT.PRO_CLIENT_LIST(
+			#{result, mode=OUT, jdbcType=CURSOR, javaType=RESULTSET, resultMap=ClientListMap}
+		)}
+	</select>
+	<insert id="ClientInsert" statementType="CALLABLE" 
+        parameterType="com.spring.board.vo.BoardVo">
+		<!-- INSERT INTO CLIENT_TBL VALUES
+    		(
+    			
+    			
+    			
+    			#{client_id},
+    			#{client_nm},
+    			#{client_addr_1},
+    			#{client_addr_2},
+    			#{client_file},
+    			#{client_file_nm},
+    			#{insert_id},
+    			SYSDATE,
+    			#{update_id},
+    			SYSDATE
+    			
+    			
+    		) -->
+    	
+    		{CALL PKG_BOARD.PROC_BOARD_INSERT(
+		    	#{menu_id, mode=IN,  jdbcType=VARCHAR},
+		    	#{title,   mode=IN,  jdbcType=VARCHAR},
+		    	#{cont,    mode=IN,  jdbcType=VARCHAR},
+		    	#{writer,  mode=IN,  jdbcType=VARCHAR},
+		    	#{bnum,    mode=IN,  jdbcType=INTEGER},
+		    	#{lvl,     mode=IN,  jdbcType=INTEGER},
+		    	#{step,    mode=IN,  jdbcType=INTEGER},
+		    	#{nref,    mode=IN,  jdbcType=INTEGER}
+    )}   
+    </insert>
+
+	
+</mapper>
+    

@@ -89,7 +89,7 @@
 	    		<div>담당자아이디:
 	    			<input type="text" size=30 name="charge_id" value="${chrDtl.charge_id}">
 	    		
-	    			<!-- <button>중복체크</button> -->
+	    			<button>중복체크</button>
 	    		</div>
 	    		<div>담당자 이름:
 	   				<input type="text" size=30 name="charge_nm" value="${chrDtl.charge_nm}">
@@ -110,13 +110,7 @@
 	   				<input type="text" size=30 name="charge_mail_1" value="${chrDtl.charge_mail_1}">
 	    		</div>
 	    		<div>사용유무:
-<%-- 	    			<c:if test="N">
-		    			<script>
-		    				$('use_yn').attr('checked');
-		    			</script>
-	    			
-	    			</c:if> --%>
-	   				<input id="use_yn" type="checkbox" name="use_yn" value="Y">
+	   				<input type="checkbox">
 	    		</div>
     		</c:forEach>
     		<div align="middle">

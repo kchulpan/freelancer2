@@ -4,20 +4,20 @@ public class ProjectListVo
 {
 	private int rownum;
 	private String proj_id;
+	private String charge_id;
 	private String proj_nm;
 	private String proj_str_date;
 	private String proj_end_date;
 	private String client_id;
 	private String need_tech;
 	private String field_1;
+	private String field_2;
+	private String note;
 	private String involve_num;
 	private String charge_nm;
 	private String remark;
 	
-	
-	
 	//constructor
-	
 	public int getRownum() {
 		return rownum;
 	}
@@ -29,6 +29,12 @@ public class ProjectListVo
 	}
 	public void setProj_id(String proj_id) {
 		this.proj_id = proj_id;
+	}
+	public String getCharge_id() {
+		return charge_id;
+	}
+	public void setCharge_id(String charge_id) {
+		this.charge_id = charge_id;
 	}
 	public String getProj_nm() {
 		return proj_nm;
@@ -66,6 +72,18 @@ public class ProjectListVo
 	public void setField_1(String field_1) {
 		this.field_1 = field_1;
 	}
+	public String getField_2() {
+		return field_2;
+	}
+	public void setField_2(String field_2) {
+		this.field_2 = field_2;
+	}
+	public String getNote() {
+		return note;
+	}
+	public void setNote(String note) {
+		this.note = note;
+	}
 	public String getInvolve_num() {
 		return involve_num;
 	}
@@ -86,17 +104,17 @@ public class ProjectListVo
 	}
 	@Override
 	public String toString() {
-		return "ProjectListVo [rownum=" + rownum + ", proj_id=" + proj_id + ", proj_nm=" + proj_nm + ", proj_str_date="
-				+ proj_str_date + ", proj_end_date=" + proj_end_date + ", client_id=" + client_id + ", need_tech="
-				+ need_tech + ", field_1=" + field_1 + ", involve_num=" + involve_num + ", charge_nm=" + charge_nm
-				+ ", remark=" + remark + "]";
+		return "ProjectListVo [rownum=" + rownum + ", proj_id=" + proj_id + ", charge_id=" + charge_id + ", proj_nm="
+				+ proj_nm + ", proj_str_date=" + proj_str_date + ", proj_end_date=" + proj_end_date + ", client_id="
+				+ client_id + ", need_tech=" + need_tech + ", field_1=" + field_1 + ", field_2=" + field_2 + ", note="
+				+ note + ", involve_num=" + involve_num + ", charge_nm=" + charge_nm + ", remark=" + remark + "]";
 	}
 	
-
 	
 	
 	
-
+	
+	
 	
 }
 

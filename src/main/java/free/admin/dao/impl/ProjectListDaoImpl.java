@@ -17,7 +17,7 @@ public class ProjectListDaoImpl implements ProjectListDao
 	@Autowired
 	SqlSession sqlSession;
 	
-
+	// 프로젝트 리스트 조회
 	@Override
 	public List<ProjectListVo> projectList(HashMap<String, Object> map) {
 		
@@ -26,12 +26,20 @@ public class ProjectListDaoImpl implements ProjectListDao
 		return projectList;
 	}
 
-
+	// 프로젝트 리스트 상세 조회
 	@Override
 	public List<ProjectListVo> projectDetail(HashMap<String, Object> map) {
 		sqlSession.selectList("Project.ProjectDetail", map);
 		List<ProjectListVo>  projectDetail = (List<ProjectListVo>)map.get("result");
+		System.out.println("daoimpl넘어온값"+projectDetail );
 		return projectDetail;
+	}
+
+	// 프로젝트 데이터 수정
+	@Override
+	public void projectUpdate(HashMap<String, Object> map) {
+		sqlSession.update("Project.ProjectUpdate", map);
+		
 	}
 
 
