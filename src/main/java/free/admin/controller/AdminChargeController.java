@@ -48,16 +48,19 @@ public class AdminChargeController {
 		chargeListService.chargeUpdate(map);
 		return "redirect:/Charge";
 	}
-	/*새 담당자 등록 페이지로 이동*/
+/*	새 담당자 등록 페이지로 이동
 	@RequestMapping("/ChargeNewReg")
 	public String ChargeNewReg()
 	{
 		return "ADMIN/03_CHARGE/charge_p2";
-	}
+	} 팝업으로 변경*/
+	
+	
 	/*새 담당자 등록*/
 	@RequestMapping("/ChargeNewInsert")
-	public String ChargeNewInsert()
+	public String ChargeNewInsert(@RequestParam HashMap<String,Object> map)
 	{
-		return null;
+		chargeListService.ChargeNewInsert(map);
+		return "redirect:/Charge";
 	}
 }

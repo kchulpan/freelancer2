@@ -36,9 +36,14 @@
 	<!-- css -->
 	<link rel="stylesheet" href="/css/include/subpage.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	
+
 	<!-- js -->
 	<script src="js/include/subpage.js"></script>
+	
+	
+	<!-- modal -->
+<!-- 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" /> -->
 	
 	<script>
 	$(document).ready(function(){
@@ -46,6 +51,30 @@
 		$('#charge').find('i').addClass('menu_icon_active');
 	});
 	</script>
+	
+<style>
+	
+	
+	.modal-backdrop {
+		display: none;
+
+	}
+ 
+	#inputModal {
+  		top: 15%;
+  		margin-top: -50px;
+  		
+  		
+  		
+	}
+
+	#updateModal {
+  		top: 15%;
+  		margin-top: -50px;
+	}
+	
+</style>
+
 <!-- 테이블 내용에서 담당자명으로 검색 -->
 <script>
 function myFunction() {
@@ -112,6 +141,32 @@ function sortTable(n) {
   }
 }
 </script>
+
+<!-- <script>
+  window.onload = function() 
+  {
+	  // 대상을 찾는다
+	  var charge_a = document.querySelectorAll('tbody a');
+	  alert(charge_a);
+	  console.log(charge_a);
+	  for(var i=0;i<charge_a.length;i++) 
+	  {
+		  // click 이벤트 연결한다
+		  charge_a[i].onclick = function(e) {
+ 			  e.preventDefault();
+			  e.stopPropagation();
+			  alert('charge_a.onclick:' + this.href); 
+			  $("#charge_nm").html("ajax를 통해 얻어온 id에 해당하는 값");
+              $("#company_id").html("ajax를 통해 얻어온 id에 해당하는 값");
+
+              //modal을 띄워준다.  
+
+			  $("#inputModal2").modal('show');
+
+			}
+	 };
+  }
+</script> -->
 </head>
 <!-------------------------------- body ---------------------------------------->
 <body>
@@ -134,7 +189,7 @@ function sortTable(n) {
    	<div class="tabs">
     </div>
     	
-    <div class=content-wrapper> 
+    <div class="content-wrapper"> 
     <!-- 테이블내용 시작 -->
     	<div class="card mb-3">
     		<div class="card-header">
@@ -144,15 +199,125 @@ function sortTable(n) {
     		<div class="card-body">
     			<div class="table-responsive">
     				<div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
-    					<div class="row">	
-    						<div class="col-sm-12 col-md-12">
+    					<div class="row">		
+    						<div class="col-sm-12 col-md-11">
 	    						<div id="dataTable_filter" class="dataTables_filter">
     								<label>담당자명:
     									<input type="text" class="form-control form-control-sm" placeholder="담당자명을 입력하세요" aria-controls="dataTable" id="myInput" onkeyup="myFunction()">
-    									<a href="/ChargeNewReg"><input type="button" value="등록"></a>
-    								</label>
+	    							</label>
 	    						</div>
     						</div>
+    						<div class="col-sm-12 col-md-1">	
+    							<button type="button" class="btn btn-primary btn-sm" id="myBtn" data-toggle="modal" data-target="#inputModal">등록</button>
+
+    							<!-- The Modal 새담당자등록 -->
+								  <!-- Modal -->
+  							  <div class="modal fade" id="inputModal" role="dialog">
+							    <div class="modal-dialog" role="document">
+							    
+							      <!-- Modal content-->
+		 					      <div class="modal-content modal-lg">
+							        <div class="modal-header">
+							          <button type="button" class="close" data-dismiss="modal"></button>
+							          <h5><i class="fa fa-user icon"></i>등록</h5>
+							        </div>
+							        <div class="modal-body">
+							        	 
+							          <form role="form" action="/ChargeNewInsert" method="POST">
+							            <div class="form-group">
+							              <label for="charge_nm">담당자명</label>
+							              <input type="text" class="form-control" id="charge_nm" name="charge_nm" placeholder="아이디를 입력하세요">
+							            </div>
+							            <div class="form-group">
+							              <label for="company_name">소속사</label>
+							              <input type="text" class="form-control" id="company_name" name="company_name" placeholder="이름을 입력하세요">
+							            </div>
+							            <div class="form-group">
+							              <label for="org_id">부서</label>
+							              <input type="text" class="form-control" id="org_id" name="org_id" placeholder="주소를 입력하세요">
+							            </div>
+							            <div class="form-group">
+							              <label for="position_nm">직위</label>
+							              <input type="text" class="form-control" id="position_nm" name="position_nm" placeholder="상세주소를 입력하세요">
+							            </div>
+							            <div class="form-group">
+							              <label for="charge_phone">연락처</label>
+							              <input type="text" class="form-control" id="charge_phone" name="charge_phone" placeholder="이력서 양식명을 입력하세요">
+							            </div>
+							            <div class="form-group">
+							              <label for="client_file_nm">이메일</label>
+							              <input type="text" class="form-control" id="client_file_nm" placeholder="이력서 양식명을 입력하세요">
+							            </div>
+							    		<div>
+							    			<label for="use_yn">사용유무</label>
+							   				<input id="use_yn" type="checkbox" name="use_yn" value="Y">
+							    		</div>
+							            <div class="modal-footer">
+							          		<button type="submit" class="btn btn-primary btn-default pull-left" data-dismiss="modal">확인</button>
+							          		<button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">취소</button>
+							        	</div>   
+							          </form>
+							        </div>
+							        
+							      </div>
+							      
+							    </div>
+							  </div>
+  							<!-- The Modal 수정/삭제 -->
+								  <!-- Modal -->
+  							  <div class="modal fade" id="inputModal2" role="dialog">
+							    <div class="modal-dialog" role="document">
+							    
+							      <!-- Modal content-->
+		 					      <div class="modal-content modal-lg">
+							        <div class="modal-header">
+							          <button type="button" class="close" data-dismiss="modal"></button>
+							          <h5><i class="fa fa-user icon"></i>등록</h5>
+							        </div>
+							        <div class="modal-body">
+							        	 
+							          <form role="form" action="/ChargeNewInsert" method="POST">
+							      <c:forEach var="chr2" items="${chargeList}">
+							            <div class="form-group">
+							              <label for="charge_nm">담당자명</label>
+							              <input type="text" class="form-control" id="charge_nm" name="charge_nm" value="${chr2.charge_nm}">
+							            </div>
+							            <div class="form-group">
+							              <label for="company_name">소속사</label>
+							              <input type="text" class="form-control" id="company_name" name="company_name" value="${chr2.company_name}">
+							            </div>
+							            <div class="form-group">
+							              <label for="org_id">부서</label>
+							              <input type="text" class="form-control" id="org_id" name="org_id" value="${chr2.org_id}">
+							            </div>
+							            <div class="form-group">
+							              <label for="position_nm">직위</label>
+							              <input type="text" class="form-control" id="position_nm" name="position_nm" value="${chr2.position_nm}">
+							            </div>
+							            <div class="form-group">
+							              <label for="charge_phone">연락처</label>
+							              <input type="text" class="form-control" id="charge_phone" name="charge_phone" value="${chr2.charge_phone}">
+							            </div>
+							            <div class="form-group">
+							              <label for="client_file_nm">이메일</label>
+							              <input type="text" class="form-control" id="client_file_nm" value="${chr2.org_id}">
+							            </div>
+							    		<div>
+							    			<label for="use_yn">사용유무</label>
+							   				<input id="use_yn" type="checkbox" name="use_yn" value="Y">
+							    		</div>
+							      </c:forEach>
+							            <div class="modal-footer">
+							          		<button type="submit" class="btn btn-primary btn-default pull-left" data-dismiss="modal">수정</button>
+							          		<button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">삭제</button>
+							        	</div>   
+							          </form>
+							        </div>
+							        
+							      </div>
+							      
+							    </div>
+							  </div>
     					</div>
     					<div class="row">
     						<div class="col-sm-12">
@@ -191,14 +356,15 @@ function sortTable(n) {
 					                  			<tr role="row" class="even" style="text-align:center">
 					                  		</c:when>
 					                  	</c:choose>
-							                      <td><a href="/Charge_p1?charge_id=${chr.charge_id}&company_id=${chr.company_id}">${chr.rownum}</a></td>
-							                      <td><a href="/Charge_p1?charge_id=${chr.charge_id}&company_id=${chr.company_id}">${chr.charge_id}</a></td>
-							                      <td><a href="/Charge_p1?charge_id=${chr.charge_id}&company_id=${chr.company_id}">${chr.charge_nm}</a></td>
-							                      <td><a href="/Charge_p1?charge_id=${chr.charge_id}&company_id=${chr.company_id}">${chr.company_name}</a></td>
-							                      <td><a href="/Charge_p1?charge_id=${chr.charge_id}&company_id=${chr.company_id}">${chr.org_id}</a></td>
-							                      <td><a href="/Charge_p1?charge_id=${chr.charge_id}&company_id=${chr.company_id}">${chr.position_nm}</a></td>
-							                      <td><a href="/Charge_p1?charge_id=${chr.charge_id}&company_id=${chr.company_id}">${chr.charge_phone}</a></td>
-							                      <td><a href="/Charge_p1?charge_id=${chr.charge_id}&company_id=${chr.company_id}">${chr.charge_mail_1}</a></td>
+							                      <td><a href="#inputModal2" data-toggle="modal">${chr.rownum}</a></td>
+							                      <td><a href="#inputModal2" data-toggle="modal">${chr.charge_id}</a></td>
+							                      <td><a href="#inputModal2" data-toggle="modal">${chr.charge_nm}</a></td>
+							                      <td><a href="#inputModal2" data-toggle="modal">${chr.company_name}</a></td>
+							                      <td><a href="#inputModal2" data-toggle="modal">${chr.org_id}</a></td>
+							                      <td><a href="#inputModal2" data-toggle="modal">${chr.position_nm}</a></td>
+							                      <td><a href="#inputModal2" data-toggle="modal">${chr.charge_phone}</a></td>
+							                      <td><a href="#inputModal2" data-toggle="modal">${chr.charge_mail_1}</a></td>
+							                      <%-- <td><a href="/Charge_p1?charge_id=${chr.charge_id}&company_id=${chr.company_id}">${chr.charge_mail_1}</a></td> --%>
 							           
 						                    </tr>
 									  </c:forEach>
@@ -211,19 +377,12 @@ function sortTable(n) {
    		 </div> 			
  	 </div> 	
    </div>
+  </div>
    <!-- 테이블내용 끝 -->   	
   </article>
 </div> 
 </div>
 
-<script>
-	/*  $(function(){
-		$('nav').on('click','a',function(e){
-			//alert('plus clicked');
-			 e.preventDefault(); + e.stopPropagation();
-		});
-	}); */ 
-</script>
 </body>
 
 </html>

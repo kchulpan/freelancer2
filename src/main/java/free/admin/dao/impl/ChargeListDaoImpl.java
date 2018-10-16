@@ -38,5 +38,12 @@ public class ChargeListDaoImpl implements ChargeListDao
 	public void chargeUpdate(HashMap<String, Object> map) {
 		sqlSession.update("Charge.ChargeUpdate", map);
 	}
+	
+	//새 담당자 입력
+	@Override
+	public void ChargeNewInsert(HashMap<String, Object> map) 
+	{
+		sqlSession.insert("Charge.ChargeInsert", map);
+	}
 
 }
