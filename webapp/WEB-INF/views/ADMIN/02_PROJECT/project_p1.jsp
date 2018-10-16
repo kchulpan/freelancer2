@@ -94,7 +94,7 @@
 	   			<input type="text" size=15 name="proj_end_date" value="${projDtl.proj_end_date}"> 	
 	    	</div>
 	    	<div>고객사:
-   				<input type="text" size=30 name="client_id" value="${projDtl.client_id}">
+   				<input type="text" size=30 name="client_nm" value="${projDtl.client_nm}">
 	   		</div>
 	    	<div>투여인원:
   				<input type="text" size=30 name="involve_num" value="${projDtl.involve_num}">
@@ -133,8 +133,8 @@
 	    &nbsp;&nbsp;&nbsp;
 	    <input type="text" class="input" name="proj_end_date" value="${projDtl.proj_end_date}">
 	    
-	    <label for="client_id"><b>고객사:</b></label>
-	    <input type="text" class="input"  name="client_id" value="${projDtl.client_id}">
+	    <label for="client_nm"><b>고객사:</b></label>
+	    <input type="text" class="input"  name="client_nm" value="${projDtl.client_id}">
 	    
 	    <label for="involve_num"><b>투여인원:</b></label>
 	    <input type="text" class="input" name="involve_num" value="${projDtl.involve_num}">
