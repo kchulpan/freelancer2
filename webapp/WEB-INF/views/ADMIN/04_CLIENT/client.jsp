@@ -17,12 +17,12 @@
 	 <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="vendor/chart.js/Chart.min.js"></script>
+   
     <script src="vendor/datatables/jquery.dataTables.js"></script>
     <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
     <script src="js/mainpage/sb-admin.min.js"></script>
-    <script src="js/demo/datatables-demo.js"></script>
-    <script src="js/demo/chart-area-demo.js"></script>
+    <!-- <script src="js/demo/datatables-demo.js"></script> -->
+    
   	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
   	<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
@@ -44,25 +44,20 @@
 	<script src="js/include/subpage.js"></script>
 
 
-	<script type="text/javascript">
-	$(".modal-dialog").draggable({
-	    handle: ".modal-header"
-	});
-	</script>
+	
+	
+	
+	
 	<style>
-	
-	
 	.modal-backdrop {
 		display: none;
 
 	}
  
-	#inputModal {
+	#inputModal, #inputModal2 {
   		top: 15%;
   		margin-top: -50px;
-  		
-  		
-  		
+	
 	}
 
 	#updateModal {
@@ -191,35 +186,37 @@ function sortTable(n) {
 							        <div class="modal-body">
 							        	
 							          <form role="form" action="/ClientInsert" method="POST">
+							          
 							            <div class="form-group">
 							              <label for="client_id">고객사 아이디</label>
-							              <input type="text" class="form-control" id="client_id" placeholder="아이디를 입력하세요">
+							              <input type="text" value="${client_id }" class="form-control" id="client_id" placeholder="아이디를 입력하세요">
 							            </div>
 							            <div class="form-group">
 							              <label for="client_nm">고객사 이름</label>
-							              <input type="text" class="form-control" id="client_nm" placeholder="이름을 입력하세요">
+							              <input type="text" name="client_nm" class="form-control" id="client_nm" placeholder="이름을 입력하세요">
 							            </div>
 							            <div class="form-group">
 							              <label for="client_addr1">고객사 주소</label>
-							              <input type="text" class="form-control" id="client_addr1" placeholder="주소를 입력하세요">
+							              <input type="text" name="client_addr1" class="form-control" id="client_addr1" placeholder="주소를 입력하세요">
 							            </div>
 							            <div class="form-group">
 							              <label for="client_addr2">고객사 상세주소</label>
-							              <input type="text" class="form-control" id="client_addr2" placeholder="상세주소를 입력하세요">
+							              <input type="text" name="client_addr2" class="form-control" id="client_addr2" placeholder="상세주소를 입력하세요">
 							            </div>
 							            <div class="form-group">
 							              <label for="client_file_nm">이력서 양식명</label>
-							              <input type="text" class="form-control" id="client_file_nm" placeholder="이력서 양식명을 입력하세요">
+							              <input type="text" name="client_file_nm" class="form-control" id="client_file_nm" placeholder="이력서 양식명을 입력하세요">
 							            </div>
 							            <div class="form-group">
 							              <label for="client_file"> 이력서 파일명</label>
-							              <input type="text" class="form-control" id="client_file" placeholder="이력서 파일명을 입력하세요"><br/>
+							              <input type="text" name="client_file" class="form-control" id="client_file" placeholder="이력서 파일명을 입력하세요"><br/>
 							              <button type="submit" class="btn btn-success">파일찾기</button>
 							            </div>
 							            <div class="modal-footer">
-							          		<button type="submit" class="btn btn-primary btn-default pull-left" data-dismiss="modal">확인</button>
+							          		<button type="submit" class="btn btn-primary btn-default pull-left" data-dismiss="modal" id="">확인</button>
 							          		<button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">취소</button>
-							        	</div>   
+							        	</div>
+							          		   
 							          </form>
 							        </div>
 							        
@@ -234,7 +231,9 @@ function sortTable(n) {
     					</div>
     					<div class="row">
     						<div class="col-sm-12">
+    						
     						<table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                  				
                   				<thead>
                     				<tr role="row" style="text-align: center">
                     					<th onclick="sortTable(0)">순번</th>
@@ -255,19 +254,99 @@ function sortTable(n) {
 					                    <th onclick="sortTable(5)" rowspan="1" colspan="1">이력서파일 이름</th>
                     				</tr>
                   				</tfoot>
+                  				
                   				<tbody>
+                  				<!-- <a href="#" data-target="#input_modal2" data-toggle="modal" class="identifyingClass" data-id="my_id_value" data-title="title"></a> -->
+                  				<!-- The Modal2 데이터 추가 수정 모달 -->
+								  <!-- Modal2 -->
+							  <div class="modal fade" id="inputModal2" role="dialog">
+							    <div class="modal-dialog" role="document">
+							    
+							      <!-- Modal content2-->
+							      <div class="modal-content modal-lg">
+							        <div class="modal-header">
+							          <button type="button" class="close" data-dismiss="modal"></button>
+							          <h5><i class="fa fa-user icon"></i>수정/삭제</h5>
+							        </div>
+							        <div class="modal-body">
+										
+										
+							            <div class="form-group">
+							              <label for="client_id">고객사 아이디</label>
+							              <input type="text" id="client_id" name="client_id" class="form-control">
+							            </div>
+							            <!-- <script>
+							            $windows.on("click", ".identifyingClass", function () {
+											     var my_id_value = $(this).data(value);
+											     $(".modal-body input").val( my_id_value );
+								
+											});
+							            </script> -->
+
+							            <div class="form-group">
+							              <label for="client_nm">고객사 이름</label>
+							              <input type="text" name="client_nm" class="form-control" id="client_nm">
+							            </div>
+							            <div class="form-group">
+							              <label for="client_addr1">고객사 주소</label>
+							              <input type="text" name="client_addr1" class="form-control" id="client_addr1">
+							            </div>
+							            <div class="form-group">
+							              <label for="client_addr2">고객사 상세주소</label>
+							              <input type="text" name="client_addr2" class="form-control" id="client_addr2">
+							            </div>
+							            <div class="form-group">
+							              <label for="client_file_nm">이력서 양식명</label>
+							              <input type="text" name="client_file_nm" class="form-control" id="client_file_nm">
+							            </div>
+							            <div class="form-group">
+							              <label for="client_file"> 이력서 파일명</label>
+							              <input type="text" name="client_file" class="form-control" id="client_file"><br/>
+							              <button type="submit" class="btn btn-success">파일찾기</button>
+							            </div>
+							            <div class="modal-footer">
+							          		<button type="submit" class="btn btn-primary btn-default pull-left" data-dismiss="modal">수정</button>
+							          		<button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">삭제</button>
+							        	</div>
+							          		   
+							          </form>
+							        </div>
+							        
+							      </div>
+							      
+							    </div>
+							  </div>
+                  				 <script type="text/javascript">
+										    $(function () {
+										        $(".idClick").click(function () {
+										        	
+										            var my_id_value = $(this).data("title");
+										            
+										            $(".modal-body input[name=]").val(my_id_value);
+										        })
+										    });
+										    
+										    /* <a href="#" data-target="#input_modal" data-toggle="modal" class="identifyingClass" data-id="my_id_value"> */
+										</script>
+                  				
                   				<c:forEach var="client" items="${clientList}">
 				                  	<tr role="row" class="odd" style="text-align: center">
+                  				
+				                      
 				                      <td>${client.rownum}</td>
-				                      <td>${client.client_id}</td>
-				                      <td>${client.client_nm}</td>
-				                      <td style="overflow:hidden ;">${client.client_addr_1}</td>
+				                      <td><a href="#inputModal2" data-toggle="modal" data-id="my_id_value" class="idClick" data-whatever="${client.client_id}">${client.client_id}</a></td>
+				                      <td class="client_nm">${client.client_nm}</td>
+				                      <td class="client_addr" style="overflow:hidden;">${client.client_addr_1}</td>
 				                      <td>${client.client_file_nm}</td>
 				                      <td>${client.client_file}</td>
+				              		   	
 				                    </tr>
-				                </c:forEach>    
+				                </c:forEach>
+				               
 		                  		</tbody>
+		                  	
                 			</table>
+                		
               			</div>
            			</div>
            			
