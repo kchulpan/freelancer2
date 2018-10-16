@@ -28,6 +28,7 @@ public class AdminProjectController {
 		ModelAndView mav = new ModelAndView();
 		List<ProjectListVo> projectList = projectListService.projectList(map);
 		
+		System.out.println("리스트" + projectList);
 		mav.addObject("projectList", projectList);
 		mav.setViewName("ADMIN/02_PROJECT/project");
 		return mav;
@@ -40,7 +41,15 @@ public class AdminProjectController {
 		List<ProjectListVo> projectDetail = projectListService.projectDetail(map);
 		mav.addObject("projectDetail",projectDetail);
 		mav.setViewName("ADMIN/02_PROJECT/project_p1");
+		System.out.println("넘어온값"+projectDetail);
 		return mav;
 	
+	}
+	/*프로젝트 상세 수정후 리스트로 redirect*/
+	@RequestMapping("/ProjectUpdate")
+	public String ProjectUpdate(@RequestParam HashMap<String,Object> map)
+	{
+		projectListService.projectUpdate(map);
+		return "redirect:/Project";
 	}
 }

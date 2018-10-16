@@ -13,6 +13,8 @@ public interface ProjectListDao
 
 	public List<ProjectListVo> projectDetail(HashMap<String, Object> map);
 
+	public void projectUpdate(HashMap<String, Object> map);
+
 
 
 
