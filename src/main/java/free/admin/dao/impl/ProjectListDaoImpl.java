@@ -41,14 +41,19 @@ public class ProjectListDaoImpl implements ProjectListDao
 		sqlSession.update("Project.ProjectUpdate", map);
 		
 	}
-	// 새 프로젝트 입력
+	// 새 프로젝트 등록
 	@Override
 	public void ProjectNewInsert(HashMap<String, Object> map) {
 		sqlSession.insert("Project.ProjectInsert", map);
 		
 	}
-
-
+	
+	// 프로젝트 삭제
+	@Override
+	public void projectDelete(HashMap<String, Object> map) {
+		sqlSession.delete("Project.ProjectDelete", map);
+			
+	}
 
 
 

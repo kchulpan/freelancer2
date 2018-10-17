@@ -15,6 +15,8 @@ public interface ProjectListService
 	public  void projectUpdate(HashMap<String, Object> map);
 
 	public void ProjectNewInsert(HashMap<String, Object> map);
+
+	public void projectDelete(HashMap<String, Object> map);
 		
 	
 
