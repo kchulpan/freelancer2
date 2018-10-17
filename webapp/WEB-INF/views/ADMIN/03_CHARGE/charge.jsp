@@ -45,13 +45,13 @@
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" /> -->
 	
-	<script>
+<!-- 	<script>
 	$(document).ready(function(){
 		$('#charge').addClass('top_menu_active');
 		$('#charge').find('i').addClass('menu_icon_active');
 	});
-	</script>
-	
+	</script> -->
+<!-- modal style 시작 -->	
 <style>
 	
 	
@@ -141,7 +141,38 @@ function sortTable(n) {
   }
 }
 </script>
+<!-- 기존 리스트를 모달창에 불러오기 -->
+<script type="text/javascript">
+ $(function () {
+	$(".rowClick").click(function (e) {
+		var charge_nm = $(this).find(".charge_nm").html();
+		var charge_pwd = $(this).find(".charge_pwd").html();
+		var company_id = $(this).find(".company_id").val();
+		var org_id = $(this).find(".org_id").html();
+		var position_nm = $(this).find(".position_nm").html();
+		var charge_phone = $(this).find(".charge_phone").html();
+		var charge_mail_1 = $(this).find(".charge_mail_1").html();
 
+		console.log(charge_nm);
+		console.log(charge_pwd);
+		console.log(company_id);
+		console.log(org_id);
+		console.log(position_nm);
+		console.log(charge_phone);
+		console.log(charge_mail_1);
+		/* var modalData = document.querySelectorAll('tbody a'); */
+		//var my_id_value = $(".idClick").eq(0).data("title");
+		//var my_id_value2 = $(".idClick").eq(1).data("title1");
+		$(".modal-body #charge_nm").val(charge_nm); 
+		$(".modal-body #charge_pwd").val(charge_pwd); 
+		$(".modal-body #company_id").val(company_id); 
+		$(".modal-body #org_id").val(org_id); 
+		$(".modal-body #position_nm").val(position_nm); 
+		$(".modal-body #charge_phone").val(charge_phone); 
+		$(".modal-body #charge_mail_1").val(charge_mail_1); 
+	})
+}); 
+</script>
 <!-- <script>
   window.onload = function() 
   {
@@ -210,7 +241,7 @@ function sortTable(n) {
     						<div class="col-sm-12 col-md-1">	
     							<button type="button" class="btn btn-primary btn-sm" id="myBtn" data-toggle="modal" data-target="#inputModal">등록</button>
 
-    							<!-- The Modal 새담당자등록 -->
+<!-------------------------- The Modal 새담당자등록 ------------------------->
 								  <!-- Modal -->
   							  <div class="modal fade" id="inputModal" role="dialog">
 							    <div class="modal-dialog" role="document">
@@ -267,7 +298,9 @@ function sortTable(n) {
 							      
 							    </div>
 							  </div>
-  							<!-- The Modal 수정/삭제 -->
+<!-------------------------- The Modal 새담당자등록 ------------------------->
+
+<!-------------------------- The Modal 수정/삭제 ---------------------------->
 								  <!-- Modal -->
   							  <div class="modal fade" id="inputModal2" role="dialog">
 							    <div class="modal-dialog" role="document">
@@ -276,7 +309,7 @@ function sortTable(n) {
 		 					      <div class="modal-content modal-lg">
 							        <div class="modal-header">
 							          <button type="button" class="close" data-dismiss="modal"></button>
-							          <h5><i class="fa fa-user icon"></i>등록</h5>
+							          <h5><i class="fa fa-user icon"></i>수정/삭제</h5>
 							        </div>
 							        <div class="modal-body">
 							        	 
@@ -314,9 +347,9 @@ function sortTable(n) {
 							   				<input id="use_yn" type="checkbox" name="use_yn" value="Y">
 							    		</div>
 							            <div class="modal-footer">
-							          		<button class="btn btn-primary btn-default pull-left">수정</button>
-							          		<button type="submit" class="btn btn-danger btn-default pull-left">삭제</button>
-							          		<button type="" class="btn btn-danger btn-default pull-left" data-dismiss="modal">취소</button>
+							          		<button class="btn btn-success btn-default pull-left">수정</button>
+							          		<button class="btn btn-danger btn-default pull-left">삭제</button>
+							          		<button type="" class="btn btn-primary  btn-default pull-left" data-dismiss="modal">취소</button>
 							        	</div>   
 							          </form>
 							        </div>
@@ -325,6 +358,7 @@ function sortTable(n) {
 							      
 							    </div>
 							  </div>
+<!-------------------------- The Modal 수정/삭제 끝---------------------------->
     					</div>
     					<div class="row">
     						<div class="col-sm-12">
@@ -363,14 +397,17 @@ function sortTable(n) {
 					                  			<tr role="row" class="even" style="text-align:center">
 					                  		</c:when>
 					                  	</c:choose>
-							                      <td><a href="#" data-toggle="modal">${chr.rownum}</a></td>
-							                      <td><a href="#" data-toggle="modal" id="charge_id">${chr.charge_id}</a></td>
-							                      <td><a href="#" data-toggle="modal" id="charge_nm">${chr.charge_nm}</a></td>
-							                      <td><a href="#" data-toggle="modal" id="company_name">${chr.company_name}</a></td>
-							                      <td><a href="#" data-toggle="modal" id="org_id">${chr.org_id}</a></td>
-							                      <td><a href="#" data-toggle="modal" id="position_nm">${chr.position_nm}</a></td>
-							                      <td><a href="#" data-toggle="modal" id="charge_phone">${chr.charge_phone}</a></td>
-							                      <td><a href="#" data-toggle="modal" id="charge_mail_1">${chr.charge_mail_1}</a></td>
+					                  		<tr class="rowClick" role="row" style="text-align:center">
+					                  			  
+							                      <td><input type="hidden" data-toggle="modal" class="idClick company_id" data-target="#inputModal2" data-id="company_id" value="${chr.company_id}">
+							                      <a href="#" data-toggle="modal" class="idClick rownum" data-target="#inputModal2" data-id="rownum">${chr.rownum}</a></td>
+							                      <td><a href="#" data-toggle="modal" class="idClick charge_id" data-target="#inputModal2" data-id="charge_id">${chr.charge_id}</a></td>
+							                      <td><a href="#" data-toggle="modal" class="idClick charge_nm" data-target="#inputModal2" data-id="charge_nm">${chr.charge_nm}</a></td>
+							                      <td><a href="#" data-toggle="modal" class="idClick company_name" data-target="#inputModal2" data-id="company_name">${chr.company_name}</a></td>
+							                      <td><a href="#" data-toggle="modal" class="idClick org_id" data-target="#inputModal2" data-id="org_id">${chr.org_id}</a></td>
+							                      <td><a href="#" data-toggle="modal" class="idClick position_nm" data-target="#inputModal2" data-id="position_nm">${chr.position_nm}</a></td>
+							                      <td><a href="#" data-toggle="modal" class="idClick charge_phone" data-target="#inputModal2" data-id="charge_phone">${chr.charge_phone}</a></td>
+							                       <td><a href="#" data-toggle="modal" class="idClick charge_mail_1 " data-target="#inputModal2" data-id="charge_mail_1">${chr.charge_mail_1}</a></td>
 							                      <%-- <td><a href="/Charge_p1?charge_id=${chr.charge_id}&company_id=${chr.company_id}">${chr.charge_mail_1}</a></td> --%>
 							           
 						                    </tr>

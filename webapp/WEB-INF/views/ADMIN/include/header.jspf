@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div id="title"><a class="title_logo" href="/StudentSubPage"><span>D</span>djy</a></div>
+<div id="title"><a class="title_logo" href="/"><span>D</span>djy</a></div>
     <div id="myPage">
        <img src="/img/subpage/profile_photo.jpg" id="profile_photo" />
        <span>ㅇㅇㅇ님</span>
