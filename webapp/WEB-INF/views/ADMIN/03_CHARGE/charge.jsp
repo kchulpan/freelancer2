@@ -42,7 +42,7 @@
 	
 	
 	<!-- modal -->
-<!-- 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" /> -->
 	
 	<script>
@@ -55,7 +55,7 @@
 <style>
 	
 	
-	.modal-backdrop {
+ 	.modal-backdrop {
 		display: none;
 
 	}
@@ -226,27 +226,31 @@ function sortTable(n) {
 							          <form role="form" action="/ChargeNewInsert" method="POST">
 							            <div class="form-group">
 							              <label for="charge_nm">담당자명</label>
-							              <input type="text" class="form-control" id="charge_nm" name="charge_nm" placeholder="아이디를 입력하세요">
+							              <input type="text" class="form-control" id="charge_nm" name="charge_nm" placeholder="담당자명을 입력하세요">
 							            </div>
 							            <div class="form-group">
-							              <label for="company_name">소속사</label>
-							              <input type="text" class="form-control" id="company_name" name="company_name" placeholder="이름을 입력하세요">
+							              <label for="charge_pwd">비밀번호</label>
+							              <input type="text" class="form-control" id="charge_pwd" name="charge_pwd" placeholder="비밀번호를 입력하세요">
+							            </div>
+							            <div class="form-group">
+							              <label for="company_name">회사코드</label>
+							              <input type="text" class="form-control" id="company_id" name="company_id" placeholder="예) COMP0000">
 							            </div>
 							            <div class="form-group">
 							              <label for="org_id">부서</label>
-							              <input type="text" class="form-control" id="org_id" name="org_id" placeholder="주소를 입력하세요">
+							              <input type="text" class="form-control" id="org_id" name="org_id" placeholder="부서를 입력하세요">
 							            </div>
 							            <div class="form-group">
 							              <label for="position_nm">직위</label>
-							              <input type="text" class="form-control" id="position_nm" name="position_nm" placeholder="상세주소를 입력하세요">
+							              <input type="text" class="form-control" id="position_nm" name="position_nm" placeholder="직위를 입력하세요">
 							            </div>
 							            <div class="form-group">
 							              <label for="charge_phone">연락처</label>
-							              <input type="text" class="form-control" id="charge_phone" name="charge_phone" placeholder="이력서 양식명을 입력하세요">
+							              <input type="text" class="form-control" id="charge_phone" name="charge_phone" placeholder="예) 010-1111-2222">
 							            </div>
 							            <div class="form-group">
 							              <label for="client_file_nm">이메일</label>
-							              <input type="text" class="form-control" id="client_file_nm" placeholder="이력서 양식명을 입력하세요">
+							              <input type="text" class="form-control" id="charge_mail_1" placeholder="이메일을 입력하세요">
 							            </div>
 							    		<div>
 							    			<label for="use_yn">사용유무</label>
@@ -254,7 +258,7 @@ function sortTable(n) {
 							    		</div>
 							            <div class="modal-footer">
 							          		<button type="submit" class="btn btn-primary btn-default pull-left" data-dismiss="modal">확인</button>
-							          		<button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">취소</button>
+							          		<button type="" class="btn btn-danger btn-default pull-left" data-dismiss="modal">취소</button>
 							        	</div>   
 							          </form>
 							        </div>
@@ -280,36 +284,37 @@ function sortTable(n) {
 							      <c:forEach var="chr2" items="${chargeList}">
 							            <div class="form-group">
 							              <label for="charge_nm">담당자명</label>
-							              <input type="text" class="form-control" id="charge_nm" name="charge_nm" value="${chr2.charge_nm}">
+							              <input type="text" class="form-control" id="charge_nm" name="charge_nm" value="a">
 							            </div>
 							            <div class="form-group">
 							              <label for="company_name">소속사</label>
-							              <input type="text" class="form-control" id="company_name" name="company_name" value="${chr2.company_name}">
+							              <input type="text" class="form-control" id="company_id" name="company_id" value="a">
 							            </div>
 							            <div class="form-group">
 							              <label for="org_id">부서</label>
-							              <input type="text" class="form-control" id="org_id" name="org_id" value="${chr2.org_id}">
+							              <input type="text" class="form-control" id="org_id" name="org_id" value="a">
 							            </div>
 							            <div class="form-group">
 							              <label for="position_nm">직위</label>
-							              <input type="text" class="form-control" id="position_nm" name="position_nm" value="${chr2.position_nm}">
+							              <input type="text" class="form-control" id="position_nm" name="position_nm" value="adsf">
 							            </div>
 							            <div class="form-group">
 							              <label for="charge_phone">연락처</label>
-							              <input type="text" class="form-control" id="charge_phone" name="charge_phone" value="${chr2.charge_phone}">
+							              <input type="text" class="form-control" id="charge_phone" name="charge_phone" value="afd">
 							            </div>
 							            <div class="form-group">
 							              <label for="client_file_nm">이메일</label>
-							              <input type="text" class="form-control" id="client_file_nm" value="${chr2.org_id}">
+							              <input type="text" class="form-control" id="charge_mail_1" name="charge_mail_1" value="adsf">
 							            </div>
 							    		<div>
 							    			<label for="use_yn">사용유무</label>
 							   				<input id="use_yn" type="checkbox" name="use_yn" value="Y">
 							    		</div>
-							      </c:forEach>
+							     </c:forEach>
 							            <div class="modal-footer">
 							          		<button type="submit" class="btn btn-primary btn-default pull-left" data-dismiss="modal">수정</button>
 							          		<button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">삭제</button>
+							          		<button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">취소</button>
 							        	</div>   
 							          </form>
 							        </div>
@@ -356,14 +361,14 @@ function sortTable(n) {
 					                  			<tr role="row" class="even" style="text-align:center">
 					                  		</c:when>
 					                  	</c:choose>
-							                      <td><a href="#inputModal2" data-toggle="modal">${chr.rownum}</a></td>
-							                      <td><a href="#inputModal2" data-toggle="modal">${chr.charge_id}</a></td>
-							                      <td><a href="#inputModal2" data-toggle="modal">${chr.charge_nm}</a></td>
-							                      <td><a href="#inputModal2" data-toggle="modal">${chr.company_name}</a></td>
-							                      <td><a href="#inputModal2" data-toggle="modal">${chr.org_id}</a></td>
-							                      <td><a href="#inputModal2" data-toggle="modal">${chr.position_nm}</a></td>
-							                      <td><a href="#inputModal2" data-toggle="modal">${chr.charge_phone}</a></td>
-							                      <td><a href="#inputModal2" data-toggle="modal">${chr.charge_mail_1}</a></td>
+							                      <td><a href="#" data-toggle="modal">${chr.rownum}</a></td>
+							                      <td><a href="#" data-toggle="modal" id="charge_id">${chr.charge_id}</a></td>
+							                      <td><a href="#" data-toggle="modal" id="charge_nm">${chr.charge_nm}</a></td>
+							                      <td><a href="#" data-toggle="modal" id="company_name">${chr.company_name}</a></td>
+							                      <td><a href="#" data-toggle="modal" id="org_id">${chr.org_id}</a></td>
+							                      <td><a href="#" data-toggle="modal" id="position_nm">${chr.position_nm}</a></td>
+							                      <td><a href="#" data-toggle="modal" id="charge_phone">${chr.charge_phone}</a></td>
+							                      <td><a href="#" data-toggle="modal" id="charge_mail_1">${chr.charge_mail_1}</a></td>
 							                      <%-- <td><a href="/Charge_p1?charge_id=${chr.charge_id}&company_id=${chr.company_id}">${chr.charge_mail_1}</a></td> --%>
 							           
 						                    </tr>
