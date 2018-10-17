@@ -15,7 +15,9 @@ public interface ClientListService {
 
 	void clientAdd(HashMap<String, Object> map);
 	
-
+	void clientUpdate(HashMap<String, Object> map);
 	
+	void clientDelete(HashMap<String, Object> map);
 	
+	/*void clientDelete(String client_id);*/
 }

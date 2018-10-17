@@ -13,4 +13,10 @@ public interface ClientListDao {
 
 	void clientAdd(HashMap<String, Object> map);
 
+	void clientUpdate(HashMap<String, Object> map);
+
+	/*void clientDelete(String client_id);*/
+
+	void clientDelete(HashMap<String, Object> map);
+
 }
