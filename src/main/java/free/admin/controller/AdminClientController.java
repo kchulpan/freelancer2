@@ -3,6 +3,7 @@ package free.admin.controller;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.print.attribute.HashPrintJobAttributeSet;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,7 @@ public class AdminClientController {
 		
 		ModelAndView mv = new ModelAndView();
 		List<ClientListVo> clientList = clientListService.clientList(map);
+		
 		mv.addObject("clientList", clientList);
 		mv.setViewName("ADMIN/04_CLIENT/client");
 		return mv;
@@ -43,6 +45,27 @@ public class AdminClientController {
 		return mv;
 		
 	}
+	
+	@RequestMapping("/ClientUpdate")
+	public String clientUpdate(@RequestParam HashMap<String, Object> map) {
+		System.out.println("업데이트" + map);
+		clientListService.clientUpdate(map);
+		return "redirect:/Client";
+		
+		
+	}
+	
+	@RequestMapping("/ClientDelete")
+	public String clientDelete(@RequestParam HashMap<String, Object> map) {
+		System.out.println("삭제"+map);
+		clientListService.clientDelete(map);
+		
+		return "redirect:/Client";
+		
+		
+		
+	}
+
 	
 	
 }

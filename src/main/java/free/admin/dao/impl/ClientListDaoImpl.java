@@ -30,8 +30,30 @@ public class ClientListDaoImpl implements ClientListDao {
 
 	@Override
 	public void clientAdd(HashMap<String, Object> map) {
+		
 		sqlSession.insert("Client.ClientInsert", map);
 		
 	}
+
+
+	@Override
+	public void clientUpdate(HashMap<String, Object> map) {
+		
+		sqlSession.update("Client.ClientUpdate", map);
+	}
+
+
+
+	@Override
+	public void clientDelete(HashMap<String, Object> map) {
+		
+		sqlSession.delete("Client.ClientDelete", map);
+		
+	}
+	
+	
+	
+	
+	
 
 }

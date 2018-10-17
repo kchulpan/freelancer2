@@ -35,6 +35,24 @@ public class ClientListServiceImpl implements ClientListService {
 		clientListDao.clientAdd(map);
 		
 	}
+
+
+	@Override
+	public void clientUpdate(HashMap<String, Object> map) {
+		
+		clientListDao.clientUpdate(map);
+		
+	}
+
+
+	@Override
+	public void clientDelete(HashMap<String, Object> map) {
+		
+		clientListDao.clientDelete(map);
+	}
+
+
+	
 			
 			
 		

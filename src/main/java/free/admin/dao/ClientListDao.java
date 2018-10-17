@@ -11,6 +11,10 @@ public interface ClientListDao {
 
 	List<ClientListVo> clientList(HashMap<String, Object> map);
 
-	void clientAdd(HashMap<String, Object> map);
+	public void clientAdd(HashMap<String, Object> map);
+
+	public void clientUpdate(HashMap<String, Object> map);
+
+	public void clientDelete(HashMap<String, Object> map);
 
 }
