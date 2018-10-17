@@ -4,6 +4,7 @@ public class ChargeListVo
 {
 	private int rownum;
 	private String charge_id;
+	private String charge_pwd;
 	private String charge_nm;
 	private String company_id;
 	private String company_name;
@@ -13,6 +14,17 @@ public class ChargeListVo
 	private String charge_mail_1;
 	private String use_yn;
 	
+	
+	public String getCharge_pwd() {
+		return charge_pwd;
+	}
+
+
+	public void setCharge_pwd(String charge_pwd) {
+		this.charge_pwd = charge_pwd;
+	}
+
+
 	public String getUse_yn() {
 		return use_yn;
 	}
