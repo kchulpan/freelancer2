@@ -57,9 +57,9 @@ public class AdminProjectController {
 	}
 	/*새 프로젝트 등록*/
 	@RequestMapping("/ProjectNewInsert")
-	public String ProjectNewInsert(ProjectListVo vo)
+	public String ProjectNewInsert(@RequestParam HashMap<String,Object> map)
 	{
-		/*projectListService.projectAdd(vo);*/
+		projectListService.ProjectNewInsert(map);
 		return "redirect:/Project";
 	}
 }

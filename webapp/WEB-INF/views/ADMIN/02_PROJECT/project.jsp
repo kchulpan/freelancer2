@@ -161,7 +161,7 @@ function sortTable(n) {
     					<div class="row">		
     						<div class="col-sm-12 col-md-11">
 	    						<div id="dataTable_filter" class="dataTables_filter">
-	    							<label>Search:
+	    							<label>프로젝트명:
 	    								<input type="text" class="form-control form-control-sm" placeholder="프로젝트명을 입력하세요" aria-controls="dataTable" id="myInput" onkeyup="myFunction()">
 	    							</label>
 	    						</div>
@@ -169,7 +169,7 @@ function sortTable(n) {
     						<div class="col-sm-12 col-md-1">	
     							<button type="button" class="btn btn-primary btn-sm" id="myBtn" data-toggle="modal" data-target="#inputModal">등록</button>
     							
-    							<!-- The Modal -->
+     							<!-- The Modal 새프로젝트등록-->
 								  <!-- Modal -->
 							  <div class="modal fade" id="inputModal" role="dialog">
 							    <div class="modal-dialog" role="document">
@@ -234,6 +234,10 @@ function sortTable(n) {
 										    	<option vlaue="김장현">김장현</option>
 										    </select>
 										    </div>
+										    <div>
+							    			<label for="use_yn">사용유무</label>
+							   				<input id="use_yn" type="checkbox" name="use_yn" value="Y">
+							    		    </div>										    
 							            <div class="modal-footer">
 							          		<button type="submit" class="btn btn-primary btn-default pull-left" data-dismiss="modal">확인</button>
 							          		<button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">취소</button>
@@ -242,14 +246,94 @@ function sortTable(n) {
 							        </div>
 							        
 							      </div>
+    						</div>
+    					</div> 
+    					<!-- The Modal 수정/삭제 -->
+								  <!-- Modal -->
+  							  <div class="modal fade" id="inputModal2" role="dialog">
+							    <div class="modal-dialog" role="document">
+							    
+							      <!-- Modal content-->
+		 					      <div class="modal-content modal-lg">
+							        <div class="modal-header">
+							          <button type="button" class="close" data-dismiss="modal"></button>
+							          <h5><i class="fa fa-user icon"></i>등록</h5>
+							        </div>
+							        <div class="modal-body">
+							        
+							          <form role="form" action="/ProjectNewInsert" method="POST">
+							          <c:forEach var="proj2" items="${projectList}">
+							            <div class="form-group">
+							              <label for="proj_id">프로젝트 코드</label>
+							              <input type="text" class="form-control" id="proj_id" placeholder="자동생성" readonly>
+							            </div>
+							            <div class="form-group">
+							              <label for="proj_nm">프로젝트명</label>
+							              <input type="text" class="form-control" id="proj_nm" name="proj_nm" value="${proj2.proj_nm}" placeholder="프로젝트 이름을 입력하세요">
+							              
+							            </div>
+							            <div class="form-group">
+							              <label for="proj_date">프로젝트 기간</label>
+							             <div><input type="text" class="form-control" id="proj_str_date"  name="proj_str_date" value="${proj2.proj_str_date}" style="width:48%; float:left;" placeholder="시작일을 입력하세요">
+							              <input type="text" class="form-control" id="proj_end_date" name="proj_end_date" value="${proj2.proj_end_date}" style="width:48%; float:right;" placeholder="종료일을 입력하세요"></div>
+							            </div>
+							            <div class="form-group">
+							              <label for="client_id">고객사</label>
+							              <input type="text" class="form-control" id="client_id" name="client_id" value="${proj2.client_id}"placeholder="고객사를 입력하세요">
+							            </div>
+							            <div class="form-group">
+							              <label for="involve_num">투여인원</label>
+							              <input type="text" class="form-control" id="involve_num" name="involve_num" value="${proj2.involve_num}" placeholder="투여인원을 입력하세요">
+							            </div>
+							            <div class="form-group">
+							              <label for="field"> 해당분야</label>
+							              	   <div> <select class="form-control" id="field_1" name="field_1" value="${proj2.field_1}"style="width:46%; float:left; margin-left:10px;" placeholder="해당 분야 대분류를 입력하세요">
+	    											<option>1</option>
+	   											 </select>
+							              	    <select class="form-control" id="field_2" name="field_2" value="${proj2.field_2 }" style="width:46%; float:right; margin-right:10px;" placeholder="해당 분야 소분류를 입력하세요">
+	    											<option>1</option>
+	   											 </select></div>
+							            </div>
+							            <div class="form-group">
+											 <label for="note">비고</label>
+										    <input type="text" class="form-control" id="note" value=" ${proj2.note}">
+										  </div> 
+										  <div class="form-group">
+										    <label for="remark">상세내용</label>
+										    <textarea class="form-control" id="remark">${proj2.remark}</textarea>
+										  </div> 
+										    <div class="form-group">
+											<label for="need_tech">필요기술</label>
+										    <textarea class="form-control" id="need_tech"  >${proj2.need_tech}</textarea>
+										   </div>  
+										   <div class="form-group">
+											<label for="charge_nm">담당자</label>
+										    <select class="form-control" id="charge_nm" name="charge_nm" value=" ${proj2.charge_nm}">
+										    	<option name="선택" vlaue="선택">선택</option>
+										    	<option name="허태훈" vlaue="허태훈">허태훈</option>
+										    	<option name="이지완" vlaue="이지완">이지완</option>
+										    	<option name="김장현" vlaue="김장현">김장현</option>
+										    </select>
+										    </div>
+										    <div>
+										   		<label for="use_yn">사용유무</label>
+							   					<input id="use_yn" type="checkbox" name="use_yn" value="Y">
+										    </div>
+							            <div class="modal-footer">
+							          		<button type="submit" class="btn btn-primary btn-default pull-left" data-dismiss="modal">확인</button>
+							          		<button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">취소</button>
+							        	</div>   
+									 </c:forEach>
+							          </form>
+							          </div>
+							        </div>
+							        
+							      </div>
 							      
 							    </div>
 							  </div>
-							 
-							  
-							  	
     						</div>
-    					</div>
+    					
     					<div class="row">
     						<div class="col-sm-12">
     						<table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
@@ -269,7 +353,7 @@ function sortTable(n) {
                   				</thead>
                   				<tfoot>
                     				<tr role="row" style="text-align: center; font-size: 13px;">
-					                    <th onclick="sortTable(0)" rowspan="1" colspan="1" "style="width:10px;">순번</th>
+					                    <th onclick="sortTable(0)" rowspan="1" colspan="1">순번</th>
 					                    <th onclick="sortTable(1)" rowspan="1" colspan="1">프로젝트명</th>
 					                    <th onclick="sortTable(2)" rowspan="1" colspan="1">프로젝트시작일</th>
 					                    <th onclick="sortTable(3)" rowspan="1" colspan="1">프로젝트종료일</th>
@@ -281,22 +365,29 @@ function sortTable(n) {
 					                    <th onclick="sortTable(9)" rowspan="1" colspan="1">상세내용</th>
                     				</tr>
                   				</tfoot>
-                  				 <c:forEach var="proj" items="${projectList}"> 
                   				<tbody>
-				                  	<tr role="row" class="odd" style="text-align: center; font-size: 13px;">
-				     
-				                      <td><a href="/Project_p1?proj_id=${proj.proj_id}">${proj.rownum}</a></td>
-				                   	  <td><a href="/Project_p1?proj_id=${proj.proj_id}">${proj.proj_nm}</a></td> 
-				                      <td><a href="/Project_p1?proj_id=${proj.proj_id}">${proj.proj_str_date}</a></td>
-				                      <td><a href="/Project_p1?proj_id=${proj.proj_id}">${proj.proj_end_date}</a></td>
-				                      <td><a href="/Project_p1?proj_id=${proj.proj_id}">${proj.client_id}</a></td>
-				                      <td><a href="/Project_p1?proj_id=${proj.proj_id}">${proj.need_tech}</a></td>
-				                      <td><a href="/Project_p1?proj_id=${proj.proj_id}">${proj.field_1}</a></td>
-				                      <td><a href="/Project_p1?proj_id=${proj.proj_id}">${proj.involve_num}</a></td>
-				                      <td><a href="/Project_p1?proj_id=${proj.proj_id}">${proj.charge_nm}</a></td>
-				                      <td><a href="/Project_p1?proj_id=${proj.proj_id}"><%-- ${proj.remark} --%>상세내용</a></td> 
-		                  		</tbody>
+                  					 <c:forEach var="proj" items="${projectList}" varStatus="status"> 
+				                  		<c:choose>
+				                  			<c:when test="${(status.index)%2 eq 1}">
+					                  	 	<tr role="row" class="odd" style="text-align:center">
+					                  		</c:when>
+					                  		<c:when test="${(status.index)%2 eq 0}">
+					                  			<tr role="row" class="even" style="text-align:center">
+					                  		</c:when>
+				                  		</c:choose>
+				                      <td><a href="#inputModal2" data-toggle="modal">${proj.rownum}</a></td>
+				                   	  <td><a href="#inputModal2" data-toggle="modal">${proj.proj_nm}</a></td> 
+				                      <td><a href="#inputModal2" data-toggle="modal">${proj.proj_str_date}</a></td>
+				                      <td><a href="#inputModal2" data-toggle="modal">${proj.proj_end_date}</a></td>
+				                      <td><a href="#inputModal2" data-toggle="modal">${proj.client_id}</a></td>
+				                      <td><a href="#inputModal2" data-toggle="modal">${proj.need_tech}</a></td>
+				                      <td><a href="#inputModal2" data-toggle="modal">${proj.field_1}</a></td>
+				                      <td><a href="#inputModal2" data-toggle="modal">${proj.involve_num}</a></td>
+				                      <td><a href="#inputModal2" data-toggle="modal">${proj.charge_nm}</a></td>
+				                      <td><a href="#inputModal2" data-toggle="modal">상세내용</a></td> 
+				                      <tr>
 		                  		</c:forEach>
+		                  		</tbody>
                 			</table>
               			</div>
            			</div>
@@ -305,14 +396,12 @@ function sortTable(n) {
    		 </div> 			
  	 </div> 	
    </div>
+   </div>
    <!-- 테이블내용 끝 -->
-    	
-      
   </article>
-  
   </div>
-  
 </div>
+
 </body>
 
 </html>
