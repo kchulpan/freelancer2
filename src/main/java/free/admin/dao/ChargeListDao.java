@@ -12,4 +12,8 @@ public interface ChargeListDao
 
 	public List<ChargeListVo> chargeDetail(HashMap<String, Object> map);
 
+	public void chargeUpdate(HashMap<String, Object> map);
+
+	public void ChargeNewInsert(HashMap<String, Object> map);
+
 }

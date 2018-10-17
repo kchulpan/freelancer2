@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import free.admin.service.ProjectListService;
-import free.admin.vo.ChargeListVo;
 import free.admin.vo.ProjectListVo;
 
 @Controller
@@ -42,5 +41,25 @@ public class AdminProjectController {
 		mav.setViewName("ADMIN/02_PROJECT/project_p1");
 		return mav;
 	
+	}
+	/*프로젝트 상세 수정후 리스트로 redirect*/
+	@RequestMapping("/ProjectUpdate")
+	public String ProjectUpdate(@RequestParam HashMap<String,Object> map)
+	{
+		projectListService.projectUpdate(map);
+		return "redirect:/Project";
+	}
+	/*새 프로젝트 등록 페이지로 이동*/
+	@RequestMapping("/ProjectNewReg")
+	public String ProjectNewReg()
+	{
+		return "ADMIN/02_Project/project_p2";
+	}
+	/*새 프로젝트 등록*/
+	@RequestMapping("/ProjectNewInsert")
+	public String ProjectNewInsert(@RequestParam HashMap<String,Object> map)
+	{
+		projectListService.ProjectNewInsert(map);
+		return "redirect:/Project";
 	}
 }

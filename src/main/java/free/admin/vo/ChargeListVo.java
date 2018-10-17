@@ -4,12 +4,47 @@ public class ChargeListVo
 {
 	private int rownum;
 	private String charge_id;
+	private String charge_pwd;
 	private String charge_nm;
+	private String company_id;
 	private String company_name;
 	private String org_id;
 	private String position_nm;
 	private String charge_phone;
 	private String charge_mail_1;
+	private String use_yn;
+	
+	
+	public String getCharge_pwd() {
+		return charge_pwd;
+	}
+
+
+	public void setCharge_pwd(String charge_pwd) {
+		this.charge_pwd = charge_pwd;
+	}
+
+
+	public String getUse_yn() {
+		return use_yn;
+	}
+
+
+	public void setUse_yn(String use_yn) {
+		this.use_yn = use_yn;
+	}
+
+
+	public String getCompany_id() {
+		return company_id;
+	}
+
+
+	public void setCompany_id(String company_id) {
+		this.company_id = company_id;
+	}
+
+
 
 	public int getRownum() {
 		return rownum;
@@ -94,10 +129,9 @@ public class ChargeListVo
 	@Override
 	public String toString() {
 		return "ChargeListVo [rownum=" + rownum + ", charge_id=" + charge_id + ", charge_nm=" + charge_nm
-				+ ", company_name=" + company_name + ", org_id=" + org_id + ", position_nm=" + position_nm
-				+ ", charge_phone=" + charge_phone + ", charge_mail_1=" + charge_mail_1 + "]";
+				+ ", company_id=" + company_id + ", company_name=" + company_name + ", org_id=" + org_id
+				+ ", position_nm=" + position_nm + ", charge_phone=" + charge_phone + ", charge_mail_1=" + charge_mail_1
+				+ "]";
 	}
-	
-	
 }
 

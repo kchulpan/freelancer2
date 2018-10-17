@@ -5,8 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DDJY University</title>
+<title>새로운 담당자 등록</title>
 <!-- 테이블관련 CSS/JS 시작 -->
 	
 	<!-- Bootstrap core CSS-->
@@ -29,7 +28,13 @@
   	<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 	
 	<!-- 테이블관련 CSS/JS 끝 -->
-<link rel="stylesheet" type="text/css" href="/css/project/project_p1.css"/>
+<style>
+	.column{
+		float:left;
+		font-size:16px;
+	}
+
+</style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 	<!-- css -->
@@ -40,8 +45,8 @@
 	<script src="js/include/subpage.js"></script>
 	<script>
 	$(document).ready(function(){
-		$('#project').addClass('top_menu_active');
-		$('#project').find('i').addClass('menu_icon_active');
+		$('#charge').addClass('top_menu_active');
+		$('#charge').find('i').addClass('menu_icon_active');
 	});
 	</script>
 <script>
@@ -72,65 +77,55 @@
     </div>
     	
     <div class="sections">
-        <div class="card mb-3">
+       	<div class="card mb-3">
    		<div class="card-header">
    			<i class="fas fa-fw fa-users"></i>
-	 프로젝트 등록 및 수정
-   		</div>
-   	
-    <!-- 내용넣기! -->
-    	<div class="code">
-    	<form action="/ProjectUpdate" method="GET" >
-    		<c:forEach var="projDtl" items="${projectDetail}">	
-		   		<input type="hidden" name="charge_id" value="${projDtl.charge_id}" />
-	 		<div>프로젝트 코드:
-	    		<input type="text" size=30 name="proj_id" value="${projDtl.proj_id}" readonly>
-	    	</div>
-	    	<div>프로젝트명:
-	   			<input type="text" size=30 name="proj_nm" value="${projDtl.proj_nm}">
-	    	</div>
-	    	<div>프로젝트 기간:
-	   			<input type="text" size=15 name="proj_str_date" value="${projDtl.proj_str_date}">~
-	   			<input type="text" size=15 name="proj_end_date" value="${projDtl.proj_end_date}"> 	
-	    	</div>
-	    	<div>고객사:
-   				<input type="text" size=30 name="client_id" value="${projDtl.client_id}">
-	   		</div>
-	    	<div>투여인원:
-  				<input type="text" size=30 name="involve_num" value="${projDtl.involve_num}">
-	   		</div>
-	    	<div>해당분야:
-  				<input type="text" size=15 name="field_1" value=" ${projDtl.field_1}">
-   				<input type="text" size=15 name="field_2" value=" ${projDtl.field_2}">
-	   		</div>
-	    	<div>비고:
-	   			<input type="text" size=30 name="note" value=" ${projDtl.note}">
-	   		</div>
-	    	<div>상세내용:
-	   			<input type="text" size=30 name="remark" value=" ${projDtl.remark}">
-	   		</div>
-	    	<div>필요기술:
-	   			<input type="text" size=30 name="need_tech" value=" ${projDtl.need_tech}">
-	   		</div>
-	   		<div>담당자:
-  				<input type="text" size=30 name="charge_nm" value=" ${projDtl.charge_nm}">
+    			새 담당자 등록
     		</div>
-	   		<div>사용유무:
-				<input id="use_yn" type="checkbox" name="use_yn" value="Y">
-	   		</div>
-	    <button type="submit" align="middle">확인</button>
-	  </c:forEach>
-	</form>
-	 </div>
-	</div>
-	
-   </div>
+    	<div>
+    	<form action="/ChargeNewInsert" method="GET">
+	    		<div>담당자 이름:
+	   				<input type="text" size=30 name="charge_nm" placeholder="이름을입력하세요">
+	    		</div>
+	    		<div>소속회사:
+	   				<input type="text" size=30 name="company_name" placeholder="회사명을입력하세요">
+	    		</div>
+	    		<div>소속부서:
+	   				<input type="text" size=30 name="org_id" placeholder="부서를입력하세요">
+	    		</div>
+	    		<div>직위:
+	   				<input type="text" size=30 name="position_nm" placeholder="예:과장, 팀장, 부장">
+	    		</div>
+	    		<div>연락처:
+	   				<input type="text" size=30 name="charge_phone" placeholder="예:010-1111-2222">
+	    		</div>
+	    		<div>이메일:
+	   				<input type="text" size=30 name="charge_mail_1" placeholder="이메일을 입력하세요">
+	    		</div>
+	    		<div>사용유무:
+	   				<input id="use_yn" type="checkbox" name="use_yn" value="Y">
+	    		</div>
+    		<div align="middle">
+	    		<button>확인</button>
+    		</div>
+    	</form>
+    		
+    	</div>
+    </div>
       
   </article>
   
   </div>
   
 </div>
+<script>
+	/*  $(function(){
+		$('nav').on('click','a',function(e){
+			//alert('plus clicked');
+			 e.preventDefault(); + e.stopPropagation();
+		});
+	}); */ 
+</script>
 </body>
 
 </html>

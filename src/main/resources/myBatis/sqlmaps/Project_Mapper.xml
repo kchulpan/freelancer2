@@ -12,28 +12,39 @@
       <result property="proj_str_date"     column="PROJ_STR_DATE" javaType="string" />
       <result property="proj_end_date"     column="PROJ_END_DATE" javaType="string" />
       <result property="client_id"         column="CLIENT_ID"     javaType="string" />
+      <result property="client_nm"         column="CLIENT_NM"     javaType="string" />
       <result property="need_tech"         column="NEED_TECH"     javaType="String" />
       <result property="field_1"           column="FIELD_1"       javaType="String" />
+      <result property="field_2"           column="FIELD_1"       javaType="String" />
       <result property="involve_num"       column="INVOLVE_NUM"   javaType="string" />
+      <result property="charge_id"         column="CHARGE_id"     javaType="String" />    
       <result property="charge_nm"         column="CHARGE_NM"     javaType="String" />    
       <result property="remark"            column="REMARK"        javaType="String" />    
+      <result property="use_yn"            column="USE_YN"        javaType="String" />    
     </resultMap> 	
   
-  <!--   	<insert id="BoardInsert"
-  			statementType="CALLABLE"
-  			parameterType="">
-		{CALL PKG_BOARD.PROC_BOARD_INSERT(
-		#{menu_id, mode=IN, jdbcType=VARCHAR},
-		#{title,   mode=IN, jdbcType=VARCHAR},
-		#{cont,    mode=IN, jdbcType=VARCHAR},
-		#{writer,  mode=IN, jdbcType=VARCHAR},
-		#{bnum,    mode=IN, jdbcType=INTEGER},
-		#{lvl,     mode=IN, jdbcType=INTEGER},
-		#{step,    mode=IN, jdbcType=INTEGER},
-		#{nref,    mode=IN, jdbcType=INTEGER}
-		)}
-  	</insert>
-  	-->
+		 <insert id="ProjectInsert"
+				statementType="CALLABLE">
+			{CALL PKG_PROJECT.PROC_PROJECT_INSERT(
+			#{proj_nm, mode=IN, jdbcType=VARCHAR},
+			#{proj_str_date, mode=IN, jdbcType=VARCHAR},
+        	#{proj_end_date, mode= IN, jdbcType=VARCHAR},
+        	#{client_id, mode=IN, jdbcType=VARCHAR},
+		    #{client_nm, mode=IN, jdbcType=VARCHAR},
+		    #{involve_num, mode=IN, jdbcType=VARCHAR},
+		    #{field_1, mode=IN, jdbcType=VARCHAR},
+		    #{field_2, mode=IN, jdbcType=VARCHAR},
+		    #{remark, mode=IN, jdbcType=VARCHAR},
+		    #{need_tech, mode=IN, jdbcType=VARCHAR},
+		    #{charge_nm, mode=IN, jdbcType=VARCHAR},
+		    #{use_yn, mode=IN, jdbcType=VARCHAR},
+		    #{charge_id, mode=IN, jdbcType=VARCHAR}
+			)}
+		
+		
+		
+		</insert>
+		  	 
   	
    	<select id="ProjectList"
   			statementType="CALLABLE"
@@ -48,10 +59,28 @@
   			parameterType= "hashmap"
   			resultType="free.admin.vo.ProjectListVo">
 		{CALL PKG_PROJECT.PROC_PROJECT_DETAIL(
-		#{charge_id, mode=IN, jdbcType=VARCHAR},
+		#{proj_id, mode=IN, jdbcType=VARCHAR},
 		#{result,  mode=OUT, jdbcType=CURSOR, javaType=RESULTSET, resultMap=ProjectListMap}
 		)}
   	</select>
+  	
+  	  	<update id="ProjectUpdate" statementType="CALLABLE">
+  		{CALL PKG_PROJECT.PROC_PRJECT_UPDATE(
+  		#{proj_id, mode=IN, jdbcType=VARCHAR},
+  		#{charge_id, mode=IN, jdbcType=VARCHAR},
+  		#{proj_nm, mode=IN, jdbcType=VARCHAR},
+  		#{proj_str_date, mode=IN, jdbcType=VARCHAR},
+  		#{proj_end_date, mode=IN, jdbcType=VARCHAR},
+  		#{client_nm, mode=IN, jdbcType=VARCHAR},
+  		#{involv_num, mode=IN, jdbcType=VARCHAR},
+  		#{field_1, mode=IN, jdbcType=VARCHAR},
+  		#{field_2, mode=IN, jdbcType=VARCHAR},
+  		#{remark, mode=IN, jdbcType=VARCHAR},
+  		#{need_tech, mode=IN, jdbcType=VARCHAR},
+  		#{charge_nm, mode=IN, jdbcType=VARCHAR},
+  		#{use_yn, mode=IN, jdbcType=VARCHAR}
+  		)}
+  	</update>
   	<!--
   	<select id="BoardContent"
   			statementType="CALLABLE"

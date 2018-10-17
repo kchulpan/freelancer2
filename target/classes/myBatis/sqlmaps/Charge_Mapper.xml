@@ -8,28 +8,17 @@
    	<resultMap id="ChargeListMap" type="free.admin.vo.ChargeListVo">
   		<result property="rownum"		 column="ROWNUM" 		javaType="int"/>
   		<result property="charge_id"	 column="CHARGE_ID" 	javaType="string"/>
+  		<result property="charge_pwd"	 column="CHARGE_PWD" 	javaType="string"/>
   		<result property="charge_nm"	 column="CHARGE_NM" 	javaType="string"/>
+  		<result property="company_id"	 column="COMPANY_ID" 	javaType="string"/>
   		<result property="company_name"	 column="company_name" 	javaType="string"/>
   		<result property="org_id"	 	 column="org_id" 		javaType="string"/>
   		<result property="position_nm"	 column="position_nm"   javaType="string"/>
   		<result property="charge_phone"  column="charge_phone" 	javaType="string"/>
   		<result property="charge_mail_1" column="charge_mail_1"	javaType="string"/>
+  		<result property="use_yn" 		 column="USE_YN"		javaType="string"/>
   	</resultMap>
   
-<!--    	<insert id="BoardInsert"
-  			statementType="CALLABLE"
-  			parameterType="">
-		{CALL PKG_BOARD.PROC_BOARD_INSERT(
-		#{menu_id, mode=IN, jdbcType=VARCHAR},
-		#{title,   mode=IN, jdbcType=VARCHAR},
-		#{cont,    mode=IN, jdbcType=VARCHAR},
-		#{writer,  mode=IN, jdbcType=VARCHAR},
-		#{bnum,    mode=IN, jdbcType=INTEGER},
-		#{lvl,     mode=IN, jdbcType=INTEGER},
-		#{step,    mode=IN, jdbcType=INTEGER},
-		#{nref,    mode=IN, jdbcType=INTEGER}
-		)}
-  	</insert> -->
   	
    	<select id="ChargeList"
   			statementType="CALLABLE"
@@ -49,6 +38,35 @@
 		#{result,  mode=OUT, jdbcType=CURSOR, javaType=RESULTSET, resultMap=ChargeListMap}
 		)}
   	</select>
+  	
+  	<update id="ChargeUpdate" statementType="CALLABLE">
+  		{CALL PKG_CHARGE.PROC_CHARGE_UPDATE(
+		#{company_id, mode=IN, jdbcType=VARCHAR},
+		#{charge_id, mode=IN, jdbcType=VARCHAR},
+		#{charge_nm, mode=IN, jdbcType=VARCHAR},
+		#{company_name, mode=IN, jdbcType=VARCHAR},
+		#{org_id, mode=IN, jdbcType=VARCHAR},
+		#{position_nm, mode=IN, jdbcType=VARCHAR},
+		#{charge_phone, mode=IN, jdbcType=VARCHAR},
+		#{charge_mail_1, mode=IN, jdbcType=VARCHAR},
+		#{use_yn, mode=IN, jdbcType=VARCHAR}
+		)}
+  	</update>
+  	
+  	<insert id="ChargeInsert"
+  			statementType="CALLABLE">
+		{CALL PKG_CHARGE.PROC_CHARGE_INSERT(
+		#{charge_nm, mode=IN, jdbcType=VARCHAR},
+		#{charge_pwd, mode=IN, jdbcType=VARCHAR},
+		#{company_id,   mode=IN, jdbcType=VARCHAR},
+		#{org_id,    mode=IN, jdbcType=VARCHAR},
+		#{position_nm,  mode=IN, jdbcType=VARCHAR},
+		#{charge_phone,    mode=IN, jdbcType=INTEGER},
+		#{charge_mail_1,     mode=IN, jdbcType=INTEGER},
+		#{use_yn,    mode=IN, jdbcType=VARCHAR}
+		)}
+  	</insert>
+  	
   	<!--
   	<select id="BoardContent"
   			statementType="CALLABLE"
@@ -68,12 +86,5 @@
 		#{idx, mode=IN,  jdbcType=INTEGER}
 		)}
   	</delete>
-  	
-  	<update id="BoardUpdate" statementType="CALLABLE">
-  		{CALL PKG_BOARD.PROC_BOARD_UPDATE(
-		#{idx, mode=IN,  jdbcType=INTEGER},
-		#{title, mode=IN,  jdbcType=VARCHAR},
-		#{cont, mode=IN,  jdbcType=VARCHAR}
-		)}
-  	</update> -->
+  	-->
   </mapper>

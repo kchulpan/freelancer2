@@ -41,4 +41,26 @@ public class AdminChargeController {
 		mav.setViewName("ADMIN/03_CHARGE/charge_p1");
 		return mav;
 	}
+	/*담당자 상세 수정후 리스트로 redirect*/
+	@RequestMapping("/ChargeUpdate")
+	public String chargeUpdate(@RequestParam HashMap<String,Object> map)
+	{
+		chargeListService.chargeUpdate(map);
+		return "redirect:/Charge";
+	}
+/*	새 담당자 등록 페이지로 이동
+	@RequestMapping("/ChargeNewReg")
+	public String ChargeNewReg()
+	{
+		return "ADMIN/03_CHARGE/charge_p2";
+	} 팝업으로 변경*/
+	
+	
+	/*새 담당자 등록*/
+	@RequestMapping("/ChargeNewInsert")
+	public String ChargeNewInsert(@RequestParam HashMap<String,Object> map)
+	{
+		chargeListService.ChargeNewInsert(map);
+		return "redirect:/Charge";
+	}
 }

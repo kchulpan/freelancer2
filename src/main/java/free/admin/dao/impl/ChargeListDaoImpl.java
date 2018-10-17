@@ -15,7 +15,7 @@ public class ChargeListDaoImpl implements ChargeListDao
 {
 	@Autowired
 	SqlSession sqlSession;
-
+	//담당자 리스트 조회
 	@Override
 	public List<ChargeListVo> chargeList(HashMap<String,Object> map) 
 	{
@@ -24,13 +24,26 @@ public class ChargeListDaoImpl implements ChargeListDao
 		List<ChargeListVo>  chargeList = (List<ChargeListVo>)map.get("result");
 		return chargeList;
 	}
-
+	//담당자 상세조회
 	@Override
 	public List<ChargeListVo> chargeDetail(HashMap<String, Object> map) 
 	{
-		sqlSession.selectList("Charge.ChargeDetail", map);
+		sqlSession.selectOne("Charge.ChargeDetail", map);
 		List<ChargeListVo>  chargeDetail = (List<ChargeListVo>)map.get("result");
 		return chargeDetail;
+	}
+	
+	//담당자 데이터 수정
+	@Override
+	public void chargeUpdate(HashMap<String, Object> map) {
+		sqlSession.update("Charge.ChargeUpdate", map);
+	}
+	
+	//새 담당자 입력
+	@Override
+	public void ChargeNewInsert(HashMap<String, Object> map) 
+	{
+		sqlSession.insert("Charge.ChargeInsert", map);
 	}
 
 }
