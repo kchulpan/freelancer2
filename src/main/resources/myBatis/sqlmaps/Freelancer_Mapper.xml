@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+  <mapper namespace="Freelancer">
+  	<!-- 결과담을 Map 작성 -->
+  	<!-- 프리랜서 기본정보 리스트 -->
+   	<resultMap id="FreelancerListMap" type="free.admin.vo.FreelancerListVo">
+  		<result property="freeln_id"			column="FREELN_ID" 				javaType="string"/>
+  		<result property="freeln_nm"	 		column="FREELN_NM" 				javaType="string"/>
+  		<result property="freeln_phone"		 	column="FREELN_PHONE" 			javaType="string"/>
+  		<result property="freeln_tel"	 		column="FREELN_TEL" 			javaType="string"/>
+  		<result property="freen_mail"	 	 	column="FREEN_MAIL" 			javaType="string"/>
+  		<result property="freen_addr_1"	 		column="FREEN_ADDR_1"   		javaType="string"/>
+  		<result property="freen_addr_2"  		column="FREEN_ADDR_2" 			javaType="string"/>
+  		<result property="hope_place" 			column="HOPE_PLACE"				javaType="string"/>
+  		<result property="hope_money" 			column="HOPE_MONEY"				javaType="string"/>
+  		<result property="hope_call_str_time" 	column="HOPE_CALL_STR_TIME"		javaType="string"/>
+  		<result property="hope_call_end_time" 	column="HOPE_CALL_END_TIME"		javaType="string"/>
+  		<result property="major_tech" 		  	column="MAJOR_TECH"				javaType="string"/>
+  		<result property="note" 			  	column="NOTE"					javaType="string"/>
+  		<result property="img_nm" 			  	column="IMG_NM"					javaType="string"/>
+  		<result property="in_enable_date" 	  	column="IN_ENABLE_DATE"			javaType="string"/>
+  		<result property="insert_id" 		  	column="INSERT_ID"				javaType="string"/>
+  		<result property="insert_date" 			column="INSERT_DATE"			javaType="string"/>
+  		<result property="update_id" 			column="UPDATE_ID"				javaType="string"/>
+  		<result property="update_date" 			column="UPDATE_DATE"			javaType="string"/>
+  		<result property="career_year" 			column="CAREER_YEAR"			javaType="string"/>
+  	</resultMap>
+  	
+  	<!-- 프리랜서 경력정보 리스트 -->
+   	<resultMap id="FreelancerCareerMap" type="free.admin.vo.FreelancerCareerVo">
+  		<result property="freeln_id"			column="FREELN_ID" 				javaType="string"/>
+  		<result property="freeln_nm"	 		column="FREELN_NM" 				javaType="string"/>
+  		<result property="freeln_phone"		 	column="FREELN_PHONE" 			javaType="string"/>
+  		<result property="career_num"		 	column="career_num" 			javaType="int"/>
+  		<result property="client_nm"	 		column="client_nm" 				javaType="string"/>
+  		<result property="client_loca_1"	 	column="client_loca_1" 			javaType="string"/>
+  		<result property="client_loca_2"	 	column="client_loca_2"   		javaType="string"/>
+  		<result property="duty"  				column="duty" 					javaType="string"/>
+  		<result property="task" 				column="task"					javaType="string"/>
+  		<result property="work_str_date" 		column="work_str_date"			javaType="string"/>
+  		<result property="work_end_date" 		column="work_end_date"			javaType="string"/>
+  		<result property="contents" 			column="contents"				javaType="string"/>
+  		<result property="use_tech_1" 		  	column="use_tech_1"				javaType="string"/>
+  		<result property="use_tech_2" 			column="use_tech_2"				javaType="string"/>
+  		<result property="work_money" 			column="work_money"				javaType="string"/>
+  		<result property="insert_id" 	  		column="insert_id"				javaType="string"/>
+  		<result property="insert_date" 		  	column="insert_date"			javaType="string"/>
+  		<result property="update_id" 			column="update_id"				javaType="string"/>
+  		<result property="update_date" 			column="update_date"			javaType="string"/>
+  	</resultMap>
+  	
+  	<!-- 프리랜서 통화내역 리스트 -->
+   	<resultMap id="FreelancerCallMap" type="free.admin.vo.FreelancerCallVo">
+  		<result property="charge_id"			column="CHARGE_ID" 				javaType="string"/>
+  		<result property="charge_nm"	 		column="CHARGE_NM" 				javaType="string"/>
+  		<result property="freeln_id"		 	column="FREELN_ID" 				javaType="string"/>
+  		<result property="call_num"		 		column="CALL_NUM" 				javaType="int"/>
+  		<result property="call_date"	 		column="CALL_DATE" 				javaType="string"/>
+  		<result property="call_note"	 		column="CALL_NOTE" 				javaType="string"/>
+  		<result property="in_enable_date"	 	column="IN_ENABLE_DATE"   		javaType="string"/>
+  	</resultMap>
+  		
+  		
+   	<select id="FreelancerList"
+  			statementType="CALLABLE"
+  			parameterType= "hashmap"
+  			resultType="free.admin.vo.FreelancerListVo">
+		{CALL PKG_FREELN.PROC_FREELN_LIST(
+		#{result,  mode=OUT, jdbcType=CURSOR, javaType=RESULTSET, resultMap=FreelancerListMap}
+		)}
+  	</select>
+  	
+   	<select id="FreelancerView"
+  			statementType="CALLABLE"
+  			parameterType= "hashmap"
+  			resultType="free.admin.vo.FreelancerListVo">
+		{CALL PKG_FREELN.PROC_FREELN_VIEW(
+		#{result,  mode=OUT, jdbcType=CURSOR, javaType=RESULTSET, resultMap=FreelancerListMap}
+		,#{freeln_phone, mode=IN, jdbcType=VARCHAR}
+		)}
+  	</select>
+  	
+   	<select id="FreelancerView2"
+  			statementType="CALLABLE"
+  			parameterType= "hashmap"
+  			resultType="free.admin.vo.FreelancerListVo">
+		{CALL PKG_FREELN.PROC_FREELN_VIEW2(
+		#{result,  mode=OUT, jdbcType=CURSOR, javaType=RESULTSET, resultMap=FreelancerListMap}
+		,#{freeln_id, mode=IN, jdbcType=VARCHAR}
+		)}
+  	</select>
+  	
+   	<select id="FreelancerTechView"
+  			statementType="CALLABLE"
+  			parameterType= "hashmap"
+  			resultType="free.admin.vo.FreelancerListVo">
+		{CALL PKG_FREELN.PROC_FREELN_TECH_VIEW(
+		#{result,  mode=OUT, jdbcType=CURSOR, javaType=RESULTSET, resultMap=FreelancerListMap}
+		,#{freeln_id, mode=IN, jdbcType=VARCHAR}
+		)}
+  	</select>
+  	
+   	<select id="FreelancerCareerView"
+  			statementType="CALLABLE"
+  			parameterType= "hashmap"
+  			resultType="free.admin.vo.FreelancerCareerVo">
+		{CALL PKG_FREELN.PROC_FREELN_CAREER_VIEW(
+		#{result,  mode=OUT, jdbcType=CURSOR, javaType=RESULTSET, resultMap=FreelancerCareerMap}
+		,#{freeln_id, mode=IN, jdbcType=VARCHAR}
+		)}
+  	</select>
+  	
+   	<select id="FreelancerCallView"
+  			statementType="CALLABLE"
+  			parameterType= "hashmap"
+  			resultType="free.admin.vo.FreelancerCallVo">
+		{CALL PKG_FREELN.PROC_FREELN_CALL_VIEW(
+		#{result,  mode=OUT, jdbcType=CURSOR, javaType=RESULTSET, resultMap=FreelancerCallMap}
+		,#{freeln_id, mode=IN, jdbcType=VARCHAR}
+		)}
+  	</select>
+  	
+   	<select id="FreelancerCallChargeList"
+  			statementType="CALLABLE"
+  			parameterType= "hashmap"
+  			resultType="free.admin.vo.FreelancerCallVo">
+		{CALL PKG_FREELN.PROC_FREELN_CALL_CHARGE_LIST(
+		#{result,  mode=OUT, jdbcType=CURSOR, javaType=RESULTSET, resultMap=FreelancerCallMap}
+		)}
+  	</select>
+  	
+  	<insert id="FreelancerCallInsert"
+  			statementType="CALLABLE"
+  			parameterType= "hashmap">
+  		{CALL PKG_FREELN.PROC_FREELN_CALL_INSERT(
+  		 #{charge_id, mode=IN, jdbcType=VARCHAR}
+		,#{freeln_id, mode=IN, jdbcType=VARCHAR}
+		,#{call_note, mode=IN, jdbcType=VARCHAR}
+		,#{in_enable_date, mode=IN, jdbcType=DATE}
+		)}
+  	</insert>
+ 
+  </mapper>
