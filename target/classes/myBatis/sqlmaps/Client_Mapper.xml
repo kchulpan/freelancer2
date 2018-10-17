@@ -23,6 +23,21 @@
 			#{result, mode=OUT, jdbcType=CURSOR, javaType=RESULTSET, resultMap=ClientListMap}
 		)}
 	</select>
+	<insert id="ClientInsert" statementType="CALLABLE">
+		{CALL PKG_CLIENT.PRO_CLIENT_INSERT(
+			#{client_id, mode=IN, jdbcType=VARCHAR},
+			#{client_nm, mode=IN, jdbcType=VARCHAR},
+			#{client_addr_1, mode=IN, jdbcType=VARCHAR},
+			#{client_addr_2, mode=IN, jdbcType=VARCHAR},
+			#{client_file, mode=IN, jdbcType=VARCHAR},
+			#{client_file_nm, mode=IN, jdbcType=VARCHAR},
+			#{insert_id, mode=IN, jdbcType=VARCHAR},
+			#{insert_date, mode=IN, jdbcType=VARCHAR},
+			#{update_id, mode=IN, jdbcType=VARCHAR},
+			#{update_date, mode=IN, jdbcType=VARCHAR}
+		)}
+	</insert>
+
 	
 
 	
