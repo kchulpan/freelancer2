@@ -44,7 +44,8 @@
 		#{company_id, mode=IN, jdbcType=VARCHAR},
 		#{charge_id, mode=IN, jdbcType=VARCHAR},
 		#{charge_nm, mode=IN, jdbcType=VARCHAR},
-		#{company_name, mode=IN, jdbcType=VARCHAR},
+		#{charge_pwd, mode=IN, jdbcType=VARCHAR},
+		<!-- 회사이름변경#{company_name, mode=IN, jdbcType=VARCHAR}, -->
 		#{org_id, mode=IN, jdbcType=VARCHAR},
 		#{position_nm, mode=IN, jdbcType=VARCHAR},
 		#{charge_phone, mode=IN, jdbcType=VARCHAR},
@@ -66,6 +67,14 @@
 		#{use_yn,    mode=IN, jdbcType=VARCHAR}
 		)}
   	</insert>
+  	
+  	<delete id="ChargeDelete"
+  			statementType="CALLABLE">
+  		{CALL PKG_CHARGE.PROC_CHARGE_DELETE(
+  		#{charge_id, mode=IN, jdbcType=VARCHAR},
+		#{company_id, mode=IN, jdbcType=VARCHAR}
+  		)}		
+    </delete>
   	
   	<!--
   	<select id="BoardContent"

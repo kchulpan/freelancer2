@@ -16,4 +16,6 @@ public interface ChargeListDao
 
 	public void ChargeNewInsert(HashMap<String, Object> map);
 
+	public void chargeDelete(HashMap<String, Object> map);
+
 }

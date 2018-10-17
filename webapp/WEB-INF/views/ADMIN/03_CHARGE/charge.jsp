@@ -45,13 +45,13 @@
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" /> -->
 	
-	<script>
+<!-- 	<script>
 	$(document).ready(function(){
 		$('#charge').addClass('top_menu_active');
 		$('#charge').find('i').addClass('menu_icon_active');
 	});
-	</script>
-	
+	</script> -->
+<!-- modal style 시작 -->	
 <style>
 	
 	
@@ -141,7 +141,55 @@ function sortTable(n) {
   }
 }
 </script>
+<!-- 기존 리스트를 모달창에 불러오기 -->
+<script type="text/javascript">
+ $(function () {
+	$(".rowClick").click(function (e) {
+		var charge_id = $(this).find(".charge_id").val();
+		var charge_nm = $(this).find(".charge_nm").html();
+		var charge_pwd = $(this).find(".charge_pwd").val();
+		var company_id = $(this).find(".company_id").val();
+		var org_id = $(this).find(".org_id").html();
+		var position_nm = $(this).find(".position_nm").html();
+		var charge_phone = $(this).find(".charge_phone").html();
+		var charge_mail_1 = $(this).find(".charge_mail_1").html();
 
+		console.log(charge_id);
+		console.log(charge_nm);
+		console.log(charge_pwd);
+		console.log(company_id);
+		console.log(org_id);
+		console.log(position_nm);
+		console.log(charge_phone);
+		console.log(charge_mail_1);
+		/* var modalData = document.querySelectorAll('tbody a'); */
+		//var my_id_value = $(".idClick").eq(0).data("title");
+		//var my_id_value2 = $(".idClick").eq(1).data("title1");
+		$(".modal-body #charge_id").val(charge_id); 
+		$(".modal-body #charge_nm").val(charge_nm); 
+		$(".modal-body #charge_pwd").val(charge_pwd); 
+		$(".modal-body #company_id").val(company_id); 
+		$(".modal-body #org_id").val(org_id); 
+		$(".modal-body #position_nm").val(position_nm); 
+		$(".modal-body #charge_phone").val(charge_phone); 
+		$(".modal-body #charge_mail_1").val(charge_mail_1); 
+	})
+}); 
+</script>
+<script>
+$(document).ready(function(){
+	$("#deletebtn").click(function(){
+		$("#modalform").attr("action", "/ChargeDelete");
+		$("#modalform").submit();
+	});
+	
+	$("#updatebtn").click(function(){
+		$("#modalform").attr("action", "/ChargeUpdate");
+		$("#modalform").submit();
+	});
+});
+	
+</script>
 <!-- <script>
   window.onload = function() 
   {
@@ -210,7 +258,7 @@ function sortTable(n) {
     						<div class="col-sm-12 col-md-1">	
     							<button type="button" class="btn btn-primary btn-sm" id="myBtn" data-toggle="modal" data-target="#inputModal">등록</button>
 
-    							<!-- The Modal 새담당자등록 -->
+<!-------------------------- The Modal 새담당자등록 ------------------------->
 								  <!-- Modal -->
   							  <div class="modal fade" id="inputModal" role="dialog">
 							    <div class="modal-dialog" role="document">
@@ -249,15 +297,15 @@ function sortTable(n) {
 							              <input type="text" class="form-control" id="charge_phone" name="charge_phone" placeholder="예) 010-1111-2222">
 							            </div>
 							            <div class="form-group">
-							              <label for="client_file_nm">이메일</label>
-							              <input type="text" class="form-control" id="charge_mail_1" placeholder="이메일을 입력하세요">
+							              <label for="charge_mail_1">이메일</label>
+							              <input type="text" class="form-control" id="charge_mail_1" name="charge_mail_1" placeholder="이메일을 입력하세요">
 							            </div>
 							    		<div>
 							    			<label for="use_yn">사용유무</label>
 							   				<input id="use_yn" type="checkbox" name="use_yn" value="Y">
 							    		</div>
 							            <div class="modal-footer">
-							          		<button type="submit" class="btn btn-primary btn-default pull-left" data-dismiss="modal">확인</button>
+							          		<button class="btn btn-primary btn-default pull-left" >확인</button>
 							          		<button type="" class="btn btn-danger btn-default pull-left" data-dismiss="modal">취소</button>
 							        	</div>   
 							          </form>
@@ -267,7 +315,9 @@ function sortTable(n) {
 							      
 							    </div>
 							  </div>
-  							<!-- The Modal 수정/삭제 -->
+<!-------------------------- The Modal 새담당자등록 ------------------------->
+
+<!-------------------------- The Modal 수정/삭제 ---------------------------->
 								  <!-- Modal -->
   							  <div class="modal fade" id="inputModal2" role="dialog">
 							    <div class="modal-dialog" role="document">
@@ -276,53 +326,60 @@ function sortTable(n) {
 		 					      <div class="modal-content modal-lg">
 							        <div class="modal-header">
 							          <button type="button" class="close" data-dismiss="modal"></button>
-							          <h5><i class="fa fa-user icon"></i>등록</h5>
+							          <h5><i class="fa fa-user icon"></i>수정/삭제</h5>
 							        </div>
 							        <div class="modal-body">
 							        	 
-							          <form role="form" action="/ChargeNewInsert" method="POST">
-							      <c:forEach var="chr2" items="${chargeList}">
-							            <div class="form-group">
+							          <form id="modalform" role="form" action="" method="POST">
+							      		<div class="form-group">
+							              <label for="charge_id">담당자코드</label>
+							              <input type="text" class="form-control" id="charge_id" name="charge_id" readonly>
+							            </div>
+							      		<div class="form-group">
 							              <label for="charge_nm">담당자명</label>
-							              <input type="text" class="form-control" id="charge_nm" name="charge_nm" value="a">
+							              <input type="text" class="form-control" id="charge_nm" name="charge_nm" placeholder="담당자명을 입력하세요">
 							            </div>
 							            <div class="form-group">
-							              <label for="company_name">소속사</label>
-							              <input type="text" class="form-control" id="company_id" name="company_id" value="a">
+							              <label for="charge_pwd">비밀번호</label>
+							              <input type="text" class="form-control" id="charge_pwd" name="charge_pwd" placeholder="비밀번호를 입력하세요">
+							            </div>
+							            <div class="form-group">
+							              <label for="company_name">회사코드</label>
+							              <input type="text" class="form-control" id="company_id" name="company_id" readonly>
 							            </div>
 							            <div class="form-group">
 							              <label for="org_id">부서</label>
-							              <input type="text" class="form-control" id="org_id" name="org_id" value="a">
+							              <input type="text" class="form-control" id="org_id" name="org_id" placeholder="부서를 입력하세요">
 							            </div>
 							            <div class="form-group">
 							              <label for="position_nm">직위</label>
-							              <input type="text" class="form-control" id="position_nm" name="position_nm" value="adsf">
+							              <input type="text" class="form-control" id="position_nm" name="position_nm" placeholder="직위를 입력하세요">
 							            </div>
 							            <div class="form-group">
 							              <label for="charge_phone">연락처</label>
-							              <input type="text" class="form-control" id="charge_phone" name="charge_phone" value="afd">
+							              <input type="text" class="form-control" id="charge_phone" name="charge_phone" placeholder="예) 010-1111-2222">
 							            </div>
 							            <div class="form-group">
-							              <label for="client_file_nm">이메일</label>
-							              <input type="text" class="form-control" id="charge_mail_1" name="charge_mail_1" value="adsf">
+							              <label for="charge_mail_1">이메일</label>
+							              <input type="text" class="form-control" id="charge_mail_1" name="charge_mail_1" placeholder="이메일을 입력하세요">
 							            </div>
 							    		<div>
 							    			<label for="use_yn">사용유무</label>
 							   				<input id="use_yn" type="checkbox" name="use_yn" value="Y">
 							    		</div>
-							     </c:forEach>
 							            <div class="modal-footer">
-							          		<button type="submit" class="btn btn-primary btn-default pull-left" data-dismiss="modal">수정</button>
-							          		<button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">삭제</button>
-							          		<button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">취소</button>
+							          		<input type="button" id="updatebtn" class="btn btn-success btn-default pull-left" value="수정">
+							          		<input type="button" id="deletebtn" class="btn btn-danger btn-default pull-left" value="삭제">
+							          		<button type="" class="btn btn-primary  btn-default pull-left" data-dismiss="modal">취소</button>
 							        	</div>   
 							          </form>
 							        </div>
 							        
 							      </div>
 							      
-							    </div>
+							    </div> 
 							  </div>
+<!-------------------------- The Modal 수정/삭제 끝---------------------------->
     					</div>
     					<div class="row">
     						<div class="col-sm-12">
@@ -353,23 +410,28 @@ function sortTable(n) {
                   				</tfoot>
 				                <tbody>
 					                  <c:forEach var="chr" items="${chargeList}" varStatus="status">
-					                  	<c:choose>
+<%-- 					                  	<c:choose>
 					                  		<c:when test="${(status.index)%2 eq 1}">
 					                  			<tr role="row" class="odd" style="text-align:center">
 					                  		</c:when>
 					                  		<c:when test="${(status.index)%2 eq 0}">
 					                  			<tr role="row" class="even" style="text-align:center">
 					                  		</c:when>
-					                  	</c:choose>
-							                      <td><a href="#" data-toggle="modal">${chr.rownum}</a></td>
-							                      <td><a href="#" data-toggle="modal" id="charge_id">${chr.charge_id}</a></td>
-							                      <td><a href="#" data-toggle="modal" id="charge_nm">${chr.charge_nm}</a></td>
-							                      <td><a href="#" data-toggle="modal" id="company_name">${chr.company_name}</a></td>
-							                      <td><a href="#" data-toggle="modal" id="org_id">${chr.org_id}</a></td>
-							                      <td><a href="#" data-toggle="modal" id="position_nm">${chr.position_nm}</a></td>
-							                      <td><a href="#" data-toggle="modal" id="charge_phone">${chr.charge_phone}</a></td>
-							                      <td><a href="#" data-toggle="modal" id="charge_mail_1">${chr.charge_mail_1}</a></td>
-							                      <%-- <td><a href="/Charge_p1?charge_id=${chr.charge_id}&company_id=${chr.company_id}">${chr.charge_mail_1}</a></td> --%>
+					                  	</c:choose> --%>
+					                  		<tr class="rowClick" role="row" style="text-align:center">
+					                  			  
+							                      <td>
+							                      	<input type="hidden" data-toggle="modal" class="idClick charge_id" data-target="#inputModal2" data-id="charge_id" value="${chr.charge_id}">
+							                      	<input type="hidden" data-toggle="modal" class="idClick company_id" data-target="#inputModal2" data-id="company_id" value="${chr.company_id}">
+							                      	<input type="hidden" data-toggle="modal" class="idClick charge_pwd" data-target="#inputModal2" data-id="charge_pwd" value="${chr.charge_pwd}">
+							                      	<a href="#" data-toggle="modal" class="idClick rownum" data-target="#inputModal2" data-id="rownum">${chr.rownum}</a></td>
+							                      <td><a href="#" data-toggle="modal" class="idClick charge_id" data-target="#inputModal2" data-id="charge_id">${chr.charge_id}</a></td>
+							                      <td><a href="#" data-toggle="modal" class="idClick charge_nm" data-target="#inputModal2" data-id="charge_nm">${chr.charge_nm}</a></td>
+							                      <td><a href="#" data-toggle="modal" class="idClick company_name" data-target="#inputModal2" data-id="company_name">${chr.company_name}</a></td>
+							                      <td><a href="#" data-toggle="modal" class="idClick org_id" data-target="#inputModal2" data-id="org_id">${chr.org_id}</a></td>
+							                      <td><a href="#" data-toggle="modal" class="idClick position_nm" data-target="#inputModal2" data-id="position_nm">${chr.position_nm}</a></td>
+							                      <td><a href="#" data-toggle="modal" class="idClick charge_phone" data-target="#inputModal2" data-id="charge_phone">${chr.charge_phone}</a></td>
+							                       <td><a href="#" data-toggle="modal" class="idClick charge_mail_1 " data-target="#inputModal2" data-id="charge_mail_1">${chr.charge_mail_1}</a></td>
 							           
 						                    </tr>
 									  </c:forEach>
