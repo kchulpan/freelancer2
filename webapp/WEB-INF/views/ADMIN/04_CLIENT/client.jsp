@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -54,8 +53,12 @@
   		margin-top: -50px;
 	}
 
+	 /* modal style 끝 */
+
+ 	#client_file {
+ 		overflow: hidden;
+ 	}	
 	</style>
-<!-- modal style 끝 -->	
 	
 	
 <!-- 테이블 내용에서 고객사로 검색 -->
@@ -81,42 +84,43 @@ function myFunction() {
 <!-- 테이블 내용에서 컬럼클릭시 정렬 -->
 <script>
 function sortTable(n) {
-  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-  table = document.getElementById("dataTable");
-  switching = true;
-  dir = "asc"; 
-  while (switching) {
-    switching = false;
-    rows = table.rows;
-    for (i = 1; i < (rows.length - 1); i++) {
+	  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+	  table = document.getElementById("dataTable");
+	  switching = true;
 
-      shouldSwitch = false;
-      x = rows[i].getElementsByTagName("TD")[n];
-      y = rows[i + 1].getElementsByTagName("TD")[n];
-      if (dir == "asc") {
-        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-          shouldSwitch= true;
-          break;
-        }
-      } else if (dir == "desc") {
-        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-          shouldSwitch = true;
-          break;
-        }
-      }
-    }
-    if (shouldSwitch) {
-      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-      switching = true;
-      switchcount ++;      
-    } else {
-      if (switchcount == 0 && dir == "asc") {
-        dir = "desc";
-        switching = true;
-      }
-    }
-  }
-}
+	  dir = "asc"; 
+	  while (switching) {
+	    switching = false;
+	    rows = table.rows;
+	    for (i = 1; i < (rows.length - 1); i++) {
+	      shouldSwitch = false;
+	      x = rows[i].getElementsByTagName("td")[n];
+	      y = rows[i + 1].getElementsByTagName("td")[n];
+	      console.log(table);
+	      if (dir == "asc") {
+	        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+	          shouldSwitch= true;
+	          break;
+	        }
+	      } else if (dir == "desc") {
+	        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+	          shouldSwitch = true;
+	          break;
+	        }
+	      }
+	    }
+	    if (shouldSwitch) {
+	      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+	      switching = true;
+	      switchcount ++;      
+	    } else {
+	      if (switchcount == 0 && dir == "asc") {
+	        dir = "desc";
+	        switching = true;
+	      }
+	    }
+	  }
+	}
 </script>
 <!-- 기존 리스트를 모달창에 불러오기 -->
 <script type="text/javascript">
@@ -125,11 +129,13 @@ function sortTable(n) {
 		var client_id = $(this).find(".client_id").html();
 		var client_nm = $(this).find(".client_nm").html();
 		var client_addr_1 = $(this).find(".client_addr_1").html();
+		var client_addr_2 = $(this).find(".client_addr_2").val();
 		var client_file_nm = $(this).find(".client_file_nm").html();
 		var client_file = $(this).find(".client_file").html();
 		console.log(client_id);
 		console.log(client_nm);
 		console.log(client_addr_1);
+		console.log(client_addr_2);
 		console.log(client_file_nm);
 		console.log(client_file);
 		/* var modalData = document.querySelectorAll('tbody a'); */
@@ -137,19 +143,76 @@ function sortTable(n) {
 		//var my_id_value2 = $(".idClick").eq(1).data("title1");
 		$(".modal-body #cli_id").val(client_id); 
 		$(".modal-body #cli_nm").val(client_nm); 
-		$(".modal-body #cli_addr1").val(client_addr_1); 
+		$(".modal-body #cli_addr_1").val(client_addr_1); 
+		$(".modal-body #cli_addr_2").val(client_addr_2); 
 		$(".modal-body #cli_file_nm").val(client_file_nm); 
 		$(".modal-body #cli_file").val(client_file); 
 	})
 }); 
 </script>
-<!-- <script>
-데이터 입력 후 초기화시키기
-$('.modal').on('hidden.bs.modal', function (e) {
-	console.log('modal close');
-	$(this).find('form')[0].reset()
+<script type="text/javascript">
+
+$(document).ready(function(){
+	$("#cli_file").on('change', function(){  // 값이 변경되면
+		if(window.FileReader){  // modern browser
+			var filename = $(this)[0].files[0].name;
+		} else {  // old IE
+			var filename = $(this).val().split('/').pop().split('\\').pop();  // 파일명만 추출
+		}
+		// 추출한 파일명 삽입
+		$("#userFile").val(filename);
+	});
 });
+</script>
+
+
+<!-- <script>
+/* 데이터 등록간 취소버튼 누를시 모달 초기화시키기 */
+ $(document).ready(function(){
+	
+		
+			$(".modal").on('hidden.bs.modal', function () {
+         	alert('The modal is now hidden.');
+			
+			$(this).find('form')[0].reset();
+
+	
+			
+		});
+ });
+ 
+
 </script> -->
+	<!-- <script type="text/javascript">
+	$('#myBtn').on('click','hidden.bs.modal', function (e) {
+		var myBtn = document.getElementById("myBtn")
+	    console.log('modal close');
+	  $(this).find('form')[0].reset()
+	});
+	</script> -->
+	 
+	
+<script>
+function fileHidden() {
+    document.getElementById("client_file").style.overflow = "hidden";
+}
+
+$(document).ready(function(){
+		$("#updateBtn").click(function () {
+	       $("#modalForm").attr("action", "/ClientUpdate");
+	       $("#modalForm").submit();
+		});
+	
+		 $("#deleteBtn").click(function () {
+	       $("#modalForm").attr("action", "/ClientDelete");
+	       $("#modalForm").submit();
+		});
+});				          		
+							          		
+</script>
+
+
+	
 </head>
 <!-------------------------------- body ---------------------------------------->
 <body>
@@ -206,33 +269,42 @@ $('.modal').on('hidden.bs.modal', function (e) {
 							        </div>
 							        <div class="modal-body">
 							          <form role="form" action="/ClientInsert" method="POST">
-							            <div class="form-group">
+							            <%-- <div class="form-group">
 							              <label for="client_id">고객사 아이디</label>
 							              <input type="text" value="${client_id }" class="form-control" id="client_id" placeholder="아이디를 입력하세요">
-							            </div>
+							            </div> --%>
 							            <div class="form-group">
 							              <label for="client_nm">고객사 이름</label>
 							              <input type="text" name="client_nm" class="form-control" id="client_nm" placeholder="이름을 입력하세요">
 							            </div>
 							            <div class="form-group">
-							              <label for="client_addr1">고객사 주소</label>
-							              <input type="text" name="client_addr1" class="form-control" id="client_addr1" placeholder="주소를 입력하세요">
+							              <label for="client_addr_1">고객사 주소</label>
+							              <input type="text" name="client_addr_1" class="form-control" id="client_addr_1" placeholder="주소를 입력하세요">
 							            </div>
 							            <div class="form-group">
-							              <label for="client_addr2">고객사 상세주소</label>
-							              <input type="text" name="client_addr2" class="form-control" id="client_addr2" placeholder="상세주소를 입력하세요">
+							              <label for="client_addr_2">고객사 상세주소</label>
+							              <input type="text" name="client_addr_2" class="form-control" id="client_addr_2" placeholder="상세주소를 입력하세요">
 							            </div>
 							            <div class="form-group">
 							              <label for="client_file_nm">이력서 양식명</label>
 							              <input type="text" name="client_file_nm" class="form-control" id="client_file_nm" placeholder="이력서 양식명을 입력하세요">
 							            </div>
-							            <div class="form-group">
+							            <div class="form-group" >
 							              <label for="client_file"> 이력서 파일명</label>
-      										<input type="file" class="form-control-file border" name="file">
+      										<input type="file" class="form-control-file border" onclick="" name="client_file" id="client_file" data-class-button="btn btn-default" data-class-input="form-control" data-icon-name="fa fa-upload" class="form-control" tabindex="-1" style="position: absolute; clip: rect(0px 0px 0px 0px);">
+      										<div class="bootstrap-filestyle input-group">
+      											<input type="text" id="userfile" class="form-control" name="userfile">
+													<span class="group-span-filestyle input-group-btn" tabindex="0">
+														<label for="client_file" class="btn btn-default ">
+															<span class="glyphicon fa fa-upload"></span>	
+														</label>
+													</span>
+      										</div>
 							            </div>
+							    
 							            <div class="modal-footer">
-							          		<button type="submit" class="btn btn-primary btn-default pull-left" data-dismiss="modal" id="">확인</button>
-							          		<button class="btn btn-danger btn-default pull-left" data-dismiss="modal">취소</button>
+							          		<button type="submit" class="btn btn-primary btn-default pull-left" >확인</button>
+							          		<button type="reset" id="btnClose" class="btn btn-danger btn-default pull-left">취소</button>
 							        	</div>
 							          </form>
 							        </div>
@@ -253,7 +325,7 @@ $('.modal').on('hidden.bs.modal', function (e) {
                     					<th onclick="sortTable(2)">고객사명</th>
                     					<th onclick="sortTable(3)">위치</th>
                     					<th onclick="sortTable(4)">이력서 양식명</th>
-                    					<th onclick="sortTable(5)">이력서파일 이름</th>
+                    					<th onclick="sortTable(5)">이력서 파일명</th>
                    				 	</tr>
                   				</thead>
                   				<tfoot>
@@ -263,58 +335,51 @@ $('.modal').on('hidden.bs.modal', function (e) {
 					                    <th onclick="sortTable(2)" rowspan="1" colspan="1">고객사명</th>
 					                    <th onclick="sortTable(3)" rowspan="1" colspan="1">위치</th>
 					                    <th onclick="sortTable(4)" rowspan="1" colspan="1">이력서 양식명</th>
-					                    <th onclick="sortTable(5)" rowspan="1" colspan="1">이력서파일 이름</th>
+					                    <th onclick="sortTable(5)" rowspan="1" colspan="1">이력서 파일명</th>
                     				</tr>
                   				</tfoot>
                   				<tbody> 	
                   				<c:forEach var="client" items="${clientList}" varStatus="status">
-                  						<c:choose>
-					                  		<c:when test="${(status.index)%2 eq 1}">
-					                  			<tr role="row" class="odd" style="text-align:center">
-					                  		</c:when>
-					                  		<c:when test="${(status.index)%2 eq 0}">
-					                  			<tr role="row" class="even" style="text-align:center">
-					                  		</c:when>
-					                  	</c:choose>
 				                     <tr class="rowClick" role="row" style="text-align:center"> 
 				                      <td>${client.rownum}</td>
-				                      <td><a href="/Client" data-toggle="modal" class="idClick client_id" data-target="#inputModal2" data-id="client_id" data-title="${client.client_id}">${client.client_id}</a></td>
-				                      <td><a href="/Client" data-toggle="modal" class="idClick client_nm" data-target="#inputModal2" data-id="client_nm" data-title1="${client.client_nm}">${client.client_nm}</a></td>
-				                      <td class="client_addr_1">${client.client_addr_1}</td>
-				                      <td class="client_file_nm">${client.client_file_nm}</td>
-				                      <td class="client_file">${client.client_file}</td> 	
+				                      <td><input type="hidden" class="idClick client_addr_2" data-target="#inputModal2" value="${client.client_addr_2}">
+				                      <a href="#" data-toggle="modal" class="idClick client_id" data-target="#inputModal2">${client.client_id}</a></td>
+				                      <td><a href="#" data-toggle="modal" class="idClick client_nm" data-target="#inputModal2">${client.client_nm}</a></td>
+				                      <td class="idClick client_addr_1">${client.client_addr_1}</td>
+				                      <td class="idClick client_file_nm">${client.client_file_nm}</td>
+				                      <td class="idClick client_file">${client.client_file}</td> 	
 				                    </tr>
 				                </c:forEach>
 		                  		</tbody>
                 			</table>
                 			
-                				<!-- The Modal2 데이터 추가 수정 모달 -->
+                				<!-- The Modal2 데이터 수정 모달 -->
 <!----------------------------------------------- Modal2 ------------------------------------------------------>
 							  <div class="modal fade" id="inputModal2" role="dialog">
 							    <div class="modal-dialog" role="document">
 							      <!-- Modal content2-->
 							      <div class="modal-content modal-lg">
 							        <div class="modal-header">
-							          <button type="button" class="close" data-dismiss="modal"></button>
+							          <button type="button" class="close"></button>
 							          <h5><i class="fa fa-user icon"></i>수정/삭제</h5>
 							        </div>
 							        <div class="modal-body" >	
-									<form action="/ClientUpdate" method="POST" id="">
+									<form id="modalForm" method="POST" role="form">
 							            <div class="form-group">
 							              <label for="cli_id">고객사 아이디</label>
-							              <input type="text" id="cli_id" name="client_id" class="form-control">
+							              <input type="text" id="cli_id" name="client_id" class="form-control" readonly="readonly">
 							            </div>
 							            <div class="form-group">
 							              <label for="cli_nm">고객사 이름</label>
 							              <input type="text" name="client_nm" class="form-control" id="cli_nm">
 							            </div>
 							            <div class="form-group">
-							              <label for="cli_addr1">고객사 주소</label>
-							              <input type="text" name="client_addr1" class="form-control" id="cli_addr1">
+							              <label for="cli_addr_1">고객사 주소</label>
+							              <input type="text" name="client_addr_1" class="form-control" id="cli_addr_1">
 							            </div>
 							            <div class="form-group">
-							              <label for="cli_addr2">고객사 상세주소</label>
-							              <input type="text" name="client_addr2" class="form-control" id="cli_addr2">
+							              <label for="cli_addr_2">고객사 상세주소</label>
+							              <input type="text" name="client_addr_2" class="form-control" id="cli_addr_2">
 							            </div>
 							            <div class="form-group">
 							              <label for="cli_file_nm">이력서 양식명</label>
@@ -322,11 +387,26 @@ $('.modal').on('hidden.bs.modal', function (e) {
 							            </div>
 							            <div class="form-group">
 							              <label for="cli_file"> 이력서 파일명</label>
-							              <input type="file" class="form-control-file border" name="file">
+							              <div class="bootstrap-filestyle input-group">
+							              <input type="text"class="form-control" id="userFile">
+							              
+      									  <input type="file" class="form-control-file border" onclick="fileHidden()" name="client_file" id="cli_file" data-class-button="btn btn-default" 
+      											data-class-input="form-control" data-icon-name="fa fa-upload" class="form-control" 
+      											tabindex="-1" style="position: absolute; clip: rect(0px 0px 0px 0px);">
+      											<span class="group-span-filestyle input-group-btn" tabindex="0">
+														<label for="cli_file" class="btn btn-default ">
+															<span class="glyphicon fa fa-upload"></span>	
+														</label>
+												</span>
+      									  </div>	
+      											
+													
+      										
 							            </div>
 							            <div class="modal-footer">
-							          		<button type="submit" class="btn btn-primary btn-default pull-left" data-dismiss="modal">수정</button>
-							          		<button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">삭제</button>
+							          		<input type="button" id="updateBtn"  value="수정" class="btn btn-primary btn-default pull-left">
+							          		<input type="button" id="deleteBtn"  value="삭제" class="btn btn-danger btn-default pull-left client_id">
+							          		
 							        	</div>   
 							          </form>
 							        </div>

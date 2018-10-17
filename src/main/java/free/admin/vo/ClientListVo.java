@@ -8,21 +8,11 @@ public class ClientListVo {
 	private String client_addr_2;
 	private String client_file;
 	private String client_file_nm;
-	private String insert_id;
-	private String insert_date;
 	private String update_id;
 	private String update_date;
 	
 	
-	public int getRownum() {
-		return rownum;
-	}
-
-
-
-	public void setRownum(int rownum) {
-		this.rownum = rownum;
-	}
+	
 
 
 
@@ -31,8 +21,7 @@ public class ClientListVo {
 	
 	
 	public ClientListVo(int rownum, String client_id, String client_nm, String client_addr_1, String client_addr_2,
-			String client_file, String client_file_nm, String insert_id, String insert_date, String update_id,
-			String update_date) {
+			String client_file, String client_file_nm, String update_id, String update_date) {
 		this.rownum = rownum;
 		this.client_id = client_id;
 		this.client_nm = client_nm;
@@ -40,10 +29,17 @@ public class ClientListVo {
 		this.client_addr_2 = client_addr_2;
 		this.client_file = client_file;
 		this.client_file_nm = client_file_nm;
-		this.insert_id = insert_id;
-		this.insert_date = insert_date;
 		this.update_id = update_id;
 		this.update_date = update_date;
+	}
+	
+	
+	
+	public int getRownum() {
+		return rownum;
+	}
+	public void setRownum(int rownum) {
+		this.rownum = rownum;
 	}
 	public String getClient_id() {
 		return client_id;
@@ -81,18 +77,6 @@ public class ClientListVo {
 	public void setClient_file_nm(String client_file_nm) {
 		this.client_file_nm = client_file_nm;
 	}
-	public String getInsert_id() {
-		return insert_id;
-	}
-	public void setInsert_id(String insert_id) {
-		this.insert_id = insert_id;
-	}
-	public String getInsert_date() {
-		return insert_date;
-	}
-	public void setInsert_date(String insert_date) {
-		this.insert_date = insert_date;
-	}
 	public String getUpdate_id() {
 		return update_id;
 	}
@@ -104,6 +88,21 @@ public class ClientListVo {
 	}
 	public void setUpdate_date(String update_date) {
 		this.update_date = update_date;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "ClientListVo [rownum=" + rownum + ", client_id=" + client_id + ", client_nm=" + client_nm
+				+ ", client_addr_1=" + client_addr_1 + ", client_addr_2=" + client_addr_2 + ", client_file="
+				+ client_file + ", client_file_nm=" + client_file_nm + ", update_id=" + update_id + ", update_date="
+				+ update_date + ", getRownum()=" + getRownum() + ", getClient_id()=" + getClient_id()
+				+ ", getClient_nm()=" + getClient_nm() + ", getClient_addr_1()=" + getClient_addr_1()
+				+ ", getClient_addr_2()=" + getClient_addr_2() + ", getClient_file()=" + getClient_file()
+				+ ", getClient_file_nm()=" + getClient_file_nm() + ", getUpdate_id()=" + getUpdate_id()
+				+ ", getUpdate_date()=" + getUpdate_date() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
+				+ ", toString()=" + super.toString() + "]";
 	}
 	
 	
