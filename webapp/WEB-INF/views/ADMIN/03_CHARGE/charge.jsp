@@ -145,14 +145,16 @@ function sortTable(n) {
 <script type="text/javascript">
  $(function () {
 	$(".rowClick").click(function (e) {
+		var charge_id = $(this).find(".charge_id").val();
 		var charge_nm = $(this).find(".charge_nm").html();
-		var charge_pwd = $(this).find(".charge_pwd").html();
+		var charge_pwd = $(this).find(".charge_pwd").val();
 		var company_id = $(this).find(".company_id").val();
 		var org_id = $(this).find(".org_id").html();
 		var position_nm = $(this).find(".position_nm").html();
 		var charge_phone = $(this).find(".charge_phone").html();
 		var charge_mail_1 = $(this).find(".charge_mail_1").html();
 
+		console.log(charge_id);
 		console.log(charge_nm);
 		console.log(charge_pwd);
 		console.log(company_id);
@@ -163,6 +165,7 @@ function sortTable(n) {
 		/* var modalData = document.querySelectorAll('tbody a'); */
 		//var my_id_value = $(".idClick").eq(0).data("title");
 		//var my_id_value2 = $(".idClick").eq(1).data("title1");
+		$(".modal-body #charge_id").val(charge_id); 
 		$(".modal-body #charge_nm").val(charge_nm); 
 		$(".modal-body #charge_pwd").val(charge_pwd); 
 		$(".modal-body #company_id").val(company_id); 
@@ -172,6 +175,20 @@ function sortTable(n) {
 		$(".modal-body #charge_mail_1").val(charge_mail_1); 
 	})
 }); 
+</script>
+<script>
+$(document).ready(function(){
+	$("#deletebtn").click(function(){
+		$("#modalform").attr("action", "/ChargeDelete");
+		$("#modalform").submit();
+	});
+	
+	$("#updatebtn").click(function(){
+		$("#modalform").attr("action", "/ChargeUpdate");
+		$("#modalform").submit();
+	});
+});
+	
 </script>
 <!-- <script>
   window.onload = function() 
@@ -313,7 +330,11 @@ function sortTable(n) {
 							        </div>
 							        <div class="modal-body">
 							        	 
-							          <form role="form" action="/ChargeUpdate" method="POST">
+							          <form id="modalform" role="form" action="" method="POST">
+							      		<div class="form-group">
+							              <label for="charge_id">담당자코드</label>
+							              <input type="text" class="form-control" id="charge_id" name="charge_id" readonly>
+							            </div>
 							      		<div class="form-group">
 							              <label for="charge_nm">담당자명</label>
 							              <input type="text" class="form-control" id="charge_nm" name="charge_nm" placeholder="담당자명을 입력하세요">
@@ -324,7 +345,7 @@ function sortTable(n) {
 							            </div>
 							            <div class="form-group">
 							              <label for="company_name">회사코드</label>
-							              <input type="text" class="form-control" id="company_id" name="company_id" placeholder="예) COMP0000">
+							              <input type="text" class="form-control" id="company_id" name="company_id" readonly>
 							            </div>
 							            <div class="form-group">
 							              <label for="org_id">부서</label>
@@ -347,8 +368,8 @@ function sortTable(n) {
 							   				<input id="use_yn" type="checkbox" name="use_yn" value="Y">
 							    		</div>
 							            <div class="modal-footer">
-							          		<button class="btn btn-success btn-default pull-left">수정</button>
-							          		<button class="btn btn-danger btn-default pull-left">삭제</button>
+							          		<input type="button" id="updatebtn" class="btn btn-success btn-default pull-left" value="수정">
+							          		<input type="button" id="deletebtn" class="btn btn-danger btn-default pull-left" value="삭제">
 							          		<button type="" class="btn btn-primary  btn-default pull-left" data-dismiss="modal">취소</button>
 							        	</div>   
 							          </form>
@@ -356,7 +377,7 @@ function sortTable(n) {
 							        
 							      </div>
 							      
-							    </div>
+							    </div> 
 							  </div>
 <!-------------------------- The Modal 수정/삭제 끝---------------------------->
     					</div>
@@ -389,18 +410,21 @@ function sortTable(n) {
                   				</tfoot>
 				                <tbody>
 					                  <c:forEach var="chr" items="${chargeList}" varStatus="status">
-					                  	<c:choose>
+<%-- 					                  	<c:choose>
 					                  		<c:when test="${(status.index)%2 eq 1}">
 					                  			<tr role="row" class="odd" style="text-align:center">
 					                  		</c:when>
 					                  		<c:when test="${(status.index)%2 eq 0}">
 					                  			<tr role="row" class="even" style="text-align:center">
 					                  		</c:when>
-					                  	</c:choose>
+					                  	</c:choose> --%>
 					                  		<tr class="rowClick" role="row" style="text-align:center">
 					                  			  
-							                      <td><input type="hidden" data-toggle="modal" class="idClick company_id" data-target="#inputModal2" data-id="company_id" value="${chr.company_id}">
-							                      <a href="#" data-toggle="modal" class="idClick rownum" data-target="#inputModal2" data-id="rownum">${chr.rownum}</a></td>
+							                      <td>
+							                      	<input type="hidden" data-toggle="modal" class="idClick charge_id" data-target="#inputModal2" data-id="charge_id" value="${chr.charge_id}">
+							                      	<input type="hidden" data-toggle="modal" class="idClick company_id" data-target="#inputModal2" data-id="company_id" value="${chr.company_id}">
+							                      	<input type="hidden" data-toggle="modal" class="idClick charge_pwd" data-target="#inputModal2" data-id="charge_pwd" value="${chr.charge_pwd}">
+							                      	<a href="#" data-toggle="modal" class="idClick rownum" data-target="#inputModal2" data-id="rownum">${chr.rownum}</a></td>
 							                      <td><a href="#" data-toggle="modal" class="idClick charge_id" data-target="#inputModal2" data-id="charge_id">${chr.charge_id}</a></td>
 							                      <td><a href="#" data-toggle="modal" class="idClick charge_nm" data-target="#inputModal2" data-id="charge_nm">${chr.charge_nm}</a></td>
 							                      <td><a href="#" data-toggle="modal" class="idClick company_name" data-target="#inputModal2" data-id="company_name">${chr.company_name}</a></td>
@@ -408,7 +432,6 @@ function sortTable(n) {
 							                      <td><a href="#" data-toggle="modal" class="idClick position_nm" data-target="#inputModal2" data-id="position_nm">${chr.position_nm}</a></td>
 							                      <td><a href="#" data-toggle="modal" class="idClick charge_phone" data-target="#inputModal2" data-id="charge_phone">${chr.charge_phone}</a></td>
 							                       <td><a href="#" data-toggle="modal" class="idClick charge_mail_1 " data-target="#inputModal2" data-id="charge_mail_1">${chr.charge_mail_1}</a></td>
-							                      <%-- <td><a href="/Charge_p1?charge_id=${chr.charge_id}&company_id=${chr.company_id}">${chr.charge_mail_1}</a></td> --%>
 							           
 						                    </tr>
 									  </c:forEach>

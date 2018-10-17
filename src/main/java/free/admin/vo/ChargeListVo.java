@@ -128,10 +128,13 @@ public class ChargeListVo
 
 	@Override
 	public String toString() {
-		return "ChargeListVo [rownum=" + rownum + ", charge_id=" + charge_id + ", charge_nm=" + charge_nm
-				+ ", company_id=" + company_id + ", company_name=" + company_name + ", org_id=" + org_id
-				+ ", position_nm=" + position_nm + ", charge_phone=" + charge_phone + ", charge_mail_1=" + charge_mail_1
-				+ "]";
+		return "ChargeListVo [rownum=" + rownum + ", charge_id=" + charge_id + ", charge_pwd=" + charge_pwd
+				+ ", charge_nm=" + charge_nm + ", company_id=" + company_id + ", company_name=" + company_name
+				+ ", org_id=" + org_id + ", position_nm=" + position_nm + ", charge_phone=" + charge_phone
+				+ ", charge_mail_1=" + charge_mail_1 + ", use_yn=" + use_yn + "]";
 	}
+
+
+
 }
 

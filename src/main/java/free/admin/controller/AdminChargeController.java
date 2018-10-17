@@ -26,7 +26,6 @@ public class AdminChargeController {
 	{
 		ModelAndView mav = new ModelAndView();
 		List<ChargeListVo> chargeList = chargeListService.chargeList(map);
-		
 		mav.addObject("chargeList", chargeList);
 		mav.setViewName("ADMIN/03_CHARGE/charge");
 		return mav;
@@ -41,11 +40,21 @@ public class AdminChargeController {
 		mav.setViewName("ADMIN/03_CHARGE/charge_p1");
 		return mav;
 	}
-	/*담당자 상세 수정후 리스트로 redirect*/
+	/*담당자 수정 후 리스트로 redirect*/
 	@RequestMapping("/ChargeUpdate")
 	public String chargeUpdate(@RequestParam HashMap<String,Object> map)
 	{
+		System.out.println("update::" + map);
 		chargeListService.chargeUpdate(map);
+		return "redirect:/Charge";
+	}
+	
+	/*담당자 삭제 수정후 redirect*/
+	@RequestMapping("/ChargeDelete")
+	public String chargeDelet(@RequestParam HashMap<String,Object> map)
+	{
+		System.out.println("delete::" + map);
+		chargeListService.chargeDelete(map);
 		return "redirect:/Charge";
 	}
 /*	새 담당자 등록 페이지로 이동

@@ -43,4 +43,10 @@ public class ChargeListServiceImpl implements ChargeListService
 		chargeListdDao.ChargeNewInsert(map);
 	}
 
+	@Override
+	public void chargeDelete(HashMap<String, Object> map) {
+		chargeListdDao.chargeDelete(map);
+		
+	}
+
 }

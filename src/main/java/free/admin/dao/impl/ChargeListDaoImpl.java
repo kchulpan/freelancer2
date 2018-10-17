@@ -45,5 +45,12 @@ public class ChargeListDaoImpl implements ChargeListDao
 	{
 		sqlSession.insert("Charge.ChargeInsert", map);
 	}
+	
+	// 담당자 삭제
+	@Override
+	public void chargeDelete(HashMap<String, Object> map) 
+	{
+		sqlSession.delete("Charge.ChargeDelete", map);
+	}
 
 }
