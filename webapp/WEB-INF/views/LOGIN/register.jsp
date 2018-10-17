@@ -28,37 +28,53 @@
   <body class="bg-dark">
 
     <div class="container">
-      <div class="card card-login mx-auto mt-5">
-        <div class="card-header">Login
-           <div><img src=""></div> 
-        </div>
+      <div class="card card-register mx-auto mt-5">
+        <div class="card-header">Register an Account</div>
         <div class="card-body">
           <form>
             <div class="form-group">
-              <div class="form-label-group">
-                <input type="text" id="inputId" class="form-control" placeholder="id" required="required" autofocus="autofocus">
-                <label for="inputId">아이디를 입력하세요</label>
+              <div class="form-row">
+                <div class="col-md-6">
+                  <div class="form-label-group">
+                    <input type="text" id="firstName" class="form-control" placeholder="First name" required="required" autofocus="autofocus">
+                    <label for="firstName">First name</label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-label-group">
+                    <input type="text" id="lastName" class="form-control" placeholder="Last name" required="required">
+                    <label for="lastName">Last name</label>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="form-group">
               <div class="form-label-group">
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="required">
-                <label for="inputPassword">비밀번호를 입력하세요</label>
+                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="required">
+                <label for="inputEmail">이메일 주소입력</label>
               </div>
             </div>
             <div class="form-group">
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" value="remember-me">
-                  비밀번호 저장하기
-                </label>
+              <div class="form-row">
+                <div class="col-md-6">
+                  <div class="form-label-group">
+                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="required">
+                    <label for="inputPassword">Password</label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-label-group">
+                    <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm password" required="required">
+                    <label for="confirmPassword">Confirm password</label>
+                  </div>
+                </div>
               </div>
             </div>
-            <a class="btn btn-primary btn-block" href="/">로그인</a>
+            <a class="btn btn-primary btn-block" href="login.html">Register</a>
           </form>
           <div class="text-center">
-            <a class="d-block small mt-3" href="/Register">회원가입</a>
-            <a class="d-block small" href="/Forgot-password">비밀번호를 잊어버리셨나요?</a>
+            <a class="d-block small mt-3" href="/">Login Page</a>
+            <a class="d-block small" href="/Forgot-password">Forgot Password?</a>
           </div>
         </div>
       </div>
@@ -70,6 +86,7 @@
 
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
 
 
 <%--   <div style="text-align:center">
