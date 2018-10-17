@@ -249,15 +249,15 @@ function sortTable(n) {
 							              <input type="text" class="form-control" id="charge_phone" name="charge_phone" placeholder="예) 010-1111-2222">
 							            </div>
 							            <div class="form-group">
-							              <label for="client_file_nm">이메일</label>
-							              <input type="text" class="form-control" id="charge_mail_1" placeholder="이메일을 입력하세요">
+							              <label for="charge_mail_1">이메일</label>
+							              <input type="text" class="form-control" id="charge_mail_1" name="charge_mail_1" placeholder="이메일을 입력하세요">
 							            </div>
 							    		<div>
 							    			<label for="use_yn">사용유무</label>
 							   				<input id="use_yn" type="checkbox" name="use_yn" value="Y">
 							    		</div>
 							            <div class="modal-footer">
-							          		<button type="submit" class="btn btn-primary btn-default pull-left" data-dismiss="modal">확인</button>
+							          		<button class="btn btn-primary btn-default pull-left" >확인</button>
 							          		<button type="" class="btn btn-danger btn-default pull-left" data-dismiss="modal">취소</button>
 							        	</div>   
 							          </form>
@@ -280,41 +280,43 @@ function sortTable(n) {
 							        </div>
 							        <div class="modal-body">
 							        	 
-							          <form role="form" action="/ChargeNewInsert" method="POST">
-							      <c:forEach var="chr2" items="${chargeList}">
-							            <div class="form-group">
+							          <form role="form" action="/ChargeUpdate" method="POST">
+							      		<div class="form-group">
 							              <label for="charge_nm">담당자명</label>
-							              <input type="text" class="form-control" id="charge_nm" name="charge_nm" value="a">
+							              <input type="text" class="form-control" id="charge_nm" name="charge_nm" placeholder="담당자명을 입력하세요">
 							            </div>
 							            <div class="form-group">
-							              <label for="company_name">소속사</label>
-							              <input type="text" class="form-control" id="company_id" name="company_id" value="a">
+							              <label for="charge_pwd">비밀번호</label>
+							              <input type="text" class="form-control" id="charge_pwd" name="charge_pwd" placeholder="비밀번호를 입력하세요">
+							            </div>
+							            <div class="form-group">
+							              <label for="company_name">회사코드</label>
+							              <input type="text" class="form-control" id="company_id" name="company_id" placeholder="예) COMP0000">
 							            </div>
 							            <div class="form-group">
 							              <label for="org_id">부서</label>
-							              <input type="text" class="form-control" id="org_id" name="org_id" value="a">
+							              <input type="text" class="form-control" id="org_id" name="org_id" placeholder="부서를 입력하세요">
 							            </div>
 							            <div class="form-group">
 							              <label for="position_nm">직위</label>
-							              <input type="text" class="form-control" id="position_nm" name="position_nm" value="adsf">
+							              <input type="text" class="form-control" id="position_nm" name="position_nm" placeholder="직위를 입력하세요">
 							            </div>
 							            <div class="form-group">
 							              <label for="charge_phone">연락처</label>
-							              <input type="text" class="form-control" id="charge_phone" name="charge_phone" value="afd">
+							              <input type="text" class="form-control" id="charge_phone" name="charge_phone" placeholder="예) 010-1111-2222">
 							            </div>
 							            <div class="form-group">
-							              <label for="client_file_nm">이메일</label>
-							              <input type="text" class="form-control" id="charge_mail_1" name="charge_mail_1" value="adsf">
+							              <label for="charge_mail_1">이메일</label>
+							              <input type="text" class="form-control" id="charge_mail_1" name="charge_mail_1" placeholder="이메일을 입력하세요">
 							            </div>
 							    		<div>
 							    			<label for="use_yn">사용유무</label>
 							   				<input id="use_yn" type="checkbox" name="use_yn" value="Y">
 							    		</div>
-							     </c:forEach>
 							            <div class="modal-footer">
-							          		<button type="submit" class="btn btn-primary btn-default pull-left" data-dismiss="modal">수정</button>
-							          		<button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">삭제</button>
-							          		<button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">취소</button>
+							          		<button class="btn btn-primary btn-default pull-left">수정</button>
+							          		<button type="submit" class="btn btn-danger btn-default pull-left">삭제</button>
+							          		<button type="" class="btn btn-danger btn-default pull-left" data-dismiss="modal">취소</button>
 							        	</div>   
 							          </form>
 							        </div>
