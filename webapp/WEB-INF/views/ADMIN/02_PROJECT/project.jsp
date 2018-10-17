@@ -195,7 +195,7 @@ function sortTable(n) {
 							              <label for="proj_date">프로젝트 기간</label>
 							              <div></div><input type="text" class="form-control" id="proj_str_date" style="width:48%; float:left;" placeholder="시작일을 입력하세요">
 							              <input type="text" class="form-control" id="proj_end_date" style="width:48%; float:right;" placeholder="종료일을 입력하세요"></div>
-							            </div>
+							           
 							            <div class="form-group">
 							              <label for="client_id">고객사</label>
 							              <input type="text" class="form-control" id="client_id" placeholder="고객사를 입력하세요">
@@ -206,28 +206,28 @@ function sortTable(n) {
 							            </div>
 							            <div class="form-group">
 							              <label for="field"> 해당분야</label>
-							              	   <div> <select class="form-control" id="field_1" style="width:46%; float:left; margin-left:10px;" placeholder="해당 분야 대분류를 입력하세요">
+							              	   <div> <select class="form-control" id="field_1" style="width:46%; float:left; margin-left:10px;">
 	    											<option>1</option>
 	   											 </select>
-							              	    <select class="form-control" id="field_2" style="width:46%; float:right; margin-right:10px;" placeholder="해당 분야 소분류를 입력하세요">
+							              	    <select class="form-control" id="field_2" style="width:46%; float:right; margin-right:10px;">
 	    											<option>1</option>
 	   											 </select></div>
 							            </div>
 							            <div class="form-group">
 											 <label for="note">비고</label>
-										    <input type="text" class="form-control" id="note" value=" ${projDtl.note}">
+										    <input type="text" class="form-control" id="note">
 										  </div> 
 										  <div class="form-group">
 										    <label for="remark"><b>상세내용:</b></label>
-										    <textarea class="form-control" id="remark" value=" ${projDtl.remark}"></textarea>
+										    <textarea class="form-control" id="remark"></textarea>
 										  </div> 
 										    <div class="form-group">
 											<label for="need_tech"><b>필요기술:</b></label>
-										    <textarea class="form-control" id="need_tech" value=" ${projDtl.need_tech}"></textarea>
+										    <textarea class="form-control" id="need_tech"></textarea>
 										   </div>  
 										   <div class="form-group">
 											<label for="charge_nm"><b>담당자:</b></label>
-										    <select class="form-control" id="charge_nm" value=" ${projDtl.charge_nm}">
+										    <select class="form-control" id="charge_nm">
 										    	<option vlaue="선택">선택</option>
 										    	<option vlaue="허태훈">허태훈</option>
 										    	<option vlaue="이지완">이지완</option>
@@ -244,7 +244,6 @@ function sortTable(n) {
 							        	</div>   
 							          </form>
 							        </div>
-							        
 							      </div>
     						</div>
     					</div> 
@@ -262,57 +261,56 @@ function sortTable(n) {
 							        <div class="modal-body">
 							        
 							          <form role="form" action="/ProjectNewInsert" method="POST">
-							          <c:forEach var="proj2" items="${projectList}">
+							           <c:forEach var="proj2" items="${projectList}"> 
 							            <div class="form-group">
 							              <label for="proj_id">프로젝트 코드</label>
 							              <input type="text" class="form-control" id="proj_id" placeholder="자동생성" readonly>
 							            </div>
 							            <div class="form-group">
 							              <label for="proj_nm">프로젝트명</label>
-							              <input type="text" class="form-control" id="proj_nm" name="proj_nm" value="${proj2.proj_nm}" placeholder="프로젝트 이름을 입력하세요">
+							              <input type="text" class="form-control" id="proj_nm" name="proj_nm" value="${projectList.proj_nm}" placeholder="프로젝트 이름을 입력하세요">
 							              
 							            </div>
 							            <div class="form-group">
 							              <label for="proj_date">프로젝트 기간</label>
-							             <div><input type="text" class="form-control" id="proj_str_date"  name="proj_str_date" value="${proj2.proj_str_date}" style="width:48%; float:left;" placeholder="시작일을 입력하세요">
-							              <input type="text" class="form-control" id="proj_end_date" name="proj_end_date" value="${proj2.proj_end_date}" style="width:48%; float:right;" placeholder="종료일을 입력하세요"></div>
+							             <div><input type="text" class="form-control" id="proj_str_date"  name="proj_str_date" value="${projectList.proj_str_date}" style="width:48%; float:left;" placeholder="시작일을 입력하세요">
+							              <input type="text" class="form-control" id="proj_end_date" name="proj_end_date" value="${projectList.proj_end_date}" style="width:48%; float:right;" placeholder="종료일을 입력하세요"></div>
 							            </div>
 							            <div class="form-group">
 							              <label for="client_id">고객사</label>
-							              <input type="text" class="form-control" id="client_id" name="client_id" value="${proj2.client_id}"placeholder="고객사를 입력하세요">
+							              <input type="text" class="form-control" id="client_id" name="client_id" value="${projectList.client_id}"placeholder="고객사를 입력하세요">
 							            </div>
 							            <div class="form-group">
 							              <label for="involve_num">투여인원</label>
-							              <input type="text" class="form-control" id="involve_num" name="involve_num" value="${proj2.involve_num}" placeholder="투여인원을 입력하세요">
+							              <input type="text" class="form-control" id="involve_num" name="involve_num" value="${projectList.involve_num}" placeholder="투여인원을 입력하세요">
 							            </div>
 							            <div class="form-group">
 							              <label for="field"> 해당분야</label>
-							              	   <div> <select class="form-control" id="field_1" name="field_1" value="${proj2.field_1}"style="width:46%; float:left; margin-left:10px;" placeholder="해당 분야 대분류를 입력하세요">
-	    											<option>1</option>
+							              	   <div> <select class="form-control" id="field_1" name="field_1" style="width:46%; float:left; margin-left:10px;" placeholder="해당 분야 대분류를 입력하세요">
+	    											<option>${projectList.field_1}</option>
 	   											 </select>
-							              	    <select class="form-control" id="field_2" name="field_2" value="${proj2.field_2 }" style="width:46%; float:right; margin-right:10px;" placeholder="해당 분야 소분류를 입력하세요">
-	    											<option>1</option>
+							              	    <select class="form-control" id="field_2" name="field_2"  style="width:46%; float:right; margin-right:10px;" placeholder="해당 분야 소분류를 입력하세요">
+	    											<option>${projectList.field_2 }</option>
 	   											 </select></div>
 							            </div>
 							            <div class="form-group">
 											 <label for="note">비고</label>
-										    <input type="text" class="form-control" id="note" value=" ${proj2.note}">
+										    <input type="text" class="form-control" id="note" value=" ${projectList.note}">
 										  </div> 
 										  <div class="form-group">
 										    <label for="remark">상세내용</label>
-										    <textarea class="form-control" id="remark">${proj2.remark}</textarea>
+										    <textarea class="form-control" id="remark">${projectList.remark}</textarea>
 										  </div> 
 										    <div class="form-group">
 											<label for="need_tech">필요기술</label>
-										    <textarea class="form-control" id="need_tech"  >${proj2.need_tech}</textarea>
+										    <textarea class="form-control" id="need_tech"  >${projectList.need_tech}</textarea>
 										   </div>  
 										   <div class="form-group">
 											<label for="charge_nm">담당자</label>
-										    <select class="form-control" id="charge_nm" name="charge_nm" value=" ${proj2.charge_nm}">
-										    	<option name="선택" vlaue="선택">선택</option>
-										    	<option name="허태훈" vlaue="허태훈">허태훈</option>
-										    	<option name="이지완" vlaue="이지완">이지완</option>
-										    	<option name="김장현" vlaue="김장현">김장현</option>
+										    <select class="form-control" id="charge_nm" name="charge_nm">
+										    
+										    	<option value="${projectList.charge_nm}" >${projectList.charge_nm}</option>
+										    	
 										    </select>
 										    </div>
 										    <div>
@@ -323,7 +321,7 @@ function sortTable(n) {
 							          		<button type="submit" class="btn btn-primary btn-default pull-left" data-dismiss="modal">확인</button>
 							          		<button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">취소</button>
 							        	</div>   
-									 </c:forEach>
+									  </c:forEach> 
 							          </form>
 							          </div>
 							        </div>
@@ -396,7 +394,7 @@ function sortTable(n) {
    		 </div> 			
  	 </div> 	
    </div>
-   </div>
+ 
    <!-- 테이블내용 끝 -->
   </article>
   </div>
