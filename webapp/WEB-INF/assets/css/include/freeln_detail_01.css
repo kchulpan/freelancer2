@@ -1,0 +1,23 @@
+@charset "UTF-8";
+.table {
+	margin-top:20px;
+}
+
+.table th {
+	min-width:120px;
+	width:120px;
+	text-align:center;
+}
+
+.table td {
+	text-align:left;
+}
+
+#photo_can {
+	width:150px;
+}
+
+#photo_can > img {
+	width:140px;
+}
+

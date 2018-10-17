@@ -33,10 +33,10 @@ public class AdminController {
 		return "ADMIN/00_COMMON/commoncode";
 	}
 	
-	@RequestMapping("/Freeln")
+	/*@RequestMapping("/Freeln")
 	public String freeln() {
 		return "ADMIN/01_FLEENL/freeln";
-	}
+	}*/
 	
 /*	@RequestMapping("/Project")
 	public String project() {
