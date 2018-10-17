@@ -42,10 +42,57 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="js/include/subpage.js"></script>
 	
+	
+	<style>
+	ul{ 
+		padding-left: 20px;
+	    padding-right: 20px;
+	  }
+	li {list-style-type: none;}
+	
+	.table-bordered {
+	    border: 3px solid #ddd;
+	}
+	
+	.table>tbody>tr>th, .table>tbody>tr>td {border:0;}
+	
+	.table>tbody>tr>th {vertical-align:middle; width:180px; }
+	.table>tbody>tr>.client_nm {font-size:17px; }
+	
+	
+	.table>tbody>tr>.click_detail {
+	    width: 100px;
+	    text-align: center;
+    	vertical-align: middle;
+    	border: 1px solid #dee2e6;
+	}
+	
+	.click_detail:hover{
+		cursor:pointer;
+	}
+	.detail_box {
+		display: none;
+	}
+	.detail_box_active{
+		display: contents;
+	}
+
+	</style>
+	
 	<script>
 	$(document).ready(function(){
 		$('#freeln').addClass('top_menu_active');
 		$('#freeln').find('i').addClass('menu_icon_active');
+		
+		$('.click_detail').on('click',function(){
+			var this_parent = $(this).parents('tbody');
+			var detail_box = $('.detail_box', this_parent);
+			if(detail_box.hasClass('detail_box_active')){
+				detail_box.removeClass('detail_box_active');
+			} else {
+				detail_box.addClass('detail_box_active');
+			}
+		});
 		
 	});
 	</script>
@@ -78,6 +125,7 @@
 	    <li><a href="/FreelnDetail02?freeln_id=${freelancer.freeln_id}">기술정보</a></li>
 	    <li class="active">경력정보</li>
 	    <li><a href="/FreelnDetail04?freeln_id=${freelancer.freeln_id}">통화내역</a></li> 
+	    <li><a href="/Freeln">목록으로</a></li> 
 	  </ul> 
     
     <!-- 내용넣기! -->
@@ -88,25 +136,32 @@
    			<i class="fas fa-fw fa-users"></i>
    			프리랜서 ${freelancer.freeln_nm} 경력정보
      </div> 
-	 <table class="table table-bordered">
-	    <tbody>
-	     <c:forEach var="freelancerCareer" items="${freelancerCareer}">
-	      <tr>
-	        <th rowspan="2">${freelancerCareer.client_nm}</th>
-	        <td>${freelancerCareer.duty} | ${freelancerCareer.task}</td>  
-	        <td rowspan="2">icon</td> 
-	      </tr>
-	      <tr>  
-	        <td>${freelancerCareer.work_str_date}~${freelancerCareer.work_end_date} |
-	        	${freelancerCareer.client_loca_1} ${freelancerCareer.client_loca_2}</td>     
-	      </tr>
-	      <tr>
-	        <th>세부내용</th>
-	        <td colspan="2">${freelancerCareer.contents}</td>
-	      </tr>
-	     </c:forEach>
-	    </tbody>
-	  </table>
+     
+     <ul>
+      <c:forEach var="freelancerCareer" items="${freelancerCareer}">
+     	<li>
+     		<table class="table table-bordered">
+		    <tbody>
+		    
+		      <tr>
+		        <th rowspan="2" class="client_nm">${freelancerCareer.client_nm}</th>
+		        <td>${freelancerCareer.duty} | ${freelancerCareer.task}</td>  
+		        <td rowspan="2" class="click_detail">세부내용<br/>보기</td> 
+		      </tr>
+		      <tr>  
+		        <td>${freelancerCareer.work_str_date}~${freelancerCareer.work_end_date} |
+		        	${freelancerCareer.client_loca_1} ${freelancerCareer.client_loca_2}</td>     
+		      </tr>
+		      <tr class="detail_box">
+		        <th>세부내용</th>
+		        <td colspan="2">${freelancerCareer.contents}</td>
+		      </tr>
+		    </tbody>
+		  </table>
+     	</li>
+		     </c:forEach>
+     </ul>
+	 
     </div>
 	</div>
     </div>

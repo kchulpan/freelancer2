@@ -146,7 +146,8 @@
 	    <li><a href="/FreelnDetail01?freeln_phone=${freelancerTech.freeln_phone}">기본정보</a></li>
 	    <li class="active">기술정보</li>
 	    <li><a href="/FreelnDetail03?freeln_id=${freelancerTech.freeln_id}">경력정보</a></li>
-	    <li><a href="/FreelnDetail04?freeln_id=${freelancerTech.freeln_id}">통화내역</a></li>        
+	    <li><a href="/FreelnDetail04?freeln_id=${freelancerTech.freeln_id}">통화내역</a></li> 
+	    <li><a href="/Freeln">목록으로</a></li>        
 	  </ul>
 	  
 	  
@@ -178,14 +179,14 @@
     						<table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
                   				<thead>
                     				<tr role="row" style="text-align: center">
-                    					<th onclick="sortTable(0)">순번</th>
-                    					<th onclick="sortTable(1)">기술</th>
+                    					<th onclick="sortTable(0)" width="20%">순번</th>
+                    					<th onclick="sortTable(1)">기술명</th>
                    				 	</tr>
                   				</thead>
                   				<tfoot>
                     				<tr role="row" style="text-align: center; display:none;">
 					                    <th onclick="sortTable(0)" rowspan="1" colspan="1">순번</th>
-					                    <th onclick="sortTable(1)" rowspan="1" colspan="1">기술이름</th>
+					                    <th onclick="sortTable(1)" rowspan="1" colspan="1">기술명</th>
                     				</tr>
                   				</tfoot>
                   				<tbody>
