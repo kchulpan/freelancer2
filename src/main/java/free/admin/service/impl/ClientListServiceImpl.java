@@ -52,12 +52,7 @@ public class ClientListServiceImpl implements ClientListService {
 	}
 
 
-	/*@Override
-	public void clientDelete(String client_id) {
-		
-		clientListDao.clientDelete(client_id);
-		
-	}*/
+	
 			
 			
 		

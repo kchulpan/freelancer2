@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -54,8 +53,12 @@
   		margin-top: -50px;
 	}
 
+	 /* modal style 끝 */
+
+ 	#client_file {
+ 		overflow: hidden;
+ 	}	
 	</style>
-<!-- modal style 끝 -->	
 	
 	
 <!-- 테이블 내용에서 고객사로 검색 -->
@@ -122,7 +125,7 @@ function sortTable(n) {
 <!-- 기존 리스트를 모달창에 불러오기 -->
 <script type="text/javascript">
  $(function () {
-	$(".rowClick").click(function () {
+	$(".rowClick").click(function (e) {
 		var client_id = $(this).find(".client_id").html();
 		var client_nm = $(this).find(".client_nm").html();
 		var client_addr_1 = $(this).find(".client_addr_1").html();
@@ -150,14 +153,14 @@ function sortTable(n) {
 <script type="text/javascript">
 
 $(document).ready(function(){
-	$("#client_file").on('change', function(){  // 값이 변경되면
+	$("#cli_file").on('change', function(){  // 값이 변경되면
 		if(window.FileReader){  // modern browser
 			var filename = $(this)[0].files[0].name;
 		} else {  // old IE
 			var filename = $(this).val().split('/').pop().split('\\').pop();  // 파일명만 추출
 		}
 		// 추출한 파일명 삽입
-		$("#userfile").val(filename);
+		$("#userFile").val(filename);
 	});
 });
 </script>
@@ -187,28 +190,28 @@ $(document).ready(function(){
 	  $(this).find('form')[0].reset()
 	});
 	</script> -->
+	 
 	
 <script>
-$(function () {
-	$(".modal form").click(function () {
-		var client_id = $(this).find(".client_id").html();
-		console.log(client_id);
-		/* $("form").attr("action", "/ClientDelete"); */
-		 $("#updateBtn").click(function () {
-	       $("form").attr("action", "/ClientUpdate");
+function fileHidden() {
+    document.getElementById("client_file").style.overflow = "hidden";
+}
+
+$(document).ready(function(){
+		$("#updateBtn").click(function () {
+	       $("#modalForm").attr("action", "/ClientUpdate");
+	       $("#modalForm").submit();
 		});
 	
 		 $("#deleteBtn").click(function () {
-	       $("form").attr("action", "/ClientDelete");
+	       $("#modalForm").attr("action", "/ClientDelete");
+	       $("#modalForm").submit();
 		});
-	}); 
-	
-
-});
-
+});				          		
 							          		
-							          		
-</script>	
+</script>
+
+
 	
 </head>
 <!-------------------------------- body ---------------------------------------->
@@ -286,9 +289,9 @@ $(function () {
 							              <label for="client_file_nm">이력서 양식명</label>
 							              <input type="text" name="client_file_nm" class="form-control" id="client_file_nm" placeholder="이력서 양식명을 입력하세요">
 							            </div>
-							            <div class="form-group">
+							            <div class="form-group" >
 							              <label for="client_file"> 이력서 파일명</label>
-      										<input type="file" class="form-control-file border" name="client_file" id="client_file" data-class-button="btn btn-default" data-class-input="form-control" data-button-text="" data-icon-name="fa fa-upload" class="form-control" tabindex="-1" style="position: absolute; clip: rect(0px 0px 0px 0px);">
+      										<input type="file" class="form-control-file border" onclick="" name="client_file" id="client_file" data-class-button="btn btn-default" data-class-input="form-control" data-icon-name="fa fa-upload" class="form-control" tabindex="-1" style="position: absolute; clip: rect(0px 0px 0px 0px);">
       										<div class="bootstrap-filestyle input-group">
       											<input type="text" id="userfile" class="form-control" name="userfile">
 													<span class="group-span-filestyle input-group-btn" tabindex="0">
@@ -361,44 +364,48 @@ $(function () {
 							          <h5><i class="fa fa-user icon"></i>수정/삭제</h5>
 							        </div>
 							        <div class="modal-body" >	
-									<form method="POST" action="/ClientUpdate">
+									<form id="modalForm" method="POST" role="form">
 							            <div class="form-group">
 							              <label for="cli_id">고객사 아이디</label>
-							              <input type="text" id="cli_id" name="cli_id" class="form-control" readonly="readonly">
+							              <input type="text" id="cli_id" name="client_id" class="form-control" readonly="readonly">
 							            </div>
 							            <div class="form-group">
 							              <label for="cli_nm">고객사 이름</label>
-							              <input type="text" name="cli_nm" class="form-control" id="cli_nm">
+							              <input type="text" name="client_nm" class="form-control" id="cli_nm">
 							            </div>
 							            <div class="form-group">
 							              <label for="cli_addr_1">고객사 주소</label>
-							              <input type="text" name="cli_addr_1" class="form-control" id="cli_addr_1">
+							              <input type="text" name="client_addr_1" class="form-control" id="cli_addr_1">
 							            </div>
 							            <div class="form-group">
 							              <label for="cli_addr_2">고객사 상세주소</label>
-							              <input type="text" name="cli_addr_2" class="form-control" id="cli_addr_2">
+							              <input type="text" name="client_addr_2" class="form-control" id="cli_addr_2">
 							            </div>
 							            <div class="form-group">
 							              <label for="cli_file_nm">이력서 양식명</label>
-							              <input type="text" name="cli_file_nm" class="form-control" id="cli_file_nm">
+							              <input type="text" name="client_file_nm" class="form-control" id="cli_file_nm">
 							            </div>
 							            <div class="form-group">
 							              <label for="cli_file"> 이력서 파일명</label>
-      										<input type="file" class="form-control-file border" name="cli_file" id="cli_file" data-class-button="btn btn-default" 
+							              <div class="bootstrap-filestyle input-group">
+							              <input type="text"class="form-control" id="userFile">
+							              
+      									  <input type="file" class="form-control-file border" onclick="fileHidden()" name="client_file" id="cli_file" data-class-button="btn btn-default" 
       											data-class-input="form-control" data-icon-name="fa fa-upload" class="form-control" 
       											tabindex="-1" style="position: absolute; clip: rect(0px 0px 0px 0px);">
-      										<div class="bootstrap-filestyle input-group">
-      											<input type="text" id="userfile" class="form-control" name="userfile">
-													<span class="group-span-filestyle input-group-btn" tabindex="0">
+      											<span class="group-span-filestyle input-group-btn" tabindex="0">
 														<label for="cli_file" class="btn btn-default ">
 															<span class="glyphicon fa fa-upload"></span>	
 														</label>
-													</span>
-      										</div>
+												</span>
+      									  </div>	
+      											
+													
+      										
 							            </div>
 							            <div class="modal-footer">
-							          		<input type="submit" id="updateBtn" name="${client.client_id }" value="수정" class="btn btn-primary btn-default pull-left">
-							          		<input type="submit" id="deleteBtn" name="${client.client_id }" value="삭제" class="btn btn-danger btn-default pull-left client_id">
+							          		<input type="button" id="updateBtn"  value="수정" class="btn btn-primary btn-default pull-left">
+							          		<input type="button" id="deleteBtn"  value="삭제" class="btn btn-danger btn-default pull-left client_id">
 							          		
 							        	</div>   
 							          </form>

@@ -43,18 +43,10 @@ public class ClientListDaoImpl implements ClientListDao {
 	}
 
 
-	/*@Override
-	public void clientDelete(String client_id) {
-		
-		sqlSession.delete("Client.ClientDelete", client_id);
-		
-		
-	}*/
-
 
 	@Override
 	public void clientDelete(HashMap<String, Object> map) {
-		System.out.println("daoimpl"+map);
+		
 		sqlSession.delete("Client.ClientDelete", map);
 		
 	}

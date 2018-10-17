@@ -47,36 +47,25 @@ public class AdminClientController {
 	}
 	
 	@RequestMapping("/ClientUpdate")
-	public ModelAndView clientUpdate(@RequestParam HashMap<String, Object> map) {
-		
+	public String clientUpdate(@RequestParam HashMap<String, Object> map) {
+		System.out.println("업데이트" + map);
 		clientListService.clientUpdate(map);
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("redirect:/Client");
+		return "redirect:/Client";
 		
-		return mv;
+		
 	}
 	
 	@RequestMapping("/ClientDelete")
-	public ModelAndView clientDelete(@RequestParam HashMap<String, Object> map) {
+	public String clientDelete(@RequestParam HashMap<String, Object> map) {
+		System.out.println("삭제"+map);
 		clientListService.clientDelete(map);
-		System.out.println("controll"+map);
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("redirect:/Client");
 		
-		return mv;
+		return "redirect:/Client";
+		
+		
 		
 	}
-	
-	/*@RequestMapping("/ClientDelete")
-	public ModelAndView clientDelete(@RequestParam String client_id) {
-		clientListService.clientDelete(client_id);
-		System.out.println(client_id);
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("redirect:/Client");
-		
-		return mv;
-		
-	}*/
+
 	
 	
 }
