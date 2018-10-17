@@ -61,26 +61,30 @@
 <!-- 테이블 내용에서 고객사로 검색 -->
 	<script>
 	function myFunction() {
-	  var input, filter, table, tr, td, i;
+	  var input, filter, table, tr, freeln_nm, freeln_phone, i;
 	  input = document.getElementById("myInput");
 	  filter = input.value.toUpperCase();
-	  table = document.getElementById("dataTable");
-	  tr = table.getElementsByTagName("tr");
+	  tbody = $('tbody');
+	  tr = $('tr',tbody);
+	  freeln_nm = $('.freeln_nm');
+	  freeln_phone = $('.freeln_phone');
+	  /* freeln_phone = $('td',tr).eq(3); */
+	 /*  console.log(freeln_nm);
+	  console.log(tr.length); */
 	  for (i = 0; i < tr.length; i++) {
-	   /*  td = tr[i].getElementsByTagName("td")[1]; */
-	    if (td = tr[i].getElementsByTagName("td")[1]) {
-	      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-	        tr[i].style.display = "";
+		  /* console.log('freeln_nm'+freeln_nm.eq(i).html());
+		  console.log('freeln_phone'+freeln_phone.eq(i).html());
+		  console.log('이름겹치는숫자'+freeln_nm.eq(i).html().toUpperCase().indexOf(filter));
+		  console.log('폰겹치는숫자'+freeln_phone.eq(i).html().toUpperCase().indexOf(filter));
+		  console.log(tr.eq(i).html()); */
+		
+	      if (freeln_nm.eq(i).html().toUpperCase().indexOf(filter) > -1) {
+	    	  tr.eq(i).attr('style','display:');
+	      } else if(freeln_phone.eq(i).html().toUpperCase().indexOf(filter) > -1) {
+	    	  tr.eq(i).attr('style','display:');
 	      } else {
-	        tr[i].style.display = "none";
+	    	  tr.eq(i).attr('style','display:none');
 	      }
-	    } else if(td = tr[i].getElementsByTagName("td")[3]){
-	    	if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-		        tr[i].style.display = "";
-		      } else {
-		        tr[i].style.display = "none";
-		      }	
-	    }      
 	  }
 	}
 	</script>
@@ -209,10 +213,10 @@
 				                  	</c:when>
 				                  	</c:choose>
 				                      <td>${status.index + 1 }</td>
-				                      <td>${freeln.freeln_nm}</td>
+				                      <td class="freeln_nm">${freeln.freeln_nm}</td>
 				                      <td>${freeln.career_year}</td>
 				                     <!--  <td>등급</td> -->
-				                      <td id="freeln_phone">${freeln.freeln_phone}</td>
+				                      <td class="freeln_phone">${freeln.freeln_phone}</td>
 				                      <td>${freeln.in_enable_date}</td>
 				                      <td>${freeln.freen_mail}</td>
 				                      <td>${freeln.hope_place}</td>

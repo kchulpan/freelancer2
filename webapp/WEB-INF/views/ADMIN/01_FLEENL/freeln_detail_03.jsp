@@ -96,6 +96,31 @@
 		
 	});
 	</script>
+	
+	<!-- 테이블 내용에서 고객사로 검색 -->
+	<script>
+	function myFunction() {
+	  var input, filter, ul, li, work_date, client_nm, i;
+	  input = document.getElementById("myInput");
+	  filter = input.value.toUpperCase();
+	  ul = $('#content_ul');
+	  li = $('li',ul);
+	  client_nm = $('.client_nm',li);
+	  work_date = $('.work_date',li);
+	  for (i = 0; i < li.length; i++) {
+	  /* console.log(work_date.eq(i).html());
+	  console.log(work_date.eq(i).html().toUpperCase().indexOf(filter));
+	  console.log(li.eq(i).html()); */
+	      if (work_date.eq(i).html().toUpperCase().indexOf(filter) > -1) {
+	       	  li.eq(i).attr('style','display:');
+	      } else if(client_nm.eq(i).html().toUpperCase().indexOf(filter) > -1){
+	    	  li.eq(i).attr('style','display:');  
+	      } else {
+	       	  li.eq(i).attr('style','display:none');
+	      }   
+	  }
+	}
+	</script>
 
 </head>
 <!-------------------------------- body ---------------------------------------->
@@ -136,8 +161,22 @@
    			<i class="fas fa-fw fa-users"></i>
    			프리랜서 ${freelancer.freeln_nm} 경력정보
      </div> 
-     
-     <ul>
+     <div class="card-body">
+    			<div class="table-responsive">
+    				<div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+    					<div class="row">
+    						
+    						<div class="col-sm-12 col-md-12">
+	    						<div id="dataTable_filter" class="dataTables_filter">
+	    							<label>Search:
+	    								<input type="text" class="form-control form-control-sm" placeholder="이름을 입력하세요" aria-controls="dataTable" id="myInput" onkeyup="myFunction()">
+	    							</label>
+	    						</div>
+    						</div>
+    					</div>
+    					<div class="row">
+    						<div class="col-sm-12">
+     <ul id="content_ul">
       <c:forEach var="freelancerCareer" items="${freelancerCareer}">
      	<li>
      		<table class="table table-bordered">
@@ -149,7 +188,8 @@
 		        <td rowspan="2" class="click_detail">세부내용<br/>보기</td> 
 		      </tr>
 		      <tr>  
-		        <td>${freelancerCareer.work_str_date}~${freelancerCareer.work_end_date} |
+		        <td class="work_date">
+		        	${freelancerCareer.work_str_date}~${freelancerCareer.work_end_date} |
 		        	${freelancerCareer.client_loca_1} ${freelancerCareer.client_loca_2}</td>     
 		      </tr>
 		      <tr class="detail_box">
@@ -161,7 +201,11 @@
      	</li>
 		     </c:forEach>
      </ul>
-	 
+	 </div>
+           			</div>
+         	  </div>
+    		</div>			
+   		 </div> 			
     </div>
 	</div>
     </div>
