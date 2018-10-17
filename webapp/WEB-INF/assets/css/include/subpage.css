@@ -4,7 +4,7 @@ html, body {margin:0px; padding:0px; height:100%; overflow:hidden;}
 body > * {font-family: 'Open Sans', Arial, sans-serif;}
 #wrapper  {display:flex; flex-direction:column; width:100%;  height:100%;  border:1px solid black; 
 			 box-sizing:border-box;  background-color:#f5f5fa;}
-a {text-decoration: none;}
+
 	
 	/* header */
 	header {/* border:1px solid black; */ width:100%; flex-basis:110px; flex-shrink:0; box-sizing:border-box;
@@ -15,6 +15,8 @@ a {text-decoration: none;}
 		.title_logo {text-decoration: none; text-transform: uppercase; font-size: 40px; font-weight: 900; line-height: 1em;
     				 letter-spacing: -1px; margin-top: 30px; padding: 0 0 0 15px; color: #777;}
 		.title_logo > span {color: #68A4C4;}
+		#title > a {text-decoration: none;}
+		#title > a:hover {color: #5e5e5e;}
 		
 		#myPage   {/* border:1px solid black; */ position:absolute; right:3%; box-sizing:border-box;
 					display: flex; flex-direction: row;}
@@ -60,7 +62,7 @@ a {text-decoration: none;}
 		.top_menu:hover  {color:#68A4C4; cursor:pointer; background-color:#252C35;
 						  border-bottom:2px solid #68A4C4;}
 		.top_menu_active {border-bottom:2px solid #68A4C4;}
-		#top_menu_box  a {color:white;}
+		#top_menu_box  a {color:white; text-decoration:none;}
 								 			  
 		.menu_icon 		  {margin-right:5px;}
 		.menu_icon_active {color:#68A4C4;}				 
