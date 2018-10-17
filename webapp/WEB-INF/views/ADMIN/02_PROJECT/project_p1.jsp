@@ -118,51 +118,7 @@
 	   		<div>사용유무:
 				<input id="use_yn" type="checkbox" name="use_yn" value="Y">
 	   		</div>
-	 	<%-- <label for="use_yn"><b>사용유무:</b></label>
-	    <input type="checkbox"  name="use_yn"  value="${projDtl.use_yn}" checked/>
-		<br>
-		<br>
-	    <label for="proj_code"><b>프로젝트 코드:</b></label>
-	    <input type="text" class="input" name="proj_code"  value="${projDtl.proj_code}">
-	
-	    <label for="proj_nm"><b>프로젝트명:</b></label>
-	    <input type="text" class="input" name="proj_nm"  value="${projDtl.proj_nm}">
-	    
-	    <label for="proj_date"><b>프로젝트 기간:</b></label>
-	    <input type="text" class="input" name="proj_str_date" value="${projDtl.proj_str_date}">
-	    &nbsp;&nbsp;&nbsp;
-	    <input type="text" class="input" name="proj_end_date" value="${projDtl.proj_end_date}">
-	    
-	    <label for="client_id"><b>고객사:</b></label>
-	    <input type="text" class="input"  name="client_id" value="${projDtl.client_id}">
-	    
-	    <label for="involve_num"><b>투여인원:</b></label>
-	    <input type="text" class="input" name="involve_num" value="${projDtl.involve_num}">
-	    
-	    <label for="field"><b>해당분야:</b></label>
-	    <select class="input" name="field_1" value=" ${projDtl.field_1}">
-	    
-	    	<option>1</option>
-	    </select>
-	    <select class="input" name="field_2" value=" ${projDtl.field_2}">
-	    	<option>2</option>
-	    </select>
-	    
-	    <label for="note"><b>비고:</b></label>
-	    <input type="text" class="input" name="note" value=" ${projDtl.note}">
-	    
-	    <label for="contents"><b>상세내용:</b></label>
-	    <textarea class="input" name="contents" value=" ${projDtl.contents}"></textarea>
-	
-		<label for="need_tech"><b>필요기술:</b></label>
-	    <textarea class="input" name="need_tech" value=" ${projDtl.need_tech}"></textarea>
-	    
-		<label for="charge_nm"><b>담당자:</b></label>
-	    <select class="input" name="charge_nm" value=" ${projDtl.charge_nm}">
-	    	<option></option>
-	    </select> --%>
-	
-	    <button type="submit" class="btn">확인</button>
+	    <button type="submit" align="middle">확인</button>
 	  </c:forEach>
 	</form>
 	 </div>

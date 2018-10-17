@@ -27,7 +27,6 @@ public class AdminProjectController {
 		ModelAndView mav = new ModelAndView();
 		List<ProjectListVo> projectList = projectListService.projectList(map);
 		
-		System.out.println("리스트" + projectList);
 		mav.addObject("projectList", projectList);
 		mav.setViewName("ADMIN/02_PROJECT/project");
 		return mav;
@@ -40,7 +39,6 @@ public class AdminProjectController {
 		List<ProjectListVo> projectDetail = projectListService.projectDetail(map);
 		mav.addObject("projectDetail",projectDetail);
 		mav.setViewName("ADMIN/02_PROJECT/project_p1");
-		System.out.println("넘어온값"+projectDetail);
 		return mav;
 	
 	}
@@ -59,8 +57,9 @@ public class AdminProjectController {
 	}
 	/*새 프로젝트 등록*/
 	@RequestMapping("/ProjectNewInsert")
-	public String ProjectNewInsert()
+	public String ProjectNewInsert(@RequestParam HashMap<String,Object> map)
 	{
-		return null;
+		projectListService.ProjectNewInsert(map);
+		return "redirect:/Project";
 	}
 }

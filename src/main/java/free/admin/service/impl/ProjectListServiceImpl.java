@@ -38,4 +38,10 @@ public class ProjectListServiceImpl implements ProjectListService
 		
 	}
 
+	@Override
+	public void ProjectNewInsert(HashMap<String, Object> map) {
+		projectListDao.ProjectNewInsert(map);
+		
+	}
+
 }
