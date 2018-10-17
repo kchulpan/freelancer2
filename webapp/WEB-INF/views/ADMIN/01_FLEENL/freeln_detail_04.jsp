@@ -30,6 +30,9 @@
   	<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 	
 	<!-- 테이블관련 CSS/JS 끝 -->
+	
+	
+	
 	<!-- css -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -40,10 +43,19 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="js/include/subpage.js"></script>
+	
+	<!-- datepicker를 위한 CSS/JS -->
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="/resources/demos/style.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<!-- datepicker를 위한 CSS/JS 끝-->
 	<script>
 	$(document).ready(function(){
 		$('#freeln').addClass('top_menu_active');
 		$('#freeln').find('i').addClass('menu_icon_active');
+		
+		$( "#datepicker" ).datepicker();
 	});
 	</script>
 <script>
@@ -111,7 +123,7 @@
 	      </tr>
 	      <tr>
 	        <th>투입가능일</th>
-	        <td colspan="2"><input type="date" name="in_enable_date"/></td>
+	        <td colspan="2"><input type="text" name="in_enable_date" id="datepicker"/></td>
 	        <td><input type="submit" value="저장"/></td>
 	      </tr>
 	    </tbody>
