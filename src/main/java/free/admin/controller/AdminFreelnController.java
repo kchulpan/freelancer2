@@ -9,12 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import free.admin.service.ChargeListService;
 import free.admin.service.FreelancerListService;
 import free.admin.vo.FreelancerCallVo;
 import free.admin.vo.FreelancerCareerVo;
 import free.admin.vo.FreelancerListVo;
-import free.admin.vo.ProjectListVo;
 
 @Controller
 public class AdminFreelnController {
@@ -26,6 +24,22 @@ public class AdminFreelnController {
 	public ModelAndView freeln() {
 		ModelAndView mv = new ModelAndView();
 		List<FreelancerListVo> freelancerList = freelancerListService.freelancerList();	
+
+		//경력 n개월 -> n년 n개월
+		for (int i = 0; i < freelancerList.size(); i++) {
+			int career_year = Integer.parseInt(freelancerList.get(i).getCareer_year());
+			int year = career_year / 12;
+			int month = career_year % 12;
+			String fmt = "%d년 %d개월";
+			String fmt_0 = "%d개월";
+			String r_career_year = "";
+			if(year == 0 ) {
+				r_career_year = String.format(fmt_0, month);
+			} else {
+				r_career_year = String.format(fmt, year, month);
+			}
+			freelancerList.get(i).setCareer_year(r_career_year);
+		}
 		
 		mv.addObject("freelancerList", freelancerList);
 		mv.setViewName("ADMIN/01_FLEENL/freeln");

@@ -28,13 +28,9 @@
   	<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 	
 	<!-- 테이블관련 CSS/JS 끝 -->
-	
-	
-	
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-	
-
 	
 	<!-- css -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -42,6 +38,12 @@
 	
 	<!-- js -->
 	<script src="js/include/subpage.js"></script>
+	
+	<style>
+	
+	tbody > tr:hover {background-color:#E9EDF1; cursor:pointer;}
+	
+	</style>
 	
 	
 	<script>
@@ -208,7 +210,7 @@
 				                  	</c:choose>
 				                      <td>${status.index + 1 }</td>
 				                      <td>${freeln.freeln_nm}</td>
-				                      <td>${freeln.career_year}개월</td>
+				                      <td>${freeln.career_year}</td>
 				                     <!--  <td>등급</td> -->
 				                      <td id="freeln_phone">${freeln.freeln_phone}</td>
 				                      <td>${freeln.in_enable_date}</td>

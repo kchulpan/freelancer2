@@ -50,12 +50,41 @@
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<!-- datepicker를 위한 CSS/JS 끝-->
+	
+	<style>
+	 .call_header {border-top: 1px solid rgba(0,0,0,.125);}
+	
+	ul{ 
+		padding-left: 20px;
+	    padding-right: 20px;
+	}
+	li {list-style-type: none;}
+	
+	
+	#insert_table{
+		margin-top:0px;
+		background-color:#DDDDDD;
+	}
+	#insert_table>tbody>tr>th{
+		border-color:white;
+	}
+	#insert_table>tbody>tr>td{
+		border-color:white;
+	}
+	
+	.table-bordered {
+	    border: 3px solid #ddd;
+	}
+	
+	
+	</style>
 	<script>
 	$(document).ready(function(){
 		$('#freeln').addClass('top_menu_active');
 		$('#freeln').find('i').addClass('menu_icon_active');
 		
-		$( "#datepicker" ).datepicker();
+		 $( "#datepicker" ).datepicker();
+		 $( "#datepicker" ).datepicker( "option", "dateFormat", "yy-mm-dd");
 	});
 	</script>
 <script>
@@ -91,6 +120,7 @@
 	    <li><a href="/FreelnDetail02?freeln_id=${freelancer.freeln_id}">기술정보</a></li>
 	    <li><a href="/FreelnDetail03?freeln_id=${freelancer.freeln_id}">경력정보</a></li>
 	    <li class="active">통화내역</li> 
+	    <li><a href="/Freeln">목록으로</a></li> 
 	  </ul> 
     <!-- 내용넣기! -->
     <div id="content-wrapper">
@@ -102,7 +132,7 @@
      </div> 
      <!-- 통화내역 입력 폼 -->
      <form action="/FreelnDetail04_Call_Insert" method="POST">
-     <table class="table table-bordered">
+     <table class="table table-bordered" id="insert_table">
     	<input type="hidden" name="freeln_id" value="${freelancer.freeln_id}"/>
 	    <tbody>
 	      <tr>
@@ -131,32 +161,38 @@
 	  </form>
 	  <!-- 통화내역 입력 폼 끝-->
 	  
-     <div class="card-header">
+     <div class="card-header call_header">
    			<i class="fas fa-fw fa-users"></i>
    			프리랜서 ${freelancer.freeln_nm} 통화내역
      </div> 
-     <table class="table table-bordered">
-	    <tbody>
-	    <c:forEach var="freelancerCall" items="${freelancerCall}">
-	      <tr>
-	        <th>프리랜서</th>
-	        <td>${freelancer.freeln_nm}</td>       
-	        <th>담당자</th>
-	        <td>${freelancerCall.charge_nm}</td>  
-	      </tr>
-	      <tr>
-	        <th>통화내용</th>
-	        <td colspan="3">${freelancerCall.call_note}</td>
-	      </tr>
-	      <tr>
-	        <th>투입가능일</th>
-	        <td>${freelancerCall.in_enable_date} 이후 가능</td>
-	        <th>통화날짜</th>
-	        <td>${freelancerCall.call_date}</td>
-	      </tr>
-	      </c:forEach>
-	    </tbody>
-	  </table>
+     
+     <ul>
+     	<c:forEach var="freelancerCall" items="${freelancerCall}">
+     	<li>
+	     	<table class="table table-bordered">
+		    <tbody>
+		      <tr>
+		        <th>프리랜서</th>
+		        <td>${freelancer.freeln_nm}</td>       
+		        <th>담당자</th>
+		        <td>${freelancerCall.charge_nm}</td>  
+		      </tr>
+		      <tr>
+		        <th>통화내용</th>
+		        <td colspan="3">${freelancerCall.call_note}</td>
+		      </tr>
+		      <tr>
+		        <th>투입가능일</th>
+		        <td>${freelancerCall.in_enable_date} 이후 가능</td>
+		        <th>통화날짜</th>
+		        <td>${freelancerCall.call_date}</td>
+		      </tr>
+		    </tbody>
+		  </table>
+     	</li>
+     	</c:forEach>
+     </ul>
+     
      </div>
 	</div>
     </div>
