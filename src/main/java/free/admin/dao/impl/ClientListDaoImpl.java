@@ -3,6 +3,8 @@ package free.admin.dao.impl;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -24,10 +26,11 @@ public class ClientListDaoImpl implements ClientListDao {
 		
 		return clientList;
 	}
+	
 
 	@Override
-	public void clientAdd(ClientListVo vo) {
-		sqlSession.insert("Client.ClientInsert", vo);
+	public void clientAdd(HashMap<String, Object> map) {
+		sqlSession.insert("Client.ClientInsert", map);
 		
 	}
 

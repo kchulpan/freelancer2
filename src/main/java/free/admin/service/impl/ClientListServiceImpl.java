@@ -2,9 +2,13 @@ package free.admin.service.impl;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import free.admin.dao.ClientListDao;
 import free.admin.service.ClientListService;
@@ -24,9 +28,24 @@ public class ClientListServiceImpl implements ClientListService {
 		return clientList;
 	}
 
+	
 	@Override
-	public void clientAdd(ClientListVo vo) {
-		clientListDao.clientAdd(vo);		
+	public void clientAdd(HashMap<String, Object> map) {
+		
+		clientListDao.clientAdd(map);
+		
 	}
+			
+			
+		
+		
+		
 	
 }
+
+	
+	
+	
+	
+	
+

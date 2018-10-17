@@ -3,8 +3,11 @@ package free.admin.controller;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -28,10 +31,18 @@ public class AdminClientController {
 		return mv;
 	}
 	
+	
 	@RequestMapping("/ClientInsert")
-	public String clientinsert(ClientListVo vo) {
-		clientListService.clientAdd(vo);
-		return "redirect:/Client";
+	public ModelAndView clientInsert(@RequestParam HashMap<String, Object> map) {
+		
+		clientListService.clientAdd(map);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("redirect:/Client");
+		
+		return mv;
+		
 	}
+	
 	
 }
