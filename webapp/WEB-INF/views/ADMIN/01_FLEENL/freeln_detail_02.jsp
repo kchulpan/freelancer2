@@ -168,7 +168,7 @@
     						<div class="col-sm-12 col-md-12">
 	    						<div id="dataTable_filter" class="dataTables_filter">
 	    							<label>Search:
-	    								<input type="text" class="form-control form-control-sm" placeholder="고객사를 입력하세요" aria-controls="dataTable" id="myInput" onkeyup="myFunction()">
+	    								<input type="text" class="form-control form-control-sm" placeholder="기술명을 입력하세요" aria-controls="dataTable" id="myInput" onkeyup="myFunction()">
 	    							</label>
 	    						</div>
     						</div>
@@ -179,17 +179,13 @@
                   				<thead>
                     				<tr role="row" style="text-align: center">
                     					<th onclick="sortTable(0)">순번</th>
-                    					<th onclick="sortTable(1)">기술이름</th>
-                    					<th onclick="sortTable(2)">사용경력</th>
-                    					<th onclick="sortTable(3)">사용경력 상세</th>
+                    					<th onclick="sortTable(1)">기술</th>
                    				 	</tr>
                   				</thead>
                   				<tfoot>
                     				<tr role="row" style="text-align: center; display:none;">
 					                    <th onclick="sortTable(0)" rowspan="1" colspan="1">순번</th>
 					                    <th onclick="sortTable(1)" rowspan="1" colspan="1">기술이름</th>
-					                    <th onclick="sortTable(2)" rowspan="1" colspan="1">사용경력</th>
-					                    <th onclick="sortTable(3)" rowspan="1" colspan="1">사용경력 상세</th>
                     				</tr>
                   				</tfoot>
                   				<tbody>
@@ -204,8 +200,6 @@
 				                  	</c:choose>
 				                      <td>${status.index + 1 }</td>
 				                      <td>${free_mjth}</td>
-				                      <td></td>
-				                      <td></td>
 				                    </tr>
 				                </c:forEach>
 		                  		</tbody>
