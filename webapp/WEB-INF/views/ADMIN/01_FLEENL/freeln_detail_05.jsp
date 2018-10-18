@@ -15,13 +15,13 @@
 	<link href="css/mainpage/sb-admin.css" rel="stylesheet">
 	
 	 <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
+    <!-- <script src="vendor/jquery/jquery.min.js"></script> -->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="vendor/datatables/jquery.dataTables.js"></script>
     <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
     <script src="js/mainpage/sb-admin.min.js"></script>
   	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<!-- <script src="vendor/bootstrap/js/bootstrap.min.js"></script> -->
   	<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 	
 <!-- 테이블관련 CSS/JS 끝 -------------------------------------->
@@ -42,7 +42,7 @@
 	
 	<!-- datepicker를 위한 CSS/JS -->
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-	<link rel="stylesheet" href="/resources/demos/style.css">
+	<!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<!-- datepicker를 위한 CSS/JS 끝-->
@@ -83,7 +83,7 @@
 	}
  
 	#inputModal, #inputModal2 {
-  		top: 15%;
+  		top: 20%;
   		margin-top: -50px;
 	
 	}
@@ -222,7 +222,7 @@ $('.modal').on('hidden.bs.modal', function (e) {
    	<div class="tabs">
     </div>
     
-    <div class="sections">
+<!--     <div class="sections"> -->
     <ul class="breadcrumb">
 	    <li><a href="/FreelnDetail01?freeln_phone=${freelancer.freeln_phone}">기본정보</a></li>
 	    <li><a href="/FreelnDetail02?freeln_id=${freelancer.freeln_id}">기술정보</a></li>
@@ -287,7 +287,7 @@ $('.modal').on('hidden.bs.modal', function (e) {
 		              <input type="text" name="in_enable_date" class="form-control" id="datepicker">
 		            </div>
 		            <div class="modal-footer">
-		          		<button type="submit" class="btn btn-primary btn-default pull-left" data-dismiss="modal" id="">확인</button>
+		          		<button type="submit" class="btn btn-primary btn-default pull-left" id="">확인</button>
 		          		<button class="btn btn-danger btn-default pull-left" data-dismiss="modal">취소</button>
 		        	</div>
 		          </form>
@@ -383,7 +383,7 @@ $('.modal').on('hidden.bs.modal', function (e) {
    </div>
   </div> 
    <!-- 테이블내용 끝 -->
-    </div> 		 
+<!--     </div> 	 -->	 
   </article>
  	  
 </div>
