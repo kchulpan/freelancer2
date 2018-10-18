@@ -1,5 +1,8 @@
 @charset "UTF-8";
- 	  
+
+tr{
+	margin:0 auto;
+}
  .div{
  	 
  	width:450px;
@@ -15,7 +18,7 @@
 	position: relative;
 	bottom: 0px;
 	margin:0 auto;
- 	background-color: yellow;
+ 	background-color: WHITE;
   	 width:460px;
  	 height:30px;
 }
@@ -31,7 +34,7 @@
 	
 }
 .reg2{
-	margin-top:70px;
+	margin-top:61.5px;
 	float:right;
 }
 .btn1{

@@ -9,10 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import free.admin.service.ChargeListService;
 import free.admin.service.FreelancerListService;
 import free.admin.vo.FreelancerCallVo;
 import free.admin.vo.FreelancerCareerVo;
 import free.admin.vo.FreelancerListVo;
+import free.admin.vo.ProjectListVo;
 
 @Controller
 public class AdminFreelnController {
@@ -105,4 +107,5 @@ public class AdminFreelnController {
 		
 		return "redirect:/FreelnDetail04?freeln_id="+map.get("freeln_id");
 	}
+
 }
