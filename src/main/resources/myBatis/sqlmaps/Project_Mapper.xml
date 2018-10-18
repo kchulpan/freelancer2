@@ -26,17 +26,16 @@
 		 <insert id="ProjectInsert"
 				statementType="CALLABLE">
 			{CALL PKG_PROJECT.PROC_PROJECT_INSERT(
+			<!-- #{proj_id, mode=IN, jdbcType=VARCHAR}, -->
 			#{proj_nm, mode=IN, jdbcType=VARCHAR},
 			#{proj_str_date, mode=IN, jdbcType=VARCHAR},
         	#{proj_end_date, mode= IN, jdbcType=VARCHAR},
         	#{client_id, mode=IN, jdbcType=VARCHAR},
-		    #{client_nm, mode=IN, jdbcType=VARCHAR},
 		    #{involve_num, mode=IN, jdbcType=VARCHAR},
 		    #{field_1, mode=IN, jdbcType=VARCHAR},
 		    #{field_2, mode=IN, jdbcType=VARCHAR},
 		    #{remark, mode=IN, jdbcType=VARCHAR},
 		    #{need_tech, mode=IN, jdbcType=VARCHAR},
-		    #{charge_nm, mode=IN, jdbcType=VARCHAR},
 		    #{use_yn, mode=IN, jdbcType=VARCHAR},
 		    #{charge_id, mode=IN, jdbcType=VARCHAR}
 			)}
@@ -54,7 +53,7 @@
 		#{result,  mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=ProjectListMap}
 		)}
   	</select>
-  	   	<select id="ProjectDetail"
+  	<select id="ProjectDetail"
   			statementType="CALLABLE"
   			parameterType= "hashmap"
   			resultType="free.admin.vo.ProjectListVo">
@@ -65,25 +64,24 @@
   	</select>
   	
   	  	<update id="ProjectUpdate" statementType="CALLABLE">
-  		{CALL PKG_PROJECT.PROC_PRJECT_UPDATE(
+  		{CALL PKG_PROJECT.PROC_PROJECT_UPDATE(
   		#{proj_id, mode=IN, jdbcType=VARCHAR},
   		#{charge_id, mode=IN, jdbcType=VARCHAR},
   		#{proj_nm, mode=IN, jdbcType=VARCHAR},
   		#{proj_str_date, mode=IN, jdbcType=VARCHAR},
   		#{proj_end_date, mode=IN, jdbcType=VARCHAR},
-  		#{client_nm, mode=IN, jdbcType=VARCHAR},
-  		#{involv_num, mode=IN, jdbcType=VARCHAR},
+  		#{client_id, mode=IN, jdbcType=VARCHAR},
+  		#{involve_num, mode=IN, jdbcType=VARCHAR},
   		#{field_1, mode=IN, jdbcType=VARCHAR},
   		#{field_2, mode=IN, jdbcType=VARCHAR},
   		#{remark, mode=IN, jdbcType=VARCHAR},
   		#{need_tech, mode=IN, jdbcType=VARCHAR},
-  		#{charge_nm, mode=IN, jdbcType=VARCHAR},
   		#{use_yn, mode=IN, jdbcType=VARCHAR}
   		)}
   	</update>
   	 <delete id="ProjectDelete"
   			statementType="CALLABLE">
-  		{CALL PKG_CHARGE.PROC_CHARGE_DELETE(
+  		{CALL PKG_PROJECT.PROC_PROJECT_DELETE(
   		#{proj_id, mode=IN, jdbcType=VARCHAR}
 
   		)}		

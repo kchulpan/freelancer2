@@ -38,6 +38,7 @@ public class ProjectListDaoImpl implements ProjectListDao
 	// 프로젝트 데이터 수정
 	@Override
 	public void projectUpdate(HashMap<String, Object> map) {
+		
 		sqlSession.update("Project.ProjectUpdate", map);
 		
 	}
