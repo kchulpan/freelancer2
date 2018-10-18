@@ -17,6 +17,8 @@ public interface ProjectListDao
 
 	public void ProjectNewInsert(HashMap<String, Object> map);
 
+	public void projectDelete(HashMap<String, Object> map);
+
 
 
 

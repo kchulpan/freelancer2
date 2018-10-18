@@ -29,36 +29,24 @@
 
     <div class="container">
       <div class="card card-login mx-auto mt-5">
-        <div class="card-header">Login
-           <div><img src=""></div> 
-        </div>
+        <div class="card-header">Reset Password</div>
         <div class="card-body">
+          <div class="text-center mb-4">
+            <h4>Forgot your password?</h4>
+            <p>Enter your email address and we will send you instructions on how to reset your password.</p>
+          </div>
           <form>
             <div class="form-group">
               <div class="form-label-group">
-                <input type="text" id="inputId" class="form-control" placeholder="id" required="required" autofocus="autofocus">
-                <label for="inputId">아이디를 입력하세요</label>
+                <input type="email" id="inputEmail" class="form-control" placeholder="Enter email address" required="required" autofocus="autofocus">
+                <label for="inputEmail">이메일을 입력하세요</label>
               </div>
             </div>
-            <div class="form-group">
-              <div class="form-label-group">
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="required">
-                <label for="inputPassword">비밀번호를 입력하세요</label>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" value="remember-me">
-                  비밀번호 저장하기
-                </label>
-              </div>
-            </div>
-            <a class="btn btn-primary btn-block" href="/">로그인</a>
+            <a class="btn btn-primary btn-block" href="/">비밀번호 재설정</a>
           </form>
           <div class="text-center">
             <a class="d-block small mt-3" href="/Register">회원가입</a>
-            <a class="d-block small" href="/Forgot-password">비밀번호를 잊어버리셨나요?</a>
+            <a class="d-block small" href="/">로그인 페이지</a>
           </div>
         </div>
       </div>
@@ -70,6 +58,7 @@
 
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
 
 
 <%--   <div style="text-align:center">

@@ -65,6 +65,13 @@
 	.table-responsive {
 		overflow-x:hidden; 
 	}
+	a
+	{
+	 color:black;
+	}
+	.idClick{
+		font-size:13px;
+	}
 
 	</style>
 	<!-- 테이블 내용에서 프로젝트명으로 검색 -->
@@ -131,46 +138,63 @@ function sortTable(n) {
 <script type="text/javascript">
  $(function () {
 	$(".rowClick").click(function (e) {
-		var project_nm = $(this).find(".project_nm").html();
-		var project_str_date = $(this).find(".project_str_date").html();
-		var project_end_date = $(this).find(".project_end_date").html();
+	 /* 	if{
+			$('#inputModal').
+	 		
+		}
+	 if{$}*/
+		var project_nm = $(this).find(".proj_nm").html();
+		var project_str_date = $(this).find(".proj_str_date").html();
+		var project_end_date = $(this).find(".proj_end_date").html();
 		var client_id = $(this).find(".client_id").html();
-		var need_tech = $(this).find(".need_tech").html();
-		var field_1 = $(this).find(".field_1").html();
 		var involve_num = $(this).find(".involve_num").html();
+		var field_1 = $(this).find(".field_1").html();
+		var field_2 = $(this).find(".field_2").html();
+	 	var remark = $(this).find(".remark").html(); 
+		var need_tech = $(this).find(".need_tech").html();
 		var client_id = $(this).find(".client_id").html();
-		var remark = $(this).find(".remark").html();
-		console.log(project_nm);
-		console.log(project_str_date);
-		console.log(project_end_date);
+		var charge_id = $(this).find(".charge_id").val();
+		console.log(proj_nm);
+		console.log(proj_str_date);
+		console.log(proj_end_date);
 		console.log(client_id);
-		console.log(need_tech);
-		console.log(field_1);
 		console.log(involve_num);
-		console.log(client_id);
+		console.log(field_1);
+		console.log(field_2);
 		console.log(remark);
+		console.log(need_tech);
+		console.log(client_id);
 		/* var modalData = document.querySelectorAll('tbody a'); */
 		//var my_id_value = $(".idClick").eq(0).data("title");
 		//var my_id_value2 = $(".idClick").eq(1).data("title1");
-		$(".modal-body #project_nm").val(project_nm); 
-		$(".modal-body #project_str_date").val(project_str_date); 
-		$(".modal-body #project_end_date").val(project_end_date); 
+		$(".modal-body #proj_nm").val(project_nm); 
+		$(".modal-body #proj_str_date").val(project_str_date); 
+		$(".modal-body #proj_end_date").val(project_end_date); 
 		$(".modal-body #client_id").val(client_id); 
-		$(".modal-body #need_tech").val(need_tech); 
-		$(".modal-body #field_1").val(field_1); 
 		$(".modal-body #involve_num").val(involve_num); 
+		$(".modal-body #field_1").val(field_1); 
+		$(".modal-body #field_2").val(field_2); 
+		$(".modal-body #remark").val(remark); 
+		$(".modal-body #need_tech").val(need_tech); 
 		$(".modal-body #client_id").val(client_id); 
-		$(".modal-body #remark").val(remark);
+		$(".modal-body #charge_id").val(charge_id);
 	})
 }); 
 </script>
-<!-- <script>
-데이터 입력 후 초기화시키기
-$('.modal').on('hidden.bs.modal', function (e) {
-	console.log('modal close');
-	$(this).find('form')[0].reset()
+<script>
+$(document).ready(function(){
+	$("#deletebtn").click(function(){
+		$("#modalform").attr("action", "/ProjectDelete");
+		$("#modalform").submit();
+	});
+	
+	$("#updatebtn").click(function(){
+		$("#modalform").attr("action", "/ProjectUpdate");
+		$("#modalform").submit();
+	});
 });
-</script> -->
+	
+</script>
 </head>
 <!-------------------------------- body ---------------------------------------->
 <body>
@@ -215,10 +239,9 @@ $('.modal').on('hidden.bs.modal', function (e) {
 <!------------------------------------------------- The Modal 새프로젝트등록 --------------------------------------------------> 							
      							
 								  <!-- Modal -->
-							 <!--  <div class="modal fade" id="inputModal" role="dialog">
+							  <div class="modal fade" id="inputModal" role="dialog">
 							    <div class="modal-dialog" role="document">
 							    
-							      Modal content
 							      <div class="modal-content modal-lg">
 							        <div class="modal-header">
 							          <button type="button" class="close" data-dismiss="modal"></button>
@@ -228,8 +251,8 @@ $('.modal').on('hidden.bs.modal', function (e) {
 							        	
 							          <form role="form" action="/ProjectNewInsert" method="POST">
 							            <div class="form-group">
-							              <label for="proj_id">프로젝트 코드</label>
-							              <input type="text" class="form-control" id="proj_id" placeholder="자동생성" readonly>
+							             <!--  <label for="proj_id">프로젝트 코드</label> -->
+							              <input type="hidden" class="form-control" id="proj_id" placeholder="자동생성" readonly>
 							            </div>
 							            <div class="form-group">
 							              <label for="proj_nm">프로젝트명</label>
@@ -237,12 +260,12 @@ $('.modal').on('hidden.bs.modal', function (e) {
 							            </div>
 							            <div class="form-group">
 							              <label for="proj_date">프로젝트 기간</label>
-							            </div>
-						              <div>
-						              	<input type="text" name="proj_str_date" class="form-control" id="proj_str_date" style="width:48%; float:left;" placeholder="시작일을 입력하세요">
-						              	<input type="text" name="proj_end_date" class="form-control" id="proj_end_date" style="width:48%; float:right;" placeholder="종료일을 입력하세요">
-						              </div>
-							           
+							            
+						              	  <div>
+						              		<input type="text" name="proj_str_date" class="form-control" id="proj_str_date" style="width:48%; float:left;" placeholder="시작일을 입력하세요">
+						              		<input type="text" name="proj_end_date" class="form-control" id="proj_end_date" style="width:48%; float:right;" placeholder="종료일을 입력하세요">
+						              	  </div>
+							           </div>
 							            <div class="form-group">
 							              <label for="client_id">고객사</label>
 							              <input type="text" name="client_id" class="form-control" id="client_id" placeholder="고객사를 입력하세요">
@@ -254,10 +277,14 @@ $('.modal').on('hidden.bs.modal', function (e) {
 							            <div class="form-group">
 							              <label for="field"> 해당분야</label>
 							              	   <div> <select name="field_1" class="form-control" id="field_1" style="width:46%; float:left; margin-left:10px;">
-	    											<option>1</option>
+	    										<c:forEach var="projectList" items="${projectList}">
+										    	<option value="${projectList.field_1}">${projectList.field_1} </option>
+										    	</c:forEach>
 	   											 </select>
 							              	    <select name="field_2" class="form-control" id="field_2" style="width:46%; float:right; margin-right:10px;">
-	    											<option>1</option>
+	    										<c:forEach var="projectList" items="${projectList}">
+										    	<option value="${projectList.field_2}">${projectList.field_2} </option>
+										    	</c:forEach>
 	   											 </select></div>
 							            </div>
 							            <div class="form-group">
@@ -265,32 +292,39 @@ $('.modal').on('hidden.bs.modal', function (e) {
 										    <input type="text" name="note" class="form-control" id="note">
 										  </div> 
 										  <div class="form-group">
-										    <label for="remark"><b>상세내용:</b></label>
+										    <label for="remark">상세내용</label>
 										    <textarea name="remark" class="form-control" id="remark"></textarea>
 										  </div> 
 										    <div class="form-group">
-											<label for="need_tech"><b>필요기술:</b></label>
+											<label for="need_tech">필요기술</label>
 										    <textarea name="need_tech" class="form-control" id="need_tech"></textarea>
 										   </div>  
-										   <div class="form-group">
-											<label for="charge_nm"><b>담당자:</b></label>
-										    <select name="charge_nm" class="form-control" id="charge_nm">
-										    	<option value="선택">선택</option>
-										    </select>
+										   	<div class="form-group">
+										    <label for="charge_id" >담당자</label>
+										    <input type="text" class="form-control" id="charge_id" name="charge_id"/>
 										    </div>
+<%-- 										   <div class="form-group">
+										    <input type="hidden" id="charge_id" name="charge_id" value="">
+											<label for="charge_nm">담당자</label>
+										    <select name="charge_nm" class="form-control" id="charge_nm">
+										    	<c:forEach var="projectList" items="${projectList}">
+										    	<option value="${projectList.charge_nm}">${projectList.charge_nm} </option>
+										    	</c:forEach>												
+										    </select>
+										    </div> --%>
 										    <div>
 							    			<label for="use_yn">사용유무</label>
 							   				<input id="use_yn" type="checkbox" name="use_yn" value="Y">
 							    		    </div>										    
 							            <div class="modal-footer">
-							          		<button type="submit" class="btn btn-primary btn-default pull-left" data-dismiss="modal">확인</button>
-							          		<button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">취소</button>
+							          		<button class="btn btn-primary btn-default pull-left" >확인</button>
+							          		<button type="" class="btn btn-danger btn-default pull-left" data-dismiss="modal">취소</button>
 							        	</div>   
 							          </form>
 							        </div>
 							      </div>
     						</div>
-    					</div>  -->
+    					</div>  
 <!------------------------------------------------- The Modal 새프로젝트등록!!!끝 --------------------------------------------------> 
 							
 <!----------------------------------------- The Modal 수정/삭제 ------------------>
@@ -306,65 +340,76 @@ $('.modal').on('hidden.bs.modal', function (e) {
 							        </div>
 							        <div class="modal-body">
 							        
-							          <form  action="/ProjectNewInsert" method="POST" id="">
+							          <form role="form" action="/ProjectUpdate" method="POST">
 							            <div class="form-group">
 							              <label for="proj_id">프로젝트 코드</label>
-							              <input type="text" class="form-control" id="proj_id" placeholder="자동생성" readonly>
+							              <input type="text" class="form-control" id="proj_id" id="proj_id" placeholder="자동생성" readonly>
 							            </div>
 							            <div class="form-group">
 							              <label for="proj_nm">프로젝트명</label>
-							              <input type="text" class="form-control" id="proj_nm" name="proj_nm" <%-- value="${proj2.proj_nm} --%>" placeholder="프로젝트 이름을 입력하세요">
+							              <input type="text" class="form-control" id="proj_nm" name="proj_nm" placeholder="프로젝트 이름을 입력하세요">
 							              
 							            </div>
 							            <div class="form-group">
 							              <label for="proj_date">프로젝트 기간</label>
-							             <div><input type="text" class="form-control" id="proj_str_date"  name="proj_str_date" <%-- value="${proj2.proj_str_date}" --%> style="width:48%; float:left;" placeholder="시작일을 입력하세요">
-							              <input type="text" class="form-control" id="proj_end_date" name="proj_end_date" <%-- value="${proj2.proj_end_date}" --%> style="width:48%; float:right;" placeholder="종료일을 입력하세요"></div>
+							             <div><input type="text" class="form-control" id="proj_str_date"  name="proj_str_date" style="width:48%; float:left;" placeholder="시작일을 입력하세요">
+							              <input type="text" class="form-control" id="proj_end_date" name="proj_end_date"  style="width:48%; float:right;" placeholder="종료일을 입력하세요"></div>
 							            </div>
 							            <div class="form-group">
 							              <label for="client_id">고객사</label>
-							              <input type="text" class="form-control" id="client_id" name="client_id" <%-- value="${proj2.client_id}" --%>placeholder="고객사를 입력하세요">
+							              <input type="text" class="form-control" id="client_id" name="client_id" placeholder="고객사를 입력하세요">
 							            </div>
 							            <div class="form-group">
 							              <label for="involve_num">투여인원</label>
-							              <input type="text" class="form-control" id="involve_num" name="involve_num" <%-- value="${proj2.involve_num}" --%> placeholder="투여인원을 입력하세요">
+							              <input type="text" class="form-control" id="involve_num" name="involve_num"  placeholder="투여인원을 입력하세요">
 							            </div>
 							            <div class="form-group">
 							              <label for="field"> 해당분야</label>
 							              	   <div> <select class="form-control" id="field_1" name="field_1" style="width:46%; float:left; margin-left:10px;">
-	    											<option><%-- ${projectList.field_1} --%></option>
+	    										<c:forEach var="projectList" items="${projectList}">
+										    	<option value="${projectList.field_1}">${projectList.field_1} </option>
+										    	</c:forEach>
 	   											 </select>
 							              	    <select class="form-control" id="field_2" name="field_2"  style="width:46%; float:right; margin-right:10px;">
-	    											<option><%-- ${projectList.field_2 } --%></option>
+	    										<c:forEach var="projectList" items="${projectList}">
+										    	<option value="${projectList.field_2}">${projectList.field_2} </option>
+										    	</c:forEach>
 	   											 </select></div>
 							            </div>
 							            <div class="form-group">
 											 <label for="note">비고</label>
-										    <input type="text" class="form-control" id="note"> <%-- value=" ${projectList.note}" --%>
+										    <input type="text" class="form-control" id="note" name="note"/>
 										  </div> 
 										  <div class="form-group">
 										    <label for="remark">상세내용</label>
-										    <textarea class="form-control" id="remark"><%-- ${projectList.remark} --%></textarea>
+										    <textarea class="form-control" id="remark" name="remark"></textarea>
 										  </div> 
 										    <div class="form-group">
 											<label for="need_tech">필요기술</label>
-										    <textarea class="form-control" id="need_tech"  ><%-- ${projectList.need_tech} --%></textarea>
+										    <textarea class="form-control" id="need_tech" name="need_tech" ></textarea>
 										   </div>  
 										   <div class="form-group">
-											<label for="charge_nm">담당자</label>
-										    <select class="form-control" id="charge_nm" name="charge_nm">
-										    
-										    	<option <%-- value="${projectList.charge_nm}" --%> ><%-- ${projectList.charge_nm} --%></option>
-										    	
-										    </select>
+										    <label for="charge_id" >담당자</label>
+										    <input type="text" class="form-control" id="charge_id" name="charge_id"/>
 										    </div>
+										   
+										   
+										   <!--담당자 이름-->
+<%-- 											<label for="charge_nm">담당자</label>
+										    <select class="form-control" id="charge_nm" name="charge_nm">
+										    	<c:forEach var="projectList" items="${projectList}">
+										    	<option value="${projectList.charge_nm}">${projectList.charge_nm} </option>
+										    	</c:forEach> 
+										    </select>
+										    </div>--%>
 										    <div>
 										   		<label for="use_yn">사용유무</label>
 							   					<input id="use_yn" type="checkbox" name="use_yn" value="Y">
 										    </div>
 							            <div class="modal-footer">
-							          		<button type="submit" class="btn btn-primary btn-default pull-left" data-dismiss="modal">확인</button>
-							          		<button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">취소</button>
+							          			<input type="button" id="updatebtn" class="btn btn-success btn-default pull-left" value="수정">
+							          		<input type="button" id="deletebtn" class="btn btn-danger btn-default pull-left" value="삭제">
+							          		<button type="" class="btn btn-primary  btn-default pull-left" data-dismiss="modal">취소</button>
 							        	</div>   
 							          </form>
 							          </div>
@@ -384,28 +429,28 @@ $('.modal').on('hidden.bs.modal', function (e) {
                     				<tr role="row" style="text-align: center; font-size: 13px;">
                     					<th onclick="sortTable(0)">순번</th>
                     					<th onclick="sortTable(1)">프로젝트명</th>
-                    					<th onclick="sortTable(2)">프로젝트시작일</th>
-                    					<th onclick="sortTable(3)">프로젝트종료일</th>
-                    					<th onclick="sortTable(4)">고객사</th>
-                    					<th onclick="sortTable(5)">필요기술</th>
-                    					<th onclick="sortTable(6)">해당분야</th>
-                    					<th onclick="sortTable(7)">투여인원</th>
-                    					<th onclick="sortTable(8)">담당자</th>
-                    				    <th onclick="sortTable(9)">상세내용</th>
+                    					<th onclick="sortTable(2)">프로젝트기간</th>
+                    					<!-- <th onclick="sortTable(3)">프로젝트종료일</th> -->
+                    					<th onclick="sortTable(3)">고객사</th>
+                    					<th onclick="sortTable(4)">필요기술</th>
+                    					<th onclick="sortTable(5)">해당분야</th>
+                    					<th onclick="sortTable(6)">투여인원</th>
+                    					<th onclick="sortTable(7)">담당자</th>
+                    				    <th onclick="sortTable(8)">상세내용</th>
                    				 	</tr>
                   				</thead>
                   				<tfoot>
                     				<tr role="row" style="text-align: center; font-size: 13px;">
 					                    <th onclick="sortTable(0)" rowspan="1" colspan="1">순번</th>
 					                    <th onclick="sortTable(1)" rowspan="1" colspan="1">프로젝트명</th>
-					                    <th onclick="sortTable(2)" rowspan="1" colspan="1">프로젝트시작일</th>
-					                    <th onclick="sortTable(3)" rowspan="1" colspan="1">프로젝트종료일</th>
-					                    <th onclick="sortTable(4)" rowspan="1" colspan="1">고객사</th>
-					                    <th onclick="sortTable(5)" rowspan="1" colspan="1">필요기술</th>
-					                    <th onclick="sortTable(6)" rowspan="1" colspan="1">해당분야</th>
-					                    <th onclick="sortTable(7)" rowspan="1" colspan="1">투여인원</th>
-					                    <th onclick="sortTable(8)" rowspan="1" colspan="1">담당자</th>
-					                    <th onclick="sortTable(9)" rowspan="1" colspan="1">상세내용</th>
+					                    <th onclick="sortTable(2)" rowspan="1" colspan="1">프로젝트기간</th>
+					                   <!--  <th onclick="sortTable(3)" rowspan="1" colspan="1">프로젝트종료일</th> -->
+					                    <th onclick="sortTable(3)" rowspan="1" colspan="1">고객사</th>
+					                    <th onclick="sortTable(4)" rowspan="1" colspan="1">필요기술</th>
+					                    <th onclick="sortTable(5)" rowspan="1" colspan="1">해당분야</th>
+					                    <th onclick="sortTable(6)" rowspan="1" colspan="1">투여인원</th>
+					                    <th onclick="sortTable(7)" rowspan="1" colspan="1">담당자</th>
+					                    <th onclick="sortTable(8)" rowspan="1" colspan="1">상세내용</th>
                     				</tr>
                   				</tfoot>
                   				<tbody>
@@ -421,14 +466,17 @@ $('.modal').on('hidden.bs.modal', function (e) {
 				                  	   <tr class="rowClick" role="row" style="text-align:center"> 
 				                      <td>${proj.rownum}</td>
 				                   	  <td><a href="#" data-toggle="modal" class="idClick proj_nm" data-target="#inputModal2" data-id="proj_nm" >${proj.proj_nm}</a></td> 
-				                      <td><a href="#" data-toggle="modal" class="idClick proj_str_date" data-target="#inputModal2" data-id="proj_str_date" >${proj.proj_str_date}</a></td>
-				                      <td><a href="#" data-toggle="modal" class="idClick proj_end_date" data-target="#inputModal2" data-id="proj_end_date" >${proj.proj_end_date}</a></td>
+				                      <td><a href="#" data-toggle="modal" class="idClick proj_str_date" data-target="#inputModal2" data-id="proj_str_date" >${proj.proj_str_date}</a> ~
+				                          <a href="#" data-toggle="modal" class="idClick proj_end_date" data-target="#inputModal2" data-id="proj_end_date" >${proj.proj_end_date}</a>
+				                      </td>
 				                      <td><a href="#" data-toggle="modal" class="idClick client_id" data-target="#inputModal2" data-id="client_id" >${proj.client_id}</a></td>
 				                      <td><a href="#" data-toggle="modal" class="idClick need_tech" data-target="#inputModal2" data-id="need_tech" >${proj.need_tech}</a></td>
 				                      <td><a href="#" data-toggle="modal" class="idClick field_1" data-target="#inputModal2" data-id="field_1" >${proj.field_1}</a></td>
+				                    <%--   <td><a href="#" data-toggle="modal" class="idClick field_2" data-target="#inputModal2" data-id="field_2" >${proj.field_2}</a></td> --%>
 				                      <td><a href="#" data-toggle="modal" class="idClick involve_num" data-target="#inputModal2" data-id="involve_num" >${proj.involve_num}</a></td>
-				                      <td><a href="#" data-toggle="modal" class="idClick charge_nm" data-target="#inputModal2" data-id="charge_nm" >${proj.charge_nm}</a></td>
-				                      <td><a href="#" data-toggle="modal" class="idClick remark" data-target="#inputModal2" data-id="remark" >상세내용</a></td> 
+				                      <td> <a href="#" data-toggle="modal" class="idClick charge_id" data-target="#inputModal2" data-id="charge_id" >${proj.charge_id}</a></td>
+				                     <%-- 	<td> <a href="#" data-toggle="modal" class="idClick charge_nm" data-target="#inputModal2" data-id="charge_nm" >${proj.charge_nm}</a></td> --%>
+				                      <td><a href="#" data-toggle="modal" class="idClick remark" data-target="#inputModal2" data-id="remark">상세내용 <p hidden>${proj.remark }</p> </a></td> 
 				                      <tr>
 		                  		</c:forEach>
 		                  		</tbody>
