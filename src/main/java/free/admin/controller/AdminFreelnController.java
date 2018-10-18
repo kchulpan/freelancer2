@@ -107,20 +107,5 @@ public class AdminFreelnController {
 		
 		return "redirect:/FreelnDetail04?freeln_id="+map.get("freeln_id");
 	}
-	
-	@RequestMapping("/FreelnDetail05")
-	public ModelAndView freelnDetail05(@RequestParam HashMap<String,Object> map) {
-		ModelAndView mv = new ModelAndView();
-		
-		FreelancerListVo freelancer = freelancerListService.freelancerView2(map);
-		List<FreelancerCallVo> freelancerCall = freelancerListService.freelancerCallView(map);
-		List<FreelancerCallVo> callChargeList = freelancerListService.callChargeList();
-		
-		
-		mv.addObject("callChargeList", callChargeList);
-		mv.addObject("freelancerCall", freelancerCall);
-		mv.addObject("freelancer", freelancer);
-		mv.setViewName("ADMIN/01_FLEENL/freeln_detail_05");
-		return mv;
-	}
+
 }

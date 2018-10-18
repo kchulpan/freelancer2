@@ -58,29 +58,43 @@
 		});
 	});
 	</script>
+	
+
+
+
+
 <!-- 테이블 내용에서 고객사로 검색 -->
 	<script>
 	function myFunction() {
-	  var input, filter, table, tr, freeln_nm, freeln_phone, i;
+	  var input, filter, table, tr, i;
+	  var freeln_nm,career_year, freeln_phone,in_enable_date,freen_mail,hope_place,major_tech;
 	  input = document.getElementById("myInput");
 	  filter = input.value.toUpperCase();
 	  tbody = $('tbody');
 	  tr = $('tr',tbody);
 	  freeln_nm = $('.freeln_nm');
+	  career_year = $('.career_year');
 	  freeln_phone = $('.freeln_phone');
-	  /* freeln_phone = $('td',tr).eq(3); */
-	 /*  console.log(freeln_nm);
-	  console.log(tr.length); */
+	  in_enable_date = $('.in_enable_date');
+	  freen_mail = $('.freen_mail');
+	  hope_place = $('.hope_place');
+	  major_tech = $('.major_tech');
+
 	  for (i = 0; i < tr.length; i++) {
-		  /* console.log('freeln_nm'+freeln_nm.eq(i).html());
-		  console.log('freeln_phone'+freeln_phone.eq(i).html());
-		  console.log('이름겹치는숫자'+freeln_nm.eq(i).html().toUpperCase().indexOf(filter));
-		  console.log('폰겹치는숫자'+freeln_phone.eq(i).html().toUpperCase().indexOf(filter));
-		  console.log(tr.eq(i).html()); */
 		
 	      if (freeln_nm.eq(i).html().toUpperCase().indexOf(filter) > -1) {
 	    	  tr.eq(i).attr('style','display:');
+	      } else if(career_year.eq(i).html().toUpperCase().indexOf(filter) > -1) {
+	    	  tr.eq(i).attr('style','display:');
 	      } else if(freeln_phone.eq(i).html().toUpperCase().indexOf(filter) > -1) {
+	    	  tr.eq(i).attr('style','display:');
+	      } else if(in_enable_date.eq(i).html().toUpperCase().indexOf(filter) > -1) {
+	    	  tr.eq(i).attr('style','display:');
+	      } else if(freen_mail.eq(i).html().toUpperCase().indexOf(filter) > -1) {
+	    	  tr.eq(i).attr('style','display:');
+	      } else if(hope_place.eq(i).html().toUpperCase().indexOf(filter) > -1) {
+	    	  tr.eq(i).attr('style','display:');
+	      } else if(major_tech.eq(i).html().toUpperCase().indexOf(filter) > -1) {
 	    	  tr.eq(i).attr('style','display:');
 	      } else {
 	    	  tr.eq(i).attr('style','display:none');
@@ -166,7 +180,7 @@
     						<div class="col-sm-12 col-md-12">
 	    						<div id="dataTable_filter" class="dataTables_filter">
 	    							<label>Search:
-	    								<input type="text" class="form-control form-control-sm" placeholder="이름을 입력하세요" aria-controls="dataTable" id="myInput" onkeyup="myFunction()">
+	    								<input type="text" class="form-control form-control-sm" placeholder="이름 or 휴대폰 번호" aria-controls="dataTable" id="myInput" onkeyup="myFunction()">
 	    							</label>
 	    						</div>
     						</div>
@@ -214,13 +228,13 @@
 				                  	</c:choose>
 				                      <td>${status.index + 1 }</td>
 				                      <td class="freeln_nm">${freeln.freeln_nm}</td>
-				                      <td>${freeln.career_year}</td>
+				                      <td class="career_year">${freeln.career_year}</td>
 				                     <!--  <td>등급</td> -->
 				                      <td class="freeln_phone">${freeln.freeln_phone}</td>
-				                      <td>${freeln.in_enable_date}</td>
-				                      <td>${freeln.freen_mail}</td>
-				                      <td>${freeln.hope_place}</td>
-				                      <td>${freeln.major_tech}</td>
+				                      <td class="in_enable_date">${freeln.in_enable_date}</td>
+				                      <td class="freen_mail">${freeln.freen_mail}</td>
+				                      <td class="hope_place">${freeln.hope_place}</td>
+				                      <td class="major_tech">${freeln.major_tech}</td>
 				                      <td>${freeln.hope_call_str_time}~${freeln.hope_call_end_time}</td>
 				                    </tr>
 				                    
