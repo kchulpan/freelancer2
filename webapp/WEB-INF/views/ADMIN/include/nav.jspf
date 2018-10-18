@@ -13,19 +13,19 @@
    		<a href="/Commoncode">코드관리</a>	  
    </div>
    <div id="freeln" class="top_menu">
-   		<i class="fa fa-line-chart menu_icon"></i>
+   		<i class="fa fa-address-book-o"></i>
   		<a href="/Freeln">프리랜서</a>	  
    </div>
    <div id="project" class="top_menu">
-   		<i class="fa fa-user-o menu_icon"></i>
+   		<i class="fa fa-calendar-o"></i>
    		<a href="/Project">프로젝트</a>
    </div>
    <div id="charge" class="top_menu">
-   		<i class="fa fa-user-o menu_icon"></i>
+   		<i class="fa fa-user-circle"></i>
    		<a href="/Charge">담당자</a>
    </div>
    <div id="client" class="top_menu">
-   		<i class="fa fa-user-o menu_icon"></i>
+   		<i class="fa fa-building-o"></i>
    		<a href="/Client">고객사</a>
    </div>
 </div>
