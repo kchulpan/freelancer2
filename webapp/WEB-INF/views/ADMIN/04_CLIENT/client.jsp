@@ -281,7 +281,7 @@ $(document).ready(function(){
 							  <div class="modal fade" id="inputModal" role="dialog">
 							    <div class="modal-dialog" role="document">
 							    
-							    <script>
+							   <!--  <script>
 							    			var changeFile = function(e) {
 							    				console.log("asdflhsaldfkjds");
 							    				
@@ -292,7 +292,7 @@ $(document).ready(function(){
 							    				document.getElementById("cli_file").value = e.value;
 							    			}
 							    			
-							    		</script>
+							    		</script> -->
 							      <!-- Modal content-->
 							      <div class="modal-content modal-lg">
 							        <div class="modal-header">
@@ -317,7 +317,12 @@ $(document).ready(function(){
 							              <label for="client_file_nm">이력서 양식명</label>
 							              <input type="text" name="client_file_nm" class="form-control" id="client_file_nm" placeholder="이력서 양식명을 입력하세요">
 							            </div>
-							            <div class="form-group" >
+							            <div class="form-group">
+							            	<label for="client_file">이력서 파일명</label>
+							            	<input type="file" name="client_file" class="form-control-file border" id="client_file">
+							
+							            </div>
+							            <!-- <div class="form-group" >
 							              <label for="client_file"> 이력서 파일명</label>
       										<input type="file" class="form-control-file border" name="client_file" id="client_file" onchange="changeFile(this)"
       										data-class-button="btn btn-default" data-class-input="form-control" data-icon-name="fa fa-upload" class="form-control" tabindex="-1" style="position: absolute; clip: rect(0px 0px 0px 0px);">
@@ -329,7 +334,7 @@ $(document).ready(function(){
 														</label>
 													</span>
       										</div>
-							            </div>
+							            </div> -->
 							    
 							    		
 							    
@@ -415,6 +420,12 @@ $(document).ready(function(){
 							            <div class="form-group">
 							              <label for="cli_file_nm">이력서 양식명</label>
 							              <input type="text" name="client_file_nm" class="form-control" id="cli_file_nm">
+							            </div>
+							            <div class="form-group">
+							            	<label for="cli_file">이력서 파일명</label>
+							            	<input type="file" name="client_file" class="form-control-file border" id="cli_file">
+							            	
+							           
 							            </div>
 							            <!-- <div class="form-group">
 							              <label for="userFile"> 이력서 파일명</label>
