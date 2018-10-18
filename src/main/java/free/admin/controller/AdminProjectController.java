@@ -26,7 +26,7 @@ public class AdminProjectController {
 	{
 		ModelAndView mav = new ModelAndView();
 		List<ProjectListVo> projectList = projectListService.projectList(map);
-		
+		System.out.println("리스트"+map);
 		mav.addObject("projectList", projectList);
 		mav.setViewName("ADMIN/02_PROJECT/project");
 		return mav;
@@ -46,19 +46,30 @@ public class AdminProjectController {
 	@RequestMapping("/ProjectUpdate")
 	public String ProjectUpdate(@RequestParam HashMap<String,Object> map)
 	{
+		System.out.println("update::" + map);
 		projectListService.projectUpdate(map);
 		return "redirect:/Project";
 	}
-	/*새 프로젝트 등록 페이지로 이동*/
+	/*담당자 삭제 수정후 redirect*/
+	@RequestMapping("/ProjectDelete")
+	public String projectDelet(@RequestParam HashMap<String,Object> map)
+	{
+		System.out.println("delete::" + map);
+		projectListService.projectDelete(map);
+		return "redirect:/Projerct";
+	}
+/*	새 프로젝트 등록 페이지로 이동
 	@RequestMapping("/ProjectNewReg")
 	public String ProjectNewReg()
 	{
 		return "ADMIN/02_Project/project_p2";
-	}
+	}팝업으로 변경 */
+	
 	/*새 프로젝트 등록*/
 	@RequestMapping("/ProjectNewInsert")
 	public String ProjectNewInsert(@RequestParam HashMap<String,Object> map)
 	{
+		System.out.println("프로젝트등록" + map);
 		projectListService.ProjectNewInsert(map);
 		return "redirect:/Project";
 	}

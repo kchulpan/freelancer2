@@ -44,4 +44,10 @@ public class ProjectListServiceImpl implements ProjectListService
 		
 	}
 
+	@Override
+	public void projectDelete(HashMap<String, Object> map) {
+		projectListDao.projectDelete(map);
+		
+	}
+
 }

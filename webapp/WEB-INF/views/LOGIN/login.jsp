@@ -35,6 +35,12 @@
         <div class="card-body">
           <form>
             <div class="form-group">
+              <div>
+              	<input type="radio" name="login" id="freelnLog">
+              	<label for="freelnLog">프리랜서</label>&nbsp;&nbsp;
+              	<input type="radio" name="login" id="chgLog">
+              	<label for="chgLog">담당자</label>
+              </div>
               <div class="form-label-group">
                 <input type="text" id="inputId" class="form-control" placeholder="id" required="required" autofocus="autofocus">
                 <label for="inputId">아이디를 입력하세요</label>
@@ -54,7 +60,8 @@
                 </label>
               </div>
             </div>
-            <a class="btn btn-primary btn-block" href="/">로그인</a>
+            <a class="btn btn-primary btn-block" href="/Freelancer">로그인</a>
+            <a class="btn btn-primary btn-block" href="/SubPage">임시버튼관리자페이지</a>
           </form>
           <div class="text-center">
             <a class="d-block small mt-3" href="/Register">회원가입</a>

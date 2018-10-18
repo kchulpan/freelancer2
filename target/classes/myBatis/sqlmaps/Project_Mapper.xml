@@ -81,6 +81,13 @@
   		#{use_yn, mode=IN, jdbcType=VARCHAR}
   		)}
   	</update>
+  	 <delete id="ProjectDelete"
+  			statementType="CALLABLE">
+  		{CALL PKG_CHARGE.PROC_CHARGE_DELETE(
+  		#{proj_id, mode=IN, jdbcType=VARCHAR}
+
+  		)}		
+    </delete>
   	<!--
   	<select id="BoardContent"
   			statementType="CALLABLE"
