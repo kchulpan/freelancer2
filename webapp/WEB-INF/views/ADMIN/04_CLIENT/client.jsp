@@ -190,12 +190,14 @@ $(document).ready(function(){
 	  $(this).find('form')[0].reset()
 	});
 	</script> -->
-	 
-	
 <script>
 function fileHidden() {
     document.getElementById("client_file").style.overflow = "hidden";
 }
+</script>	 
+	
+<script>
+
 
 $(document).ready(function(){
 		$("#updateBtn").click(function () {
