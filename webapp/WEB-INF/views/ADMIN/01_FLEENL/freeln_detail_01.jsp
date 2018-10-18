@@ -83,6 +83,7 @@
 	    <li><a href="/FreelnDetail02?freeln_id=${freelancer.freeln_id}">기술정보</a></li>
 	    <li><a href="/FreelnDetail03?freeln_id=${freelancer.freeln_id}">경력정보</a></li>
 	    <li><a href="/FreelnDetail04?freeln_id=${freelancer.freeln_id}">통화내역</a></li>        
+	    <li><a href="/FreelnDetail05?freeln_id=${freelancer.freeln_id}">통화내역2</a></li>        
 	    <li><a href="/Freeln">목록으로</a></li>        
 	  </ul>
 	  

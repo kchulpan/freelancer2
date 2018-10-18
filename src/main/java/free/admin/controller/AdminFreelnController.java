@@ -9,10 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import free.admin.service.ChargeListService;
 import free.admin.service.FreelancerListService;
 import free.admin.vo.FreelancerCallVo;
 import free.admin.vo.FreelancerCareerVo;
 import free.admin.vo.FreelancerListVo;
+import free.admin.vo.ProjectListVo;
 
 @Controller
 public class AdminFreelnController {
@@ -104,5 +106,21 @@ public class AdminFreelnController {
 		freelancerListService.freelnDetail04_Call_Insert(map);
 		
 		return "redirect:/FreelnDetail04?freeln_id="+map.get("freeln_id");
+	}
+	
+	@RequestMapping("/FreelnDetail05")
+	public ModelAndView freelnDetail05(@RequestParam HashMap<String,Object> map) {
+		ModelAndView mv = new ModelAndView();
+		
+		FreelancerListVo freelancer = freelancerListService.freelancerView2(map);
+		List<FreelancerCallVo> freelancerCall = freelancerListService.freelancerCallView(map);
+		List<FreelancerCallVo> callChargeList = freelancerListService.callChargeList();
+		
+		
+		mv.addObject("callChargeList", callChargeList);
+		mv.addObject("freelancerCall", freelancerCall);
+		mv.addObject("freelancer", freelancer);
+		mv.setViewName("ADMIN/01_FLEENL/freeln_detail_05");
+		return mv;
 	}
 }
