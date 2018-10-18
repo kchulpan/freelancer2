@@ -46,7 +46,8 @@ public class AdminProjectController {
 	@RequestMapping("/ProjectUpdate")
 	public String ProjectUpdate(@RequestParam HashMap<String,Object> map)
 	{
-		System.out.println("update::" + map);
+		System.out.println("수정폼::"+map);
+		//System.out.println("use_yn::" + map.get("use_yn"));
 		projectListService.projectUpdate(map);
 		return "redirect:/Project";
 	}
@@ -54,9 +55,11 @@ public class AdminProjectController {
 	@RequestMapping("/ProjectDelete")
 	public String projectDelet(@RequestParam HashMap<String,Object> map)
 	{
-		System.out.println("delete::" + map);
+		System.out.println("proj_id::" + map.get("proj_id"));
+		
+		
 		projectListService.projectDelete(map);
-		return "redirect:/Projerct";
+		return "redirect:/Project";
 	}
 /*	새 프로젝트 등록 페이지로 이동
 	@RequestMapping("/ProjectNewReg")

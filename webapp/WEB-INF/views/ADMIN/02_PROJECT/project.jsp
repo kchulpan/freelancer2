@@ -138,22 +138,23 @@ function sortTable(n) {
 <script type="text/javascript">
  $(function () {
 	$(".rowClick").click(function (e) {
-	 /* 	if{
-			$('#inputModal').
-	 		
-		}
-	 if{$}*/
+	 	var project_id = $(this).find(".proj_id").val(); 
+	 	var charge_id = $(this).find(".charge_id").val();
 		var project_nm = $(this).find(".proj_nm").html();
 		var project_str_date = $(this).find(".proj_str_date").html();
 		var project_end_date = $(this).find(".proj_end_date").html();
-		var client_id = $(this).find(".client_id").html();
+		var client_id = $(this).find(".client_id").val();
 		var involve_num = $(this).find(".involve_num").html();
 		var field_1 = $(this).find(".field_1").html();
-		var field_2 = $(this).find(".field_2").html();
-	 	var remark = $(this).find(".remark").html(); 
+		var field_2 = $(this).find(".field_2").val();
+	 	var remark = $(this).find(".remark").children("p").html(); 
+/* 	 	var ex_remark = $(".remark").val();  */
 		var need_tech = $(this).find(".need_tech").html();
 		var client_id = $(this).find(".client_id").html();
-		var charge_id = $(this).find(".charge_id").val();
+		/* var use_yn = $(this).find(".use_yn").val(); */
+		
+	    console.log(proj_id); 
+		console.log(charge_id);
 		console.log(proj_nm);
 		console.log(proj_str_date);
 		console.log(proj_end_date);
@@ -163,10 +164,12 @@ function sortTable(n) {
 		console.log(field_2);
 		console.log(remark);
 		console.log(need_tech);
-		console.log(client_id);
+		/* console.log(use_yn); */
 		/* var modalData = document.querySelectorAll('tbody a'); */
 		//var my_id_value = $(".idClick").eq(0).data("title");
 		//var my_id_value2 = $(".idClick").eq(1).data("title1");
+		$(".modal-body #proj_id").val(project_id); 
+		$(".modal-body #charge_id").val(charge_id);
 		$(".modal-body #proj_nm").val(project_nm); 
 		$(".modal-body #proj_str_date").val(project_str_date); 
 		$(".modal-body #proj_end_date").val(project_end_date); 
@@ -175,9 +178,11 @@ function sortTable(n) {
 		$(".modal-body #field_1").val(field_1); 
 		$(".modal-body #field_2").val(field_2); 
 		$(".modal-body #remark").val(remark); 
+/* 		$(".modal-body #ex_remark").val(ex_remark);  */
 		$(".modal-body #need_tech").val(need_tech); 
 		$(".modal-body #client_id").val(client_id); 
-		$(".modal-body #charge_id").val(charge_id);
+		/* $(".modal-body #use_yn").val(use_yn);  */
+		
 	})
 }); 
 </script>
@@ -340,10 +345,10 @@ $(document).ready(function(){
 							        </div>
 							        <div class="modal-body">
 							        
-							          <form role="form" action="/ProjectUpdate" method="POST">
+							          <form id="modalform" role="form" action="ProjectNewInsert" method="POST">
 							            <div class="form-group">
 							              <label for="proj_id">프로젝트 코드</label>
-							              <input type="text" class="form-control" id="proj_id" id="proj_id" placeholder="자동생성" readonly>
+							              <input type="text" class="form-control" id="proj_id" name="proj_id" placeholder="자동생성" readonly>
 							            </div>
 							            <div class="form-group">
 							              <label for="proj_nm">프로젝트명</label>
@@ -392,7 +397,10 @@ $(document).ready(function(){
 										    <label for="charge_id" >담당자</label>
 										    <input type="text" class="form-control" id="charge_id" name="charge_id"/>
 										    </div>
-										   
+										    <div>
+										   		<label for="use_yn">사용유무</label>
+							   					<input id="use_yn" type="checkbox" name="use_yn" value="Y">
+										    </div>
 										   
 										   <!--담당자 이름-->
 <%-- 											<label for="charge_nm">담당자</label>
@@ -402,12 +410,9 @@ $(document).ready(function(){
 										    	</c:forEach> 
 										    </select>
 										    </div>--%>
-										    <div>
-										   		<label for="use_yn">사용유무</label>
-							   					<input id="use_yn" type="checkbox" name="use_yn" value="Y">
-										    </div>
+
 							            <div class="modal-footer">
-							          			<input type="button" id="updatebtn" class="btn btn-success btn-default pull-left" value="수정">
+							          		<input type="button" id="updatebtn" class="btn btn-success btn-default pull-left" value="수정">
 							          		<input type="button" id="deletebtn" class="btn btn-danger btn-default pull-left" value="삭제">
 							          		<button type="" class="btn btn-primary  btn-default pull-left" data-dismiss="modal">취소</button>
 							        	</div>   
@@ -427,16 +432,16 @@ $(document).ready(function(){
     						<table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
                   				<thead>
                     				<tr role="row" style="text-align: center; font-size: 13px;">
-                    					<th onclick="sortTable(0)">순번</th>
-                    					<th onclick="sortTable(1)">프로젝트명</th>
-                    					<th onclick="sortTable(2)">프로젝트기간</th>
+                    					<th onclick="sortTable(0)" style="width:6%; height:5%">순번</th>
+                    					<th onclick="sortTable(1)" style="width:20%; height:5%">프로젝트명</th>
+                    					<th onclick="sortTable(2)" style="width:12%; height:5%">프로젝트기간</th>
                     					<!-- <th onclick="sortTable(3)">프로젝트종료일</th> -->
-                    					<th onclick="sortTable(3)">고객사</th>
-                    					<th onclick="sortTable(4)">필요기술</th>
-                    					<th onclick="sortTable(5)">해당분야</th>
-                    					<th onclick="sortTable(6)">투여인원</th>
-                    					<th onclick="sortTable(7)">담당자</th>
-                    				    <th onclick="sortTable(8)">상세내용</th>
+                    					<th onclick="sortTable(3)" style="width:10%; height:5%">고객사</th>
+                    					<th onclick="sortTable(4)" style="width:20%; height:5%">필요기술</th>
+                    					<th onclick="sortTable(5)" style="width:10%; height:5% ">해당분야</th>
+                    					<th onclick="sortTable(6)" style="width:6%; height:5%">투여인원</th>
+                    					<th onclick="sortTable(7)" style="width:10%; height:5%">담당자</th>
+                    				    <th onclick="sortTable(8)" style="width:6%; height:5%">상세내용</th>
                    				 	</tr>
                   				</thead>
                   				<tfoot>
@@ -464,7 +469,11 @@ $(document).ready(function(){
 					                  		</c:when>
 				                  		</c:choose>
 				                  	   <tr class="rowClick" role="row" style="text-align:center"> 
-				                      <td>${proj.rownum}</td>
+				                        <td><input type="hidden" data-toggle="modal" class="idClick proj_id" data-target="#inputModal2" data-id="proj_id" value="${proj.proj_id}"/>
+				                             <input type="hidden" data-toggle="modal" class="idClick field_2" data-target="#inputModal2" data-id="field_2" value="${proj.field_2}"/>
+				                            <%--  <input type="hidden" data-toggle="modal" class="idClick remark" data-target="#inputModal2" data-id="remark" value="${proj.remark}"/> --%>
+				                            <%--  <input type="hidden" data-toggle="modal" class="idClick use_yn" data-target="#inputModal2" data-id="use_yn" value="${proj.use_yn}"/>  --%>
+				                     			 ${proj.rownum}</td>
 				                   	  <td><a href="#" data-toggle="modal" class="idClick proj_nm" data-target="#inputModal2" data-id="proj_nm" >${proj.proj_nm}</a></td> 
 				                      <td><a href="#" data-toggle="modal" class="idClick proj_str_date" data-target="#inputModal2" data-id="proj_str_date" >${proj.proj_str_date}</a> ~
 				                          <a href="#" data-toggle="modal" class="idClick proj_end_date" data-target="#inputModal2" data-id="proj_end_date" >${proj.proj_end_date}</a>
@@ -476,7 +485,7 @@ $(document).ready(function(){
 				                      <td><a href="#" data-toggle="modal" class="idClick involve_num" data-target="#inputModal2" data-id="involve_num" >${proj.involve_num}</a></td>
 				                      <td> <a href="#" data-toggle="modal" class="idClick charge_id" data-target="#inputModal2" data-id="charge_id" >${proj.charge_id}</a></td>
 				                     <%-- 	<td> <a href="#" data-toggle="modal" class="idClick charge_nm" data-target="#inputModal2" data-id="charge_nm" >${proj.charge_nm}</a></td> --%>
-				                      <td><a href="#" data-toggle="modal" class="idClick remark" data-target="#inputModal2" data-id="remark">상세내용 <p hidden>${proj.remark }</p> </a></td> 
+				                      <td><a href="#" data-toggle="modal" class="idClick remark" data-target="#inputModal2" data-id="remark">상세내용<p hidden>"${proj.remark}"</p> </a></td> 
 				                      <tr>
 		                  		</c:forEach>
 		                  		</tbody>
