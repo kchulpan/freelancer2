@@ -107,8 +107,8 @@ function sortTable(n) {
     for (i = 1; i < (rows.length - 1); i++) {
 
       shouldSwitch = false;
-      x = rows[i].getElementsByTagName("TD")[n];
-      y = rows[i + 1].getElementsByTagName("TD")[n];
+      x = rows[i].getElementsByTagName("td")[n];
+      y = rows[i + 1].getElementsByTagName("td")[n];
       if (dir == "asc") {
         if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
           shouldSwitch= true;
@@ -169,19 +169,17 @@ function sortTable(n) {
 		//var my_id_value = $(".idClick").eq(0).data("title");
 		//var my_id_value2 = $(".idClick").eq(1).data("title1");
 		$(".modal-body #proj_id").val(project_id); 
-		$(".modal-body #charge_id").val(charge_id);
+		$(".modal-body #char_id").val(charge_id);
 		$(".modal-body #proj_nm").val(project_nm); 
 		$(".modal-body #proj_str_date").val(project_str_date); 
 		$(".modal-body #proj_end_date").val(project_end_date); 
-		$(".modal-body #client_id").val(client_id); 
-		$(".modal-body #involve_num").val(involve_num); 
-		$(".modal-body #field_1").val(field_1); 
-		$(".modal-body #field_2").val(field_2); 
-		$(".modal-body #remark").val(remark); 
+		$(".modal-body #cli_id").val(client_id); 
+		$(".modal-body #inv_num").val(involve_num); 
+		$(".modal-body #fid_1").val(field_1); 
+		$(".modal-body #fid_2").val(field_2); 
+		$(".modal-body #rmark").val(remark); 
 /* 		$(".modal-body #ex_remark").val(ex_remark);  */
-		$(".modal-body #need_tech").val(need_tech); 
-		$(".modal-body #client_id").val(client_id); 
-		/* $(".modal-body #use_yn").val(use_yn);  */
+		$(".modal-body #need_tec").val(need_tech); 
 		
 	})
 }); 
@@ -257,18 +255,18 @@ $(document).ready(function(){
 							          <form role="form" action="/ProjectNewInsert" method="POST">
 							            <div class="form-group">
 							             <!--  <label for="proj_id">프로젝트 코드</label> -->
-							              <input type="hidden" class="form-control" id="proj_id" placeholder="자동생성" readonly>
+							              <input type="hidden" class="form-control" id="project_id" placeholder="자동생성" readonly>
 							            </div>
 							            <div class="form-group">
 							              <label for="proj_nm">프로젝트명</label>
-							              <input type="text" name="proj_nm"class="form-control" id="proj_nm" placeholder="프로젝트 이름을 입력하세요">
+							              <input type="text" name="proj_nm"class="form-control" id="project_nm" placeholder="프로젝트 이름을 입력하세요">
 							            </div>
 							            <div class="form-group">
 							              <label for="proj_date">프로젝트 기간</label>
 							            
 						              	  <div>
-						              		<input type="text" name="proj_str_date" class="form-control" id="proj_str_date" style="width:48%; float:left;" placeholder="시작일을 입력하세요">
-						              		<input type="text" name="proj_end_date" class="form-control" id="proj_end_date" style="width:48%; float:right;" placeholder="종료일을 입력하세요">
+						              		<input type="text" name="proj_str_date" class="form-control" id="project_str_date" style="width:48%; float:left;" placeholder="시작일을 입력하세요">
+						              		<input type="text" name="proj_end_date" class="form-control" id="project_end_date" style="width:48%; float:right;" placeholder="종료일을 입력하세요">
 						              	  </div>
 							           </div>
 							            <div class="form-group">
@@ -361,45 +359,45 @@ $(document).ready(function(){
 							              <input type="text" class="form-control" id="proj_end_date" name="proj_end_date"  style="width:48%; float:right;" placeholder="종료일을 입력하세요"></div>
 							            </div>
 							            <div class="form-group">
-							              <label for="client_id">고객사</label>
-							              <input type="text" class="form-control" id="client_id" name="client_id" placeholder="고객사를 입력하세요">
+							              <label for="cli_id">고객사</label>
+							              <input type="text" class="form-control" id="cli_id" name="client_id" placeholder="고객사를 입력하세요">
 							            </div>
 							            <div class="form-group">
-							              <label for="involve_num">투여인원</label>
-							              <input type="text" class="form-control" id="involve_num" name="involve_num"  placeholder="투여인원을 입력하세요">
+							              <label for="inv_num">투여인원</label>
+							              <input type="text" class="form-control" id="inv_num" name="involve_num"  placeholder="투여인원을 입력하세요">
 							            </div>
 							            <div class="form-group">
 							              <label for="field"> 해당분야</label>
-							              	   <div> <select class="form-control" id="field_1" name="field_1" style="width:46%; float:left; margin-left:10px;">
+							              	   <div> <select class="form-control" id="fid_1" name="field_1" style="width:46%; float:left; margin-left:10px;">
 	    										<c:forEach var="projectList" items="${projectList}">
 										    	<option value="${projectList.field_1}">${projectList.field_1} </option>
 										    	</c:forEach>
 	   											 </select>
-							              	    <select class="form-control" id="field_2" name="field_2"  style="width:46%; float:right; margin-right:10px;">
+							              	    <select class="form-control" id="fid_2" name="field_2"  style="width:46%; float:right; margin-right:10px;">
 	    										<c:forEach var="projectList" items="${projectList}">
 										    	<option value="${projectList.field_2}">${projectList.field_2} </option>
 										    	</c:forEach>
 	   											 </select></div>
 							            </div>
 							            <div class="form-group">
-											 <label for="note">비고</label>
-										    <input type="text" class="form-control" id="note" name="note"/>
+											 <label for="nte">비고</label>
+										    <input type="text" class="form-control" id="nte" name="note"/>
 										  </div> 
 										  <div class="form-group">
-										    <label for="remark">상세내용</label>
-										    <textarea class="form-control" id="remark" name="remark"></textarea>
+										    <label for="rmark">상세내용</label>
+										    <textarea class="form-control" id="rmark" name="remark"></textarea>
 										  </div> 
 										    <div class="form-group">
 											<label for="need_tech">필요기술</label>
-										    <textarea class="form-control" id="need_tech" name="need_tech" ></textarea>
+										    <textarea class="form-control" id="need_tec" name="need_tech" ></textarea>
 										   </div>  
 										   <div class="form-group">
-										    <label for="charge_id" >담당자</label>
-										    <input type="text" class="form-control" id="charge_id" name="charge_id"/>
+										    <label for="char_id" >담당자</label>
+										    <input type="text" class="form-control" id="char_id" name="charge_id"/>
 										    </div>
 										    <div>
 										   		<label for="use_yn">사용유무</label>
-							   					<input id="use_yn" type="checkbox" name="use_yn" value="Y">
+							   					<input id="us_yn" type="checkbox" name="use_yn" value="Y">
 										    </div>
 										   
 										   <!--담당자 이름-->
@@ -485,7 +483,7 @@ $(document).ready(function(){
 				                      <td><a href="#" data-toggle="modal" class="idClick involve_num" data-target="#inputModal2" data-id="involve_num" >${proj.involve_num}</a></td>
 				                      <td> <a href="#" data-toggle="modal" class="idClick charge_id" data-target="#inputModal2" data-id="charge_id" >${proj.charge_id}</a></td>
 				                     <%-- 	<td> <a href="#" data-toggle="modal" class="idClick charge_nm" data-target="#inputModal2" data-id="charge_nm" >${proj.charge_nm}</a></td> --%>
-				                      <td><a href="#" data-toggle="modal" class="idClick remark" data-target="#inputModal2" data-id="remark">상세내용<p hidden>"${proj.remark}"</p> </a></td> 
+				                      <td><a href="#" data-toggle="modal" class="idClick remark" data-target="#inputModal2" data-id="remark">상세내용<p hidden>${proj.remark}</p></a></td> 
 				                      <tr>
 		                  		</c:forEach>
 		                  		</tbody>

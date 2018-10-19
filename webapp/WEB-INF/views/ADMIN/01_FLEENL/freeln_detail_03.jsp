@@ -34,7 +34,6 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="/css/include/freeln_detail_01.css" />
-	
 	<link rel="stylesheet" href="/css/include/subpage.css" />
 	
 	<!-- js -->
@@ -107,13 +106,17 @@
 	  li = $('li',ul);
 	  client_nm = $('.client_nm',li);
 	  work_date = $('.work_date',li);
+	  freeln_career = $('.freeln_career',li);
+	  detail_content = $('.detail_content',li);
 	  for (i = 0; i < li.length; i++) {
-	  /* console.log(work_date.eq(i).html());
-	  console.log(work_date.eq(i).html().toUpperCase().indexOf(filter));
-	  console.log(li.eq(i).html()); */
+
 	      if (work_date.eq(i).html().toUpperCase().indexOf(filter) > -1) {
 	       	  li.eq(i).attr('style','display:');
 	      } else if(client_nm.eq(i).html().toUpperCase().indexOf(filter) > -1){
+	    	  li.eq(i).attr('style','display:');  
+	      } else if(freeln_career.eq(i).html().toUpperCase().indexOf(filter) > -1){
+	    	  li.eq(i).attr('style','display:');  
+	      } else if(detail_content.eq(i).html().toUpperCase().indexOf(filter) > -1){
 	    	  li.eq(i).attr('style','display:');  
 	      } else {
 	       	  li.eq(i).attr('style','display:none');
@@ -169,7 +172,8 @@
     						<div class="col-sm-12 col-md-12">
 	    						<div id="dataTable_filter" class="dataTables_filter">
 	    							<label>Search:
-	    								<input type="text" class="form-control form-control-sm" placeholder="이름을 입력하세요" aria-controls="dataTable" id="myInput" onkeyup="myFunction()">
+	    								<input type="text" class="form-control form-control-sm" placeholder="찾을 내용을 입력하세요" 
+	    										aria-controls="dataTable" id="myInput" onkeyup="myFunction()">
 	    							</label>
 	    						</div>
     						</div>
@@ -184,7 +188,7 @@
 		    
 		      <tr>
 		        <th rowspan="2" class="client_nm">${freelancerCareer.client_nm}</th>
-		        <td>${freelancerCareer.duty} | ${freelancerCareer.task}</td>  
+		        <td class="freeln_career">${freelancerCareer.duty} | ${freelancerCareer.task}</td>  
 		        <td rowspan="2" class="click_detail">세부내용<br/>보기</td> 
 		      </tr>
 		      <tr>  
@@ -194,7 +198,7 @@
 		      </tr>
 		      <tr class="detail_box">
 		        <th>세부내용</th>
-		        <td colspan="2">${freelancerCareer.contents}</td>
+		        <td colspan="2" class="detail_content">${freelancerCareer.contents}</td>
 		      </tr>
 		    </tbody>
 		  </table>

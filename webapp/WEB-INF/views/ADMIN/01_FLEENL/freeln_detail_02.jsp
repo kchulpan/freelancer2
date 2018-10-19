@@ -63,19 +63,13 @@
 	  table = document.getElementById("dataTable");
 	  tr = table.getElementsByTagName("tr");
 	  for (i = 0; i < tr.length; i++) {
-	   /*  td = tr[i].getElementsByTagName("td")[1]; */
+	 
 	    if (td = tr[i].getElementsByTagName("td")[1]) {
 	      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
 	        tr[i].style.display = "";
 	      } else {
 	        tr[i].style.display = "none";
 	      }
-	    } else if(td = tr[i].getElementsByTagName("td")[4]){
-	    	if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-		        tr[i].style.display = "";
-		      } else {
-		        tr[i].style.display = "none";
-		      }	
 	    }      
 	  }
 	}
