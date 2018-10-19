@@ -259,32 +259,32 @@ $(document).ready(function(){
 							            </div>
 							            <div class="form-group">
 							              <label for="proj_nm">프로젝트명</label>
-							              <input type="text" name="proj_nm"class="form-control" id="project_nm" placeholder="프로젝트 이름을 입력하세요">
+							              <input type="text" name="proj_nm"class="form-control" id="project_nm" placeholder="프로젝트 이름을 입력하세요" required>
 							            </div>
 							            <div class="form-group">
 							              <label for="proj_date">프로젝트 기간</label>
 							            
 						              	  <div>
-						              		<input type="text" name="proj_str_date" class="form-control" id="project_str_date" style="width:48%; float:left;" placeholder="시작일을 입력하세요">
-						              		<input type="text" name="proj_end_date" class="form-control" id="project_end_date" style="width:48%; float:right;" placeholder="종료일을 입력하세요">
+						              		<input type="text" name="proj_str_date" class="form-control" id="project_str_date" style="width:48%; float:left;" placeholder="시작일을 입력하세요" required>
+						              		<input type="text" name="proj_end_date" class="form-control" id="project_end_date" style="width:48%; float:right;" placeholder="종료일을 입력하세요" required>
 						              	  </div>
 							           </div>
 							            <div class="form-group">
 							              <label for="client_id">고객사</label>
-							              <input type="text" name="client_id" class="form-control" id="client_id" placeholder="고객사를 입력하세요">
+							              <input type="text" name="client_id" class="form-control" id="client_id" placeholder="고객사를 입력하세요" required>
 							            </div>
 							            <div class="form-group">
 							              <label for="involve_num">투여인원</label>
-							              <input type="text" name="involve_num" class="form-control" id="involve_num" placeholder="투여인원을 입력하세요">
+							              <input type="text" name="involve_num" class="form-control" id="involve_num" placeholder="투여인원을 입력하세요" required>
 							            </div>
 							            <div class="form-group">
 							              <label for="field"> 해당분야</label>
-							              	   <div> <select name="field_1" class="form-control" id="field_1" style="width:46%; float:left; margin-left:10px;">
+							              	   <div> <select name="field_1" class="form-control" id="field_1" style="width:46%; float:left; margin-left:10px;" required>
 	    										<c:forEach var="projectList" items="${projectList}">
 										    	<option value="${projectList.field_1}">${projectList.field_1} </option>
 										    	</c:forEach>
 	   											 </select>
-							              	    <select name="field_2" class="form-control" id="field_2" style="width:46%; float:right; margin-right:10px;">
+							              	    <select name="field_2" class="form-control" id="field_2" style="width:46%; float:right; margin-right:10px;" required>
 	    										<c:forEach var="projectList" items="${projectList}">
 										    	<option value="${projectList.field_2}">${projectList.field_2} </option>
 										    	</c:forEach>
@@ -302,19 +302,19 @@ $(document).ready(function(){
 											<label for="need_tech">필요기술</label>
 										    <textarea name="need_tech" class="form-control" id="need_tech"></textarea>
 										   </div>  
-										   	<div class="form-group">
+<!-- 										   	<div class="form-group">
 										    <label for="charge_id" >담당자</label>
 										    <input type="text" class="form-control" id="charge_id" name="charge_id"/>
-										    </div>
-<%-- 										   <div class="form-group">
+										    </div> -->
+ 										   <div class="form-group">
 										    <input type="hidden" id="charge_id" name="charge_id" value="">
 											<label for="charge_nm">담당자</label>
 										    <select name="charge_nm" class="form-control" id="charge_nm">
 										    	<c:forEach var="projectList" items="${projectList}">
-										    	<option value="${projectList.charge_nm}">${projectList.charge_nm} </option>
+										    	<option value="${projectList.charge_id}">${projectList.charge_nm} </option>
 										    	</c:forEach>												
 										    </select>
-										    </div> --%>
+										    </div> 
 										    <div>
 							    			<label for="use_yn">사용유무</label>
 							   				<input id="use_yn" type="checkbox" name="use_yn" value="Y">
@@ -383,7 +383,7 @@ $(document).ready(function(){
 											 <label for="nte">비고</label>
 										    <input type="text" class="form-control" id="nte" name="note"/>
 										  </div> 
-										  <div class="form-group">
+										   <div class="form-group">
 										    <label for="rmark">상세내용</label>
 										    <textarea class="form-control" id="rmark" name="remark"></textarea>
 										  </div> 
@@ -392,27 +392,61 @@ $(document).ready(function(){
 										    <textarea class="form-control" id="need_tec" name="need_tech" ></textarea>
 										   </div>  
 										   <div class="form-group">
-										    <label for="char_id" >담당자</label>
+<!-- 										    <label for="char_id" >담당자</label>
 										    <input type="text" class="form-control" id="char_id" name="charge_id"/>
-										    </div>
-										    <div>
-										   		<label for="use_yn">사용유무</label>
-							   					<input id="us_yn" type="checkbox" name="use_yn" value="Y">
-										    </div>
+										    </div> -->
+
 										   
 										   <!--담당자 이름-->
-<%-- 											<label for="charge_nm">담당자</label>
+											<label for="charge_nm">담당자</label>
 										    <select class="form-control" id="charge_nm" name="charge_nm">
 										    	<c:forEach var="projectList" items="${projectList}">
 										    	<option value="${projectList.charge_nm}">${projectList.charge_nm} </option>
 										    	</c:forEach> 
 										    </select>
-										    </div>--%>
+										    </div>
+										    <div>
+										   		<label for="use_yn">사용유무</label>
+							   					<input id="us_yn" type="checkbox" name="use_yn" value="Y">
+										    </div>
 
 							            <div class="modal-footer">
 							          		<input type="button" id="updatebtn" class="btn btn-success btn-default pull-left" value="수정">
 							          		<input type="button" id="deletebtn" class="btn btn-danger btn-default pull-left" value="삭제">
 							          		<button type="" class="btn btn-primary  btn-default pull-left" data-dismiss="modal">취소</button>
+							        	</div>   
+							          </form>
+							          </div>
+							        </div>
+							        
+							      </div>
+							      
+							    </div>
+<!----------------------------------------- The Modal 수정/삭제 !!! 끝 ------------------>
+
+<!----------------------------------------- The Modal 상세내용 ------------------>
+								  <!-- Modal -->
+  							  <div class="modal fade" id="inputModal3" role="dialog">
+							    <div class="modal-dialog" role="document">
+							    
+							      <!-- Modal content3-->
+		 					      <div class="modal-content modal-lg">
+							        <div class="modal-header">
+							          <button type="button" class="close" data-dismiss="modal"></button>
+							          <h5><i class="fa fa-user icon"></i>상세내용</h5>
+							        </div>
+							        <div class="modal-body">
+							        
+							          <form id="modalform" role="form" action="" method="POST">
+							           
+										  <div class="form-group">
+										    <label for="rmark">상세내용</label>
+										    <textarea class="form-control" id="rmark" style="height:250px;" name="remark"></textarea>
+										  </div> 
+										    
+
+							            <div class="modal-footer">
+							          		<button type="" class="btn btn-primary  btn-default pull-left" data-dismiss="modal">확인</button>
 							        	</div>   
 							          </form>
 							          </div>
@@ -483,7 +517,7 @@ $(document).ready(function(){
 				                      <td><a href="#" data-toggle="modal" class="idClick involve_num" data-target="#inputModal2" data-id="involve_num" >${proj.involve_num}</a></td>
 				                      <td> <a href="#" data-toggle="modal" class="idClick charge_id" data-target="#inputModal2" data-id="charge_id" >${proj.charge_id}</a></td>
 				                     <%-- 	<td> <a href="#" data-toggle="modal" class="idClick charge_nm" data-target="#inputModal2" data-id="charge_nm" >${proj.charge_nm}</a></td> --%>
-				                      <td><a href="#" data-toggle="modal" class="idClick remark" data-target="#inputModal2" data-id="remark">상세내용<p hidden>${proj.remark}</p></a></td> 
+				                      <td><a href="#" data-toggle="modal" class="idClick remark" data-target="#inputModal3" data-id="remark">상세내용<p hidden>${proj.remark}</p></a></td> 
 				                      <tr>
 		                  		</c:forEach>
 		                  		</tbody>
