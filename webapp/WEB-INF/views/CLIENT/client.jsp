@@ -7,11 +7,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width" initial-scale="1">
 
-<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/codingBooster.css">
-
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script type="text/javascript" src="vendor/bootstrap/js/bootstrap.js"></script>
 <title>프리랜서 로그인</title>
 
 </head>
