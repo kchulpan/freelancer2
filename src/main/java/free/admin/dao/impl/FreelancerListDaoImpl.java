@@ -37,7 +37,7 @@ public class FreelancerListDaoImpl implements FreelancerListDao {
 	
 	@Override
 	public FreelancerListVo freelancerView2(HashMap<String, Object> map) {
-		System.out.println("dao View2 redirect"+map);
+		/*System.out.println("dao View2 redirect"+map);*/
 		sqlSession.selectList("Freelancer.FreelancerView2",map);
 		FreelancerListVo freelancer = ((List<FreelancerListVo>) map.get("result")).get(0);
 

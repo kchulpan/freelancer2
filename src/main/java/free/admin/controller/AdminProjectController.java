@@ -54,7 +54,7 @@ public class AdminProjectController {
 	@RequestMapping("/ProjectDelete")
 	public String projectDelet(@RequestParam HashMap<String,Object> map)
 	{
-		System.out.println("proj_id::" + map.get("proj_id"));
+	/*	System.out.println("proj_id::" + map.get("proj_id"));*/
 		projectListService.projectDelete(map);
 		return "redirect:/Project";
 	}
